@@ -1,6 +1,6 @@
 module OpenPayU
   module Models
-    class Fee
+    class Fee < Model
       attr_accessor :amount, :description, :type
       validates :amount, presence: true
     end

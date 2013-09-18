@@ -1,7 +1,6 @@
 module OpenPayU
   module Models
-    class Buyer::Delivery
-      includes OpenPayU::Models::Address
+    class Buyer::Delivery < Address
     end
   end
 end
