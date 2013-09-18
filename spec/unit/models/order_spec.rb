@@ -13,6 +13,14 @@ describe OpenPayU::Models::Order do
       })
     end
     it { order.valid?.should be_true }
+    it { order.merchant_pos_id.should eq 4455 }
+    
+    context "should create product objects" do
+      before { order.products = [ { name: "Produkt 1" } ] }
+
+      it { order.products.size.should eq 1 }
+      it { order.products.first.class.name.should eq "OpenPayU::Models::Product" } 
+    end
   end
 
   context "create invalid order" do
