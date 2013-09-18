@@ -1,6 +1,7 @@
 require "openpayu/version"
 require "openpayu/configuration"
 require "openpayu/exceptions"
+require "openpayu/order"
 require "openpayu/models/model"
 require "openpayu/models/address"
 require "openpayu/models/buyer"
