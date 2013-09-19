@@ -3,14 +3,21 @@ require "active_model"
 module OpenPayU
   module Models
     class Model
-      
+
       include ActiveModel::Validations
-      include ActiveModel::Serialization
+      include ActiveModel::Serializers::JSON
+      include ActiveModel::Serializers::Xml
       
       def initialize(values)
         values.each_pair do |k,v|
           self.send("#{k}=", v) 
         end
+      end
+
+      def attributes
+        attrs = {}
+        instance_variables.each { |v| attrs[v.to_s.gsub("@", "")] = nil }
+        attrs
       end
       
       class << self

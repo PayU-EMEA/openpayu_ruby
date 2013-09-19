@@ -30,10 +30,13 @@ describe OpenPayU::Models::Order do
         ext_order_id: 1,
         description: "New order",
         currency_code: "PLN",
-        total_amount: 1000
+        total_amount: 1000,
+        products:[{name: "dupa"}, {name: "dupa2"}]  
       })
     end
     it { order.valid?.should be_false }
   end
   
 end
+
+      o=OpenPayU::Models::Order.new({customer_ip: "127.0.0.1",ext_order_id: 1, description: "New order", currency_code: "PLN", total_amount: 1000, products:[{name: "dupa"}, {name: "dupa2"}] })

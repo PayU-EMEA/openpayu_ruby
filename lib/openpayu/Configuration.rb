@@ -40,7 +40,7 @@ module OpenPayU
       end
 
       def set_defaults
-        @domain = "payu.pl"
+        @domain = "payu.com"
         @env    = "sandbox"
         @country = "pl"
         @summary_path = "/standard/co/summary"
@@ -62,6 +62,10 @@ module OpenPayU
           raise WrongConfigurationError, "Parameter '#{parameter}' is invalid." if send(parameter).empty?
         end
         true
+      end
+
+      def get_base_url
+        "https://#{@env}.#{@domain}/api/v2/"
       end
     end
   end
