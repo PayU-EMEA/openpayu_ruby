@@ -39,4 +39,4 @@ describe OpenPayU::Models::Order do
   
 end
 
-      o=OpenPayU::Models::Order.new({customer_ip: "127.0.0.1",ext_order_id: 1, description: "New order", currency_code: "PLN", total_amount: 1000, products:[{name: "dupa"}, {name: "dupa2"}] })
+      o=OpenPayU::Models::Order.new({merchant_pos_id: 38050, customer_ip: "127.0.0.1",ext_order_id: 1, description: "New order", currency_code: "PLN", total_amount: 1000, products:[{name: "dupa", unit_price: 100, quantity: 1}] })

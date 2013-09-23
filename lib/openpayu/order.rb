@@ -3,26 +3,32 @@ module OpenPayU
   class Order
 
 
-    def create(order)
+    def self.retrieve(order_id)
+      url = Configuration.get_base_url + "order/#{order_id}." + Configuration.data_format
+      request = Documents::Request.new(url)
+      @response = Documents::Response.new(Connection.get(url, request.data, request.header))
+    end
+
+
+    def self.create(order)
       @order = Models::Order.new(order)
       if @order.valid?
-        url = OpenPayU::Configuration.get_base_url + "order." + OpenPayU::Configuration.data_format
-        data = OpenPayU::Document.create(@order)
-        @response = Connection.post(url, @order)
+        url = Configuration.get_base_url + "order." + Configuration.data_format
+        request = Documents::Request.new(@order.prepare_data("OrderCreateRequest"))
+        @response = Documents::Response.new(
+          Connection.post(url, request.data, request.header)
+        )
       else
         # TODO: invalid order do something!
       end
     end
 
-    #     public static function create($order)
-    # {
+    def self.cancel(order_id)
+      url = Configuration.get_base_url + "order/#{order_id}." + Configuration.data_format
+      request = Documents::Request.new(url)
+      @response = Documents::Response.new(Connection.delete(url, request.data, request.header))
+    end
 
-    #     $result = self::verifyResponse(OpenPayU_Http::post($pathUrl, $data), 'OrderCreateResponse');
-
-    #     return $result;
-    # }
-
-   
 
   end
 

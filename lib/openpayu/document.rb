@@ -1,4 +1,5 @@
 require "digest"
+
 module OpenPayU
 
   class Document
@@ -9,13 +10,13 @@ module OpenPayU
       raise WrongConfigurationError, "Merchant Pos Id (merchant_pos_id) should not be null or empty." if signature_key.empty?
       
       signature = generate_signature(data, algorithm, signature_key)
-      "sender=#{merchant_pos_id};signature=#{};algorithm=#{algorithm};content=DOCUMENT"          
+      "sender=#{merchant_pos_id};signature=#{signature};algorithm=#{algorithm}"          
     end
 
     def generate_signature(data, algorithm, signature_key)
-      data = data + signature_key
+      data = data + signature_key.to_s
       if algorithm == "MD5"
-        signature = Digest::MD5.digest(data)
+        signature = Digest::MD5.hexdigest(data)
       elsif ['SHA', 'SHA1', 'SHA-1'].include? algorithm
         signature = Digest::SHA1.hexdigest data
         algorithm = "SHA-1"
@@ -37,9 +38,7 @@ module OpenPayU
       parameters
     end
 
-    def verify_signature(message, algorithm, signature, signature_key)
-      generate_signature(message, algorithm, signature_key) == signature
-    end
+
 
   end
 

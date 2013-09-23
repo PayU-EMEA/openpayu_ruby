@@ -15,10 +15,36 @@ module OpenPayU
       end
 
       def attributes
+        instance_values
+      end
+
+      def to_json
+        prepare_hash.to_json
+      end
+
+      def prepare_data(request_type)
+        { 
+          'OpenPayU' => { 
+            request_type => prepare_keys(instance_values) 
+          }
+        }.to_json 
+      end
+
+      def prepare_keys(hash)
         attrs = {}
-        instance_variables.each { |v| attrs[v.to_s.gsub("@", "")] = nil }
+        hash = hash.instance_values if hash.class.name =~ /OpenPayU::Models/
+        hash.each_pair do |k,v| 
+          if v.class.name == "Array"
+            attrs[k.camelize] = {}
+            v.each_with_index{ |element, i| attrs[k.camelize][element.class.name.gsub("OpenPayU::Models::","")] = prepare_keys(element) }
+          else   
+            attrs[k.camelize] = v
+          end
+        end
         attrs
       end
+
+  
       
       class << self
 
@@ -38,10 +64,10 @@ module OpenPayU
               @#{association} = 
                 if value.class.name == "Array"
                   value.collect do |val|
-                    #{class_name.to_s.capitalize}.new(val)
+                    #{class_name.to_s.camelize}.new(val)
                   end
                 else
-                  #{class_name.to_s.capitalize}.new(value)
+                  #{class_name.to_s.camelize}.new(value)
                 end
             end
           CODE
