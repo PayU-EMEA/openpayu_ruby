@@ -6,3 +6,5 @@ rvm:
   - rbx-19mode
 # uncomment this line if your project needs to run something other than `rake`:
 script: bundle exec rspec spec
+code_climate:
+  repo_token: a909fe634532217548c2a59fa663bb2bad564b0218993c1a6b4e2a2d97664d51
