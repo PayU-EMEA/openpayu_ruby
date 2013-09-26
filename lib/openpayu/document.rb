@@ -65,7 +65,15 @@ module OpenPayU
     end
 
     def underscore_keys(hash)
-      hash.deep_transform_keys{|key| key.underscore}
+      deep_transform_keys(hash){|key| key.underscore}
+    end
+
+    def deep_transform_keys(hash, &block)
+      result = {}
+      hash.each do |key, value|
+        result[yield(key)] = value.is_a?(Hash) ? deep_transform_keys(value,&block) : value
+      end
+      result
     end
 
   end
