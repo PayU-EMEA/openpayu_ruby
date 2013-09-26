@@ -61,32 +61,32 @@
 
     <iframe id="search_frame"></iframe>
 
-    <div id="content"><div id='filecontents'><h1>OpenpayuSdkRuby</h1>
+    <div id="content"><div id='filecontents'>
+<h1 id="label-OpenpayuSdkRuby">OpenpayuSdkRuby</h1>
 
-<p>The OpenPayU Ruby library provides integration access to the PayU Gateway API ver. 2.</p>
+<p>The OpenPayU Ruby library provides integration access to the PayU Gateway
+API ver. 2.</p>
 
-<h2>Installation</h2>
+<h2 id="label-Installation">Installation</h2>
 
-<p>Add this line to your application&#39;s Gemfile:</p>
+<p>Add this line to your application's Gemfile:</p>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_gem'>gem</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>openpayu_sdk_ruby</span><span class='tstring_end'>'</span></span>
-</code></pre>
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_gem'>gem</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>openpayu_sdk_ruby</span><span class='tstring_end'>'</span></span></code></pre>
 
 <p>And then execute:</p>
 
-<pre class="code ruby"><code class="ruby">$ bundle
-</code></pre>
+<pre class="code ruby"><code class="ruby">$ bundle</code></pre>
 
 <p>Or install it yourself as:</p>
 
-<pre class="code ruby"><code class="ruby">$ gem install openpayu_sdk_ruby
-</code></pre>
+<pre class="code ruby"><code class="ruby">$ gem install openpayu_sdk_ruby</code></pre>
 
-<h2>Usage</h2>
+<h2 id="label-Usage">Usage</h2>
 
-<h3>Configure Gem</h3>
+<h3 id="label-Configure+Gem">Configure Gem</h3>
 
-<p>To configure OpenPayU environment add a file to config/initializers/openpayu.rb containing:</p>
+<p>To configure OpenPayU environment add a file to
+config/initializers/openpayu.rb containing:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='const'>OpenPayU</span><span class='op'>::</span><span class='const'>Configuration</span><span class='period'>.</span><span class='id identifier rubyid_configure'>configure</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_config'>config</span><span class='op'>|</span>
     <span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_merchant_pos_id'>merchant_pos_id</span>  <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>8389534</span><span class='tstring_end'>&quot;</span></span>
@@ -98,7 +98,7 @@
 </span><span class='kw'>end</span>
 </code></pre>
 
-<h3>Creating new order</h3>
+<h3 id="label-Creating+new+order">Creating new order</h3>
 
 <p>To create an order you must provide a Hash with order:</p>
 
@@ -134,23 +134,20 @@
       <span class='label'>value:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Token value</span><span class='tstring_end'>'</span></span>
     <span class='rbrace'>}</span>
   <span class='rbracket'>]</span>
-<span class='rbrace'>}</span>
-</code></pre>
+<span class='rbrace'>}</span></code></pre>
 
-<p>Full description of the Order parameters you can find here
-  When you have ready order Hash you can create new order:</p>
+<p>Full description of the Order parameters you can find here  When you have
+ready order Hash you can create new order:</p>
 
-<pre class="code ruby"><code class="ruby"><span class='ivar'>@response</span> <span class='op'>=</span> <span class='const'>OpenPayU</span><span class='op'>::</span><span class='const'>Order</span><span class='period'>.</span><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='id identifier rubyid_order'>order</span><span class='rparen'>)</span>
-</code></pre>
+<pre class="code ruby"><code class="ruby"><span class='ivar'>@response</span> <span class='op'>=</span> <span class='const'>OpenPayU</span><span class='op'>::</span><span class='const'>Order</span><span class='period'>.</span><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='id identifier rubyid_order'>order</span><span class='rparen'>)</span></code></pre>
 
-<h3>Retrieving order from OpenPayU</h3>
+<h3 id="label-Retrieving+order+from+OpenPayU">Retrieving order from OpenPayU</h3>
 
 <p>You can retrieve order by its PayU order_id</p>
 
-<pre class="code ruby"><code class="ruby"><span class='ivar'>@response</span> <span class='op'>=</span> <span class='const'>OpenPayU</span><span class='op'>::</span><span class='const'>Order</span><span class='period'>.</span><span class='id identifier rubyid_retrieve'>retrieve</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Z963D5JQR2230925GUEST000P01</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-</code></pre>
+<pre class="code ruby"><code class="ruby"><span class='ivar'>@response</span> <span class='op'>=</span> <span class='const'>OpenPayU</span><span class='op'>::</span><span class='const'>Order</span><span class='period'>.</span><span class='id identifier rubyid_retrieve'>retrieve</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Z963D5JQR2230925GUEST000P01</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span></code></pre>
 
-<h3>Refund money</h3>
+<h3 id="label-Refund+money">Refund money</h3>
 
 <pre class="code ruby"><code class="ruby"><span class='ivar'>@refund</span> <span class='op'>=</span> <span class='const'>OpenPayU</span><span class='op'>::</span><span class='const'>Refund</span><span class='period'>.</span><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='lbrace'>{</span>
   <span class='label'>order_id:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Z963D5JQR2230925GUEST000P01</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'>#required
@@ -159,22 +156,24 @@
 </span>  <span class='label'>amount:</span> <span class='int'>1000</span><span class='comma'>,</span> <span class='comment'>#If not provided, returns whole transaction, optional
 </span>  <span class='label'>commission_amount:</span> <span class='int'>123</span><span class='comma'>,</span> <span class='comment'>#optional
 </span>  <span class='label'>currency_code:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>PLN</span><span class='tstring_end'>&quot;</span></span> <span class='comment'>#optional
-</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-</code></pre>
+</span><span class='rbrace'>}</span><span class='rparen'>)</span></code></pre>
 
-<h2>Contributing</h2>
-
-<ol>
-<li>Fork it</li>
-<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
-<li>Commit your changes (<code>git commit -am &#39;Add some feature&#39;</code>)</li>
-<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
-<li>Create new Pull Request</li>
-</ol>
+<h2 id="label-Contributing">Contributing</h2>
+<ol><li>
+<p>Fork it</p>
+</li><li>
+<p>Create your feature branch (<code>git checkout -b my-new-feature</code>)</p>
+</li><li>
+<p>Commit your changes (<code>git commit -am 'Add some feature'</code>)</p>
+</li><li>
+<p>Push to the branch (<code>git push origin my-new-feature</code>)</p>
+</li><li>
+<p>Create new Pull Request</p>
+</li></ol>
 </div></div>
 
     <div id="footer">
-  Generated on Thu Sep 26 16:26:31 2013 by
+  Generated on Thu Sep 26 17:18:32 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.2 (ruby-1.9.3).
 </div>
