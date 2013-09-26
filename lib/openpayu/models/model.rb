@@ -25,9 +25,9 @@ module OpenPayU
         instance_values
       end
 
-      def to_json
-        prepare_hash.to_json
-      end
+        def to_json
+          prepare_keys.to_json
+        end
 
       def prepare_data(request_type)
         if OpenPayU::Configuration.data_format == "xml"
@@ -56,7 +56,7 @@ module OpenPayU
             attrs[k.camelize] = {}
             v.each_with_index{ |element, i| attrs[k.camelize][element.class.name.gsub("OpenPayU::Models::","")] = prepare_keys(element) }
           else
-            attrs[k.camelize] = v
+            attrs[k.camelize] = v.class.name =~ /OpenPayU::Models/ ? prepare_keys(v.instance_values) : v
           end
         end
         attrs.delete_if{ |k,v| ["AllErrors", "Errors", "ValidationContext"].include?(k) }
