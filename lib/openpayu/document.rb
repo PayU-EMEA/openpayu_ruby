@@ -7,8 +7,7 @@ module OpenPayU
 
     def generate_signature_structure(data, algorithm, merchant_pos_id = "", signature_key = "")
       raise WrongConfigurationError, "Merchant Signature Key (signature_key) should not be null or empty." if signature_key.empty?
-      raise WrongConfigurationError, "Merchant Pos Id (merchant_pos_id) should not be null or empty." if signature_key.empty?
-
+      raise WrongConfigurationError, "Merchant Pos Id (merchant_pos_id) should not be null or empty." if merchant_pos_id.blank?
       signature = generate_signature(data, algorithm, signature_key)
       "sender=#{merchant_pos_id};signature=#{signature};algorithm=#{algorithm}"
     end
@@ -61,7 +60,7 @@ module OpenPayU
 
 
     def get_signature
-      @response["X-OpenPayU-Signature"] || @response["x-openpayu-signature"] || @response["openpayu-signature"] || 
+      @response["X-OpenPayU-Signature"] || @response["x-openpayu-signature"] || @response["openpayu-signature"] ||
         @response.headers["x-openpayu-signature"] || @response.headers["openpayu-signature"]
     end
 

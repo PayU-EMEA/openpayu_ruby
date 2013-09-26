@@ -25,7 +25,7 @@ describe OpenPayU::Configuration do
     end
 
     it "should set default value" do 
-      OpenPayU::Configuration.oauth_token_by_code_path.should eq "/standard/user/oauth/authorize"
+      OpenPayU::Configuration.country.should eq "pl"
     end
 
     context "change configuration to be invalid" do

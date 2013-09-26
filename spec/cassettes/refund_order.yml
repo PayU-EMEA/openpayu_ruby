@@ -1,0 +1,100 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://platnosci-dev5.dc2/api/v2/order/4SHBNHDMWP130923GUEST000P01/refund.xml
+    body:
+      encoding: US-ASCII
+      string: ! "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n        <OpenPayU xmlns=\"http://www.openpayu.com/20/openpayu.xsd\"><RefundCreateRequest
+        xsi:type=\"RefundCreateRequest\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\n
+        \ <OrderId>4SHBNHDMWP130923GUEST000P01</OrderId>\n  <Refund>\n    <OrderId>4SHBNHDMWP130923GUEST000P01</OrderId>\n
+        \   <Description>Money refund</Description>\n  </Refund>\n</RefundCreateRequest>\n</OpenPayU>"
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+      content-type:
+      - application/xml
+      openpayu-signature:
+      - sender=45654;signature=78a4d3140aec53f8dadd2f38e9b43563;algorithm=MD5
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Thu, 26 Sep 2013 08:22:04 GMT
+      server:
+      - Apache/2.2.17 (Unix) DAV/2 mod_ssl/2.2.17 OpenSSL/1.0.0c mod_jk/1.2.31 PHP/5.3.5
+        mod_apreq2-20090110/2.7.1 mod_perl/2.0.4 Perl/v5.10.1
+      openpayu-signature:
+      - signature=5687e10debc25d2605e3d50a746e9d50;algorithm=MD5;sender=checkout;content=DOCUMENT;
+      x-openpayu-signature:
+      - signature=5687e10debc25d2605e3d50a746e9d50;algorithm=MD5;sender=checkout;content=DOCUMENT;
+      content-language:
+      - pl
+      content-length:
+      - '640'
+      set-cookie:
+      - payu_persistent=mobile_agent-false#; Expires=Sun, 21-Sep-2014 08:22:04 GMT;
+        Path=/
+      - CSESSIONID=FD0D29BFF48F01C027ADA3F234711265.01; Path=/pl/standard/co
+      connection:
+      - close
+      content-type:
+      - application/xml;charset=UTF-8
+    body:
+      encoding: US-ASCII
+      string: <?xml version="1.0" encoding="UTF-8" standalone="yes"?><OpenPayU xmlns="http://www.openpayu.com/20/openpayu.xsd"><RefundCreateResponse><Status><StatusCode>SUCCESS</StatusCode></Status><OrderId>4SHBNHDMWP130923GUEST000P01</OrderId><Refund><RefundId>87045</RefundId><ExtRefundId>20130926102204</ExtRefundId><Type>REFUND_PAYMENT_STANDARD</Type><Amount>10000</Amount><CurrencyCode>PLN</CurrencyCode><Description>Uznanie
+        87045 Money refund</Description><CreationDateTime>2013-09-26T10:22:04.805+02:00</CreationDateTime><Status>INIT</Status><StatusDateTime>2013-09-26T10:22:06.009+02:00</StatusDateTime></Refund></RefundCreateResponse></OpenPayU>
+    http_version: '1.1'
+  recorded_at: Thu, 26 Sep 2013 08:22:05 GMT
+- request:
+    method: post
+    uri: http://platnosci-dev5.dc2/api/v2/order/4SHBNHDMWP130923GUEST000P01/refund.json
+    body:
+      encoding: US-ASCII
+      string: ! '{"OpenPayU":{"RefundCreateRequest":{"OrderId":"4SHBNHDMWP130923GUEST000P01","Refund":{"OrderId":"4SHBNHDMWP130923GUEST000P01","Description":"Money
+        refund"}}}}'
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+      content-type:
+      - application/json
+      openpayu-signature:
+      - sender=45654;signature=5148e34fd91bb884cae08da7a4df3642;algorithm=MD5
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Thu, 26 Sep 2013 08:23:49 GMT
+      server:
+      - Apache/2.2.17 (Unix) DAV/2 mod_ssl/2.2.17 OpenSSL/1.0.0c mod_jk/1.2.31 PHP/5.3.5
+        mod_apreq2-20090110/2.7.1 mod_perl/2.0.4 Perl/v5.10.1
+      openpayu-signature:
+      - signature=bbd767a233909bc69fc1ddac3c07d96c;algorithm=MD5;sender=checkout;content=DOCUMENT;
+      x-openpayu-signature:
+      - signature=bbd767a233909bc69fc1ddac3c07d96c;algorithm=MD5;sender=checkout;content=DOCUMENT;
+      content-language:
+      - pl
+      content-length:
+      - '404'
+      set-cookie:
+      - payu_persistent=mobile_agent-false#; Expires=Sun, 21-Sep-2014 08:23:49 GMT;
+        Path=/
+      - CSESSIONID=D2B119012855F2250A7B1E75141A25DD.01; Path=/pl/standard/co
+      connection:
+      - close
+      content-type:
+      - application/json;charset=UTF-8
+    body:
+      encoding: US-ASCII
+      string: ! '{"OpenPayU":{"RefundCreateResponse":{"Status":{"StatusCode":"SUCCESS"},"OrderId":"4SHBNHDMWP130923GUEST000P01","Refund":{"Status":"INIT","Description":"Uznanie
+        87046 Money refund","Amount":"10000","RefundId":"87046","ExtRefundId":"20130926102349","CreationDateTime":"2013-09-26T10:23:49.256+02:00","Type":"REFUND_PAYMENT_STANDARD","StatusDateTime":"2013-09-26T10:23:49.491+02:00","CurrencyCode":"PLN"}}}}'
+    http_version: '1.1'
+  recorded_at: Thu, 26 Sep 2013 08:23:48 GMT

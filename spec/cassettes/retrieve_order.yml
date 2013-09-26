@@ -1,0 +1,99 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://platnosci-dev5.dc2/api/v2/order/4SHBNHDMWP130923GUEST000P01.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      openpayu-signature:
+      - sender=45654;signature=88f4b66ae0fcc06db210830ded35bd96;algorithm=MD5
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+      content-type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Wed, 25 Sep 2013 12:08:31 GMT
+      server:
+      - Apache/2.2.17 (Unix) DAV/2 mod_ssl/2.2.17 OpenSSL/1.0.0c mod_jk/1.2.31 PHP/5.3.5
+        mod_apreq2-20090110/2.7.1 mod_perl/2.0.4 Perl/v5.10.1
+      openpayu-signature:
+      - signature=f856d5faa8e06505965a8bbf4a84eb80;algorithm=MD5;sender=checkout;content=DOCUMENT;
+      x-openpayu-signature:
+      - signature=f856d5faa8e06505965a8bbf4a84eb80;algorithm=MD5;sender=checkout;content=DOCUMENT;
+      content-language:
+      - pl
+      content-length:
+      - '617'
+      set-cookie:
+      - payu_persistent=mobile_agent-false#; Expires=Sat, 20-Sep-2014 12:08:31 GMT;
+        Path=/
+      - CSESSIONID=2DFE38672497919C0D15F0788BD5DFE6.01; Path=/pl/standard/co
+      connection:
+      - close
+      content-type:
+      - application/json;charset=UTF-8
+    body:
+      encoding: US-ASCII
+      string: ! '{"OpenPayU":{"OrderRetrieveResponse":{"Status":{"StatusCode":"SUCCESS","StatusDesc":"Request
+        processed successfully."},"Orders":{"Order":{"ExtOrderId":"1342","Description":"New
+        order","Products":{"Product":{"Name":"Mouse","Quantity":"1","UnitPrice":"10000"}},"Buyer":{"CustomerId":"guest"},"OrderId":"4SHBNHDMWP130923GUEST000P01","CurrencyCode":"PLN","CustomerIp":"127.0.0.1","Status":"COMPLETED","NotifyUrl":"http://localhost/","ValidityTime":"48000","MerchantPosId":"45654","PayMethod":{"Type":"CARD_TOKEN"},"OrderCreateDate":"2013-09-23T14:47:06.091+02:00","OrderUrl":"http://localhost/","TotalAmount":"10000"}}}}}'
+    http_version: '1.1'
+  recorded_at: Wed, 25 Sep 2013 12:08:30 GMT
+
+- request:
+    method: get
+    uri: http://platnosci-dev5.dc2/api/v2/order/4SHBNHDMWP130923GUEST000P01.xml
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      openpayu-signature:
+      - sender=45654;signature=a6424a3778b72b69f08efb1ee4d1133c;algorithm=MD5
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+      content-type:
+      - application/xml
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Thu, 26 Sep 2013 08:25:19 GMT
+      server:
+      - Apache/2.2.17 (Unix) DAV/2 mod_ssl/2.2.17 OpenSSL/1.0.0c mod_jk/1.2.31 PHP/5.3.5
+        mod_apreq2-20090110/2.7.1 mod_perl/2.0.4 Perl/v5.10.1
+      openpayu-signature:
+      - signature=81b80c24c14da626e7609e40b49c8806;algorithm=MD5;sender=checkout;content=DOCUMENT;
+      x-openpayu-signature:
+      - signature=81b80c24c14da626e7609e40b49c8806;algorithm=MD5;sender=checkout;content=DOCUMENT;
+      content-language:
+      - pl
+      content-length:
+      - '954'
+      set-cookie:
+      - payu_persistent=mobile_agent-false#; Expires=Sun, 21-Sep-2014 08:25:19 GMT;
+        Path=/
+      - CSESSIONID=E8964AF7B7C7448FAE6CFB618AE3EDAC.01; Path=/pl/standard/co
+      connection:
+      - close
+      content-type:
+      - application/xml;charset=UTF-8
+    body:
+      encoding: US-ASCII
+      string: <?xml version="1.0" encoding="UTF-8" standalone="yes"?><OpenPayU xmlns="http://www.openpayu.com/20/openpayu.xsd"><OrderRetrieveResponse><Status><StatusCode>SUCCESS</StatusCode><StatusDesc>Request
+        processed successfully.</StatusDesc></Status><Orders><Order><OrderId>4SHBNHDMWP130923GUEST000P01</OrderId><ExtOrderId>1342</ExtOrderId><OrderCreateDate>2013-09-23T14:47:06.091+02:00</OrderCreateDate><NotifyUrl>http://localhost/</NotifyUrl><OrderUrl>http://localhost/</OrderUrl><CustomerIp>127.0.0.1</CustomerIp><MerchantPosId>45654</MerchantPosId><ValidityTime>48000</ValidityTime><Description>New
+        order</Description><CurrencyCode>PLN</CurrencyCode><TotalAmount>10000</TotalAmount><Buyer><CustomerId>guest</CustomerId></Buyer><Products><Product><Name>Mouse</Name><UnitPrice>10000</UnitPrice><Quantity>1</Quantity></Product></Products><PayMethod><Type>CARD_TOKEN</Type></PayMethod><Status>COMPLETED</Status></Order></Orders></OrderRetrieveResponse></OpenPayU>
+    http_version: '1.1'
+  recorded_at: Thu, 26 Sep 2013 08:25:19 GMT

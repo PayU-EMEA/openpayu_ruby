@@ -5,8 +5,10 @@ module OpenPayU
     def self.retrieve(order_id)
       url = Configuration.get_base_url + "order/#{order_id}." + Configuration.data_format
       request = Documents::Request.new(url)
-      Documents::Response.new
-        Connection.get(url, request.body, request.headers), "OrderRetrieveResponse"
+      Documents::Response.new(
+        Connection.get(url, request.body, request.headers), 
+        "OrderRetrieveResponse"
+      )
     end
 
     def self.create(order)
@@ -14,8 +16,10 @@ module OpenPayU
       if @order.all_objects_valid?
         url = Configuration.get_base_url + "order." + Configuration.data_format
         request = Documents::Request.new(@order.prepare_data("OrderCreateRequest"))
-        Documents::Response.new
-          Connection.post(url, request.body, request.headers), "OrderCreateResponse"
+        Documents::Response.new(
+          Connection.post(url, request.body, request.headers), 
+          "OrderCreateResponse"
+        )
       else
         raise WrongOrderParameters.new(@order)
       end
@@ -26,16 +30,20 @@ module OpenPayU
       @update = OpenPayU::Models::StatusUpdate.new status_update
       url = Configuration.get_base_url + "order/status." + Configuration.data_format
       request = Documents::Request.new(@update.prepare_data("OrderStatusUpdateRequest"))
-      Documents::Response.new
-        Connection.post(url, request.body, request.headers), "OrderStatusUpdateResponse"
+      Documents::Response.new(
+        Connection.post(url, request.body, request.headers), 
+        "OrderStatusUpdateResponse"
+      )
     end
 
     def self.cancel(order_id)
       raise NotImplementedException, "This feature is not yet implemented"
       url = Configuration.get_base_url + "order/#{order_id}." + Configuration.data_format
       request = Documents::Request.new(url)
-      Documents::Response.new
-        Connection.delete(url, request.body, request.headers), "OrderCancelResponse"
+      Documents::Response.new(
+        Connection.delete(url, request.body, request.headers), 
+        "OrderCancelResponse"
+      )
     end
 
     def self.consume_notification(request)
