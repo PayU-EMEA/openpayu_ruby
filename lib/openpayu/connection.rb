@@ -2,8 +2,6 @@ require 'net/http'
 require 'net/https'
 require 'uri'
 
-
-
 module OpenPayU
 
   class Connection

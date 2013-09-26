@@ -1,5 +1,3 @@
-require "active_support/core_ext/hash"
-
 module OpenPayU
   module Documents
     class Response < Document
