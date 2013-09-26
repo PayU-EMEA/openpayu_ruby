@@ -3,83 +3,41 @@ require "active_support/core_ext/hash"
 module OpenPayU
   module Documents
     class Response < Document
-      attr_accessor :parsed_data
+      attr_accessor :parsed_data, :response, :request, :message_name
 
-      def initialize(data, headers = [])
-        if data
-          if OpenPayU::Configuration.data_format == "xml"
-            @parsed_data = Hash.from_xml(data)
-          else
-            @parsed_data = JSON.parse(data)
-          end
-
-          # incoming_signature = get_signature(headers);
-          if @parsed_data["OpenPayU"] && true #verify_response(data, parsed_data, "message_name?")
-
-          end
-        else
-          #empty data!
-        end
-        @headers = headers
+      def initialize(data, message_name)
+        @response = data[:response]
+        @request = data[:request]
+        @message_name = message_name
+        parse_data if verify_response
       end
 
       def method_missing(method_name)
-        @parsed_data[method_name]
+        @parsed_data[method_name.to_s]
       end
 
-
-      def verify_response(response, parsed_data, message_name)
-        if verify_signature(response, get_signature)
+      def parse_data
+        if OpenPayU::Configuration.data_format == "xml"
+          @parsed_data = Hash.from_xml(@response.body)
+        else
+          @parsed_data = JSON.parse(@response.body)
         end
-    #     if ($httpStatus == 200 || $httpStatus == 201 || $httpStatus == 422 || $httpStatus == 302)
-    #         return $result;
+        if @parsed_data["OpenPayU"] && @parsed_data["OpenPayU"][@message_name]
+          @parsed_data = underscore_keys @parsed_data["OpenPayU"][@message_name]
+        elsif @parsed_data["OpenPayU"]
+          @parsed_data = underscore_keys @parsed_data["OpenPayU"]
+        end
+        @parsed_data
       end
 
+      def order_status
+        @parsed_data["orders"]["order"]["status"]
+      end
 
-  def verify_signature(message, algorithm, signature, signature_key)
-    generate_signature(message, algorithm, signature_key) == signature
+      %w(NEW PENDING CANCELLED REJECTED COMPLETED WAITING_FOR_CONFIRMATION).each do |method|
+        define_method((method.downcase + "?").to_sym) { order_status == method}
+      end
+
+    end
   end
-
-
-        # $incomingSignature = self::getSignature(self::$headers);
-
-        # if(!empty($incomingSignature))
-        # {
-        #     $sign = OpenPayU_Util::parseSignature($incomingSignature);
-
-        #     if(false === OpenPayU_Util::verifySignature($response, $sign->signature, OpenPayU_Configuration::getSignatureKey(), $sign->algorithm))
-        #         throw new OpenPayU_Exception_Authorization('Invalid signature - ' . $sign->signature);
-        # }
-
-        def get_signature
-
-        end
-    # public static function getSignature($headers)
-    # {
-    #     foreach($headers as $name => $value)
-    #     {
-    #         if(preg_match('/X-OpenPayU-Signature/i', $name))
-    #             return $value;
-    #     }
-    # }
-
-    #     } elseif (isset($message['OpenPayU'])) {
-    #         $status = isset($message['OpenPayU']['Status']) ? $message['OpenPayU']['Status'] : null;
-    #         $data['Status'] = $status;
-    #         unset($message['OpenPayU']['Status']);
-    #     }
-
-    #     $result = self::build($data);
-
-    #     if ($httpStatus == 200 || $httpStatus == 201 || $httpStatus == 422 || $httpStatus == 302)
-    #         return $result;
-    #     else {
-    #         OpenPayU_Http::throwHttpStatusException($httpStatus, $result);
-    #     }
-
-    #     return null;
-    # }
-
-  end
-end
 end

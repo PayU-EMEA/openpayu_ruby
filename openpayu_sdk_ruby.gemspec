@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name          = "openpayu"
   spec.version       = OpenPayU::VERSION
   spec.authors       = ["Krzysztof Streflik"]
-  spec.email         = ["streflik@gmail.com"]
+  spec.email         = ["krzysztof.streflik@allegro.pl"]
   spec.description   = %q{A SDK for OpenPayU API}
   spec.summary       = %q{A SDK for OpenPayU API}
   spec.homepage      = ""
@@ -23,4 +23,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec"
   spec.add_development_dependency "activemodel"
   spec.add_development_dependency "activesupport"
+  spec.add_development_dependency "vcr"
+  spec.add_development_dependency "fakeweb"
 end

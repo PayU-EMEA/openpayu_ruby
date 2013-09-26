@@ -10,56 +10,52 @@ module OpenPayU
     def self.post(url, data, headers)
       p "Post to #{url}"
       p "with data to #{data}"
-      p "dheaders #{headers.inspect}"
+      p "headers #{headers.inspect}"
 
       uri = URI.parse(url)
-      https = Net::HTTP.new(uri.host,uri.port)
-      https.use_ssl = true
-      # https.verify_mode = OpenSSL::SSL::VERIFY_NONE
+      http = Net::HTTP.new(uri.host,uri.port)
+      http.use_ssl = true if OpenPayU::Configuration.use_ssl?
+      request = Net::HTTP::Post.new(uri.path)
+      request.body = data
+      request["Content-Type"] = "application/#{OpenPayU::Configuration.data_format}"
+      request["OpenPayu-Signature"] = headers["OpenPayu-Signature"]
+      response = http.request(request)
+      p response.body
 
-      req = Net::HTTP::Post.new(uri.path)
-      req.body = data
-      req["Content-Type"] = "application/json"
-      req["OpenPayu-Signature"] = headers["OpenPayu-Signature"]
-      response = https.request(req)
-         p response.body
-      # p response.status
-
-      [response, req]
+      {response: response, request: request}
     end
 
     def self.get(url, data, headers)
       p "get from #{url}"
       uri = URI.parse(url)
       http = Net::HTTP.new(uri.host, uri.port)
-      http.use_ssl = true
+      http.use_ssl = true if OpenPayU::Configuration.use_ssl?
       p "headers #{headers.inspect}"
       request = Net::HTTP::Get.new(uri.request_uri, headers)
+      request["Content-Type"] = "application/#{OpenPayU::Configuration.data_format}"
       request["OpenPayu-Signature"] = headers["OpenPayu-Signature"]
-      # request.body = data
-      p request.inspect
 
       response = http.request(request)
       p response.body
-      p response.status
-      p response["header-here"] # All headers are lowercase
+      {response: response, request: request}
+      
     end
 
     def self.delete(url, data, headers)
       p "Delete from #{url}"
       uri = URI.parse(url)
       http = Net::HTTP.new(uri.host, uri.port)
-      http.use_ssl = true
+      http.use_ssl = true if OpenPayU::Configuration.use_ssl?
       p "headers #{headers.inspect}"
       request = Net::HTTP::Delete.new(uri.request_uri, headers)
+      request["Content-Type"] = "application/#{OpenPayU::Configuration.data_format}"
       request["OpenPayu-Signature"] = headers["OpenPayu-Signature"]
-      # request.body = data
       p request.inspect
 
       response = http.request(request)
       p response.body 
-      p response.status
-      p response["header-here"] # All headers are lowercase
+      {response: response, request: request}
+
     end
 
   end

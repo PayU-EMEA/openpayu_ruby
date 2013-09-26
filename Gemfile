@@ -6,3 +6,5 @@ gemspec
 group :development do 
   gem "pry"
 end
+
+gem "actionpack"

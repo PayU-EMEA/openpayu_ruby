@@ -1,3 +1,4 @@
+require "openpayu/xml_builder"
 require "openpayu/version"
 require "openpayu/configuration"
 require "openpayu/connection"
@@ -21,6 +22,8 @@ require "openpayu/models/pay_method"
 require "openpayu/models/product"
 require "openpayu/models/shipping_method"
 require "openpayu/models/refund"
+require "openpayu/models/status_update"
+require "openpayu/models/notify_response"
 
 module OpenPayU
   # Your code goes here...
