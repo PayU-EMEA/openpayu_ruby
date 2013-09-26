@@ -19,21 +19,24 @@ module OpenPayU
     end
 
     def self.get(url, data, headers)
-      uri = URI.parse(url)
-      http = Net::HTTP.new(uri.host, uri.port)
-      http.use_ssl = true if OpenPayU::Configuration.use_ssl?
-      request = Net::HTTP::Get.new(uri.request_uri, headers)
-      request["Content-Type"] = "application/#{OpenPayU::Configuration.data_format}"
-      request["OpenPayu-Signature"] = headers["OpenPayu-Signature"]
-      response = http.request(request)
-      {response: response, request: request}
+      self.common_connection(url, data, headers, "GET")
     end
 
     def self.delete(url, data, headers)
+      self.common_connection(url, data, headers, "DELETE")
+    end
+
+    private
+
+    def self.common_connection(url, data, headers, method)
       uri = URI.parse(url)
       http = Net::HTTP.new(uri.host, uri.port)
       http.use_ssl = true if OpenPayU::Configuration.use_ssl?
-      request = Net::HTTP::Delete.new(uri.request_uri, headers)
+      request = if method == "DELETE"
+        Net::HTTP::Delete.new(uri.request_uri, headers)
+      else
+        Net::HTTP::Get.new(uri.request_uri, headers)
+      end
       request["Content-Type"] = "application/#{OpenPayU::Configuration.data_format}"
       request["OpenPayu-Signature"] = headers["OpenPayu-Signature"]
       response = http.request(request)
