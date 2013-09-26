@@ -17,8 +17,8 @@ module  TestObject
         buyer: {
           email: 'dd@ddd.pl',
           phone: '123123123',
-          first_name: 'Jaroslaw',
-          last_name: 'Testowy',
+          first_name: 'Jan',
+          last_name: 'Kowalski',
           language: 'pl_PL',
           NIN: "123456"
         },
@@ -73,7 +73,7 @@ module  TestObject
                 "CustomerId"=> "guest",
                 "FirstName"=> "Jan",
                 "Language"=> "pl",
-                "LastName"=> "Testowy"
+                "LastName"=> "Kowalski"
               },
               "OrderId"=> "JS2JMSQ68L130826GUEST000P01",
               "CurrencyCode"=> "PLN",

@@ -7,7 +7,6 @@ describe "Create transparent order" do
       before(:all) do
         order = TestObject::Order.valid_order
         VCR.use_cassette("create_order") do
-
           @response = OpenPayU::Order.create(order)
         end
       end

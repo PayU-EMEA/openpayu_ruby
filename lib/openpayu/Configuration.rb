@@ -8,8 +8,7 @@ module OpenPayU
 
     class << self
       attr_accessor :env, :merchant_pos_id, :pos_auth_key, :client_id, :client_secret, :signature_key,
-        :my_url, :notify_url, :cancel_url, :success_url, :shipping_cost_url, :service_url, :summary_path,
-        :auth_url, :service_domain, :my_url, :country, :data_format, :algorithm, :protocol
+         :service_domain, :country, :data_format, :algorithm, :protocol
 
       def configure
         set_defaults
@@ -18,15 +17,14 @@ module OpenPayU
       end
 
       def set_defaults
-        @domain = "payu.com"
+        @service_domain = "payu.com"
         @env    = "sandbox"
         @country = "pl"
         @algorithm = "MD5"
-        @summary_path = "/standard/co/summary"
       end
 
       def required_parameters
-        [:merchant_pos_id, :client_id, :signature_key]
+        [:merchant_pos_id, :signature_key]
       end
 
       def valid?

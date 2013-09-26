@@ -59,7 +59,7 @@ module OpenPayU
             attrs[k.camelize] = v
           end
         end
-        attrs
+        attrs.delete_if{ |k,v| ["AllErrors", "Errors", "ValidationContext"].include?(k) }
       end
 
       #TODO: use validation

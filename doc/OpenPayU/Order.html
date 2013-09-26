@@ -1,0 +1,937 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: OpenPayU::Order
+  
+    &mdash; Documentation by YARD 0.8.7.2
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (O)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../OpenPayU.html" title="OpenPayU (module)">OpenPayU</a></span></span>
+     &raquo; 
+    <span class="title">Order</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: OpenPayU::Order
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">OpenPayU::Order</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/openpayu/order.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>A class responsible for dealing with Order</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#build_notify_response-class_method" title="build_notify_response (class method)">+ (String) <strong>build_notify_response</strong>(request_id) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Creates OrderNotifyResponse to send to PayU.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#cancel-class_method" title="cancel (class method)">+ (Documents::Response) <strong>cancel</strong>(order_id) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Cancels Order - Sends to PayU OrderCancelRequest.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#consume_notification-class_method" title="consume_notification (class method)">+ (Documents::Response) <strong>consume_notification</strong>(request) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Transforms OrderNotifyRequest to [Documents::Response].</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#create-class_method" title="create (class method)">+ (Documents::Response) <strong>create</strong>(order) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Creates new Order - Sends to PayU OrderCreateRequest.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#retrieve-class_method" title="retrieve (class method)">+ (Documents::Response) <strong>retrieve</strong>(order_id) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Retrieves information about the order - Sends to PayU OrderRetrieveRequest.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#status-class_method" title="status (class method)">+ (Documents::Response) <strong>status</strong>(status_update) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Updates Order status - Sends to PayU OrderStatusUpdateRequest.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="build_notify_response-class_method">
+  
+    + (<tt>String</tt>) <strong>build_notify_response</strong>(request_id) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Creates OrderNotifyResponse to send to PayU</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>request_id</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>value of ReqId(UUID) from OrderNotifyRequest</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Response in XML or JSON (depends on gem configuration)</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+93
+94
+95
+96
+97
+98
+99</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/openpayu/order.rb', line 93</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_build_notify_response'>build_notify_response</span><span class='lparen'>(</span><span class='id identifier rubyid_request_id'>request_id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='const'>Models</span><span class='op'>::</span><span class='const'>NotifyResponse</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='lbrace'>{</span>
+    <span class='label'>res_id:</span> <span class='id identifier rubyid_request_id'>request_id</span><span class='comma'>,</span>
+    <span class='label'>status:</span> <span class='lbrace'>{</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>StatusCode</span><span class='tstring_end'>'</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>SUCCESS</span><span class='tstring_end'>'</span></span><span class='rbrace'>}</span> 
+  <span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_response'>response</span><span class='period'>.</span><span class='id identifier rubyid_prepare_data'>prepare_data</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>OrderNotifyResponse</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="cancel-class_method">
+  
+    + (<tt><span class='object_link'><a href="Documents/Response.html" title="OpenPayU::Documents::Response (class)">Documents::Response</a></span></tt>) <strong>cancel</strong>(order_id) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'>
+<p>Not implemented! Cancel can be performed only on orders with certain
+status.</p>
+</div>
+  </div>
+
+
+<p>Cancels Order</p>
+<ul><li>
+<p>Sends to PayU OrderCancelRequest</p>
+</li></ul>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>order_id</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>PayU OrderId sent back in OrderCreateResponse</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Documents/Response.html" title="OpenPayU::Documents::Response (class)">Documents::Response</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Response class object order with OrderCancelResponse</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../NotImplementedException.html" title="NotImplementedException (class)">NotImplementedException</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+65
+66
+67
+68
+69
+70
+71
+72
+73</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/openpayu/order.rb', line 65</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_cancel'>cancel</span><span class='lparen'>(</span><span class='id identifier rubyid_order_id'>order_id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>NotImplementedException</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>This feature is not yet implemented</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_url'>url</span> <span class='op'>=</span> <span class='const'>Configuration</span><span class='period'>.</span><span class='id identifier rubyid_get_base_url'>get_base_url</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>order/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_order_id'>order_id</span><span class='rbrace'>}</span><span class='tstring_content'>.</span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span> <span class='const'>Configuration</span><span class='period'>.</span><span class='id identifier rubyid_data_format'>data_format</span>
+  <span class='id identifier rubyid_request'>request</span> <span class='op'>=</span> <span class='const'>Documents</span><span class='op'>::</span><span class='const'>Request</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
+  <span class='const'>Documents</span><span class='op'>::</span><span class='const'>Response</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span>
+    <span class='const'>Connection</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_body'>body</span><span class='comma'>,</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_headers'>headers</span><span class='rparen'>)</span><span class='comma'>,</span> 
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>OrderCancelResponse</span><span class='tstring_end'>&quot;</span></span>
+  <span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="consume_notification-class_method">
+  
+    + (<tt><span class='object_link'><a href="Documents/Response.html" title="OpenPayU::Documents::Response (class)">Documents::Response</a></span></tt>) <strong>consume_notification</strong>(request) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Transforms OrderNotifyRequest to [Documents::Response]</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>request</span>
+      
+      
+        <span class='type'>(<tt>Rack::Request||ActionDispatch::Request</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>object od request received from PayU</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Documents/Response.html" title="OpenPayU::Documents::Response (class)">Documents::Response</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Response class object order with OrderNotifyRequest</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../WrongNotifyRequest.html" title="WrongNotifyRequest (class)">WrongNotifyRequest</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>when generated response is empty</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+80
+81
+82
+83
+84
+85
+86
+87</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/openpayu/order.rb', line 80</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_consume_notification'>consume_notification</span><span class='lparen'>(</span><span class='id identifier rubyid_request'>request</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='const'>Documents</span><span class='op'>::</span><span class='const'>Response</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='lbrace'>{</span><span class='label'>response:</span> <span class='id identifier rubyid_request'>request</span><span class='comma'>,</span> <span class='label'>request:</span> <span class='kw'>nil</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>OrderNotifyRequest</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>unless</span> <span class='id identifier rubyid_response'>response</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+    <span class='id identifier rubyid_response'>response</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>WrongNotifyRequest</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid OrderNotifyRequest: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="create-class_method">
+  
+    + (<tt><span class='object_link'><a href="Documents/Response.html" title="OpenPayU::Documents::Response (class)">Documents::Response</a></span></tt>) <strong>create</strong>(order) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Creates new Order</p>
+<ul><li>
+<p>Sends to PayU OrderCreateRequest</p>
+</li></ul>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>order</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A Hash object containing full <span class='object_link'><a href="Models/Order.html" title="OpenPayU::Models::Order (class)">Models::Order</a></span> object</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Documents/Response.html" title="OpenPayU::Documents::Response (class)">Documents::Response</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Response class object order with OrderCreateResponse</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../WrongOrderParameters.html" title="WrongOrderParameters (class)">WrongOrderParameters</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if provided Hash ‘order’ isn’t a valid object (with all required fields)</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/openpayu/order.rb', line 27</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='id identifier rubyid_order'>order</span><span class='rparen'>)</span>
+  <span class='ivar'>@order</span> <span class='op'>=</span> <span class='const'>Models</span><span class='op'>::</span><span class='const'>Order</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_order'>order</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='ivar'>@order</span><span class='period'>.</span><span class='id identifier rubyid_all_objects_valid?'>all_objects_valid?</span>
+    <span class='id identifier rubyid_url'>url</span> <span class='op'>=</span> <span class='const'>Configuration</span><span class='period'>.</span><span class='id identifier rubyid_get_base_url'>get_base_url</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>order.</span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span> <span class='const'>Configuration</span><span class='period'>.</span><span class='id identifier rubyid_data_format'>data_format</span>
+    <span class='id identifier rubyid_request'>request</span> <span class='op'>=</span> <span class='const'>Documents</span><span class='op'>::</span><span class='const'>Request</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='ivar'>@order</span><span class='period'>.</span><span class='id identifier rubyid_prepare_data'>prepare_data</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>OrderCreateRequest</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='const'>Documents</span><span class='op'>::</span><span class='const'>Response</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span>
+      <span class='const'>Connection</span><span class='period'>.</span><span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_body'>body</span><span class='comma'>,</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_headers'>headers</span><span class='rparen'>)</span><span class='comma'>,</span> 
+      <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>OrderCreateResponse</span><span class='tstring_end'>&quot;</span></span>
+    <span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>WrongOrderParameters</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='ivar'>@order</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="retrieve-class_method">
+  
+    + (<tt><span class='object_link'><a href="Documents/Response.html" title="OpenPayU::Documents::Response (class)">Documents::Response</a></span></tt>) <strong>retrieve</strong>(order_id) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Retrieves information about the order</p>
+<ul><li>
+<p>Sends to PayU OrderRetrieveRequest</p>
+</li></ul>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>order_id</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>PayU OrderId sent back in OrderCreateResponse</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Documents/Response.html" title="OpenPayU::Documents::Response (class)">Documents::Response</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Response class object order with OrderRetrieveResponse</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+12
+13
+14
+15
+16
+17
+18
+19</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/openpayu/order.rb', line 12</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_retrieve'>retrieve</span><span class='lparen'>(</span><span class='id identifier rubyid_order_id'>order_id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_url'>url</span> <span class='op'>=</span> <span class='const'>Configuration</span><span class='period'>.</span><span class='id identifier rubyid_get_base_url'>get_base_url</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>order/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_order_id'>order_id</span><span class='rbrace'>}</span><span class='tstring_content'>.</span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span> <span class='const'>Configuration</span><span class='period'>.</span><span class='id identifier rubyid_data_format'>data_format</span>
+  <span class='id identifier rubyid_request'>request</span> <span class='op'>=</span> <span class='const'>Documents</span><span class='op'>::</span><span class='const'>Request</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
+  <span class='const'>Documents</span><span class='op'>::</span><span class='const'>Response</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span>
+    <span class='const'>Connection</span><span class='period'>.</span><span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_body'>body</span><span class='comma'>,</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_headers'>headers</span><span class='rparen'>)</span><span class='comma'>,</span> 
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>OrderRetrieveResponse</span><span class='tstring_end'>&quot;</span></span>
+  <span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="status-class_method">
+  
+    + (<tt><span class='object_link'><a href="Documents/Response.html" title="OpenPayU::Documents::Response (class)">Documents::Response</a></span></tt>) <strong>status</strong>(status_update) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'>
+<p>Not implemented! This method is used to accept money from client if POS has
+turned off autoreveive option.</p>
+</div>
+  </div>
+
+
+<p>Updates Order status</p>
+<ul><li>
+<p>Sends to PayU OrderStatusUpdateRequest</p>
+</li></ul>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>status_update</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A Hash object containing full <span class='object_link'><a href="Models/StatusUpdate.html" title="OpenPayU::Models::StatusUpdate (class)">Models::StatusUpdate</a></span> object</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Documents/Response.html" title="OpenPayU::Documents::Response (class)">Documents::Response</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Response class object order with OrderStatusUpdateResponse</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../NotImplementedException.html" title="NotImplementedException (class)">NotImplementedException</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>This feature is not yet implemented</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/openpayu/order.rb', line 48</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_status'>status</span><span class='lparen'>(</span><span class='id identifier rubyid_status_update'>status_update</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>NotImplementedException</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>This feature is not yet implemented</span><span class='tstring_end'>&quot;</span></span>
+  <span class='ivar'>@update</span> <span class='op'>=</span> <span class='const'>OpenPayU</span><span class='op'>::</span><span class='const'>Models</span><span class='op'>::</span><span class='const'>StatusUpdate</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='id identifier rubyid_status_update'>status_update</span>
+  <span class='id identifier rubyid_url'>url</span> <span class='op'>=</span> <span class='const'>Configuration</span><span class='period'>.</span><span class='id identifier rubyid_get_base_url'>get_base_url</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>order/status.</span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span> <span class='const'>Configuration</span><span class='period'>.</span><span class='id identifier rubyid_data_format'>data_format</span>
+  <span class='id identifier rubyid_request'>request</span> <span class='op'>=</span> <span class='const'>Documents</span><span class='op'>::</span><span class='const'>Request</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='ivar'>@update</span><span class='period'>.</span><span class='id identifier rubyid_prepare_data'>prepare_data</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>OrderStatusUpdateRequest</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='const'>Documents</span><span class='op'>::</span><span class='const'>Response</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span>
+    <span class='const'>Connection</span><span class='period'>.</span><span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_body'>body</span><span class='comma'>,</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_headers'>headers</span><span class='rparen'>)</span><span class='comma'>,</span> 
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>OrderStatusUpdateResponse</span><span class='tstring_end'>&quot;</span></span>
+  <span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Thu Sep 26 16:11:54 2013 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.2 (ruby-1.9.3).
+</div>
+
+  </body>
+</html>
