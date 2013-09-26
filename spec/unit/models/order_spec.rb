@@ -6,6 +6,7 @@ describe OpenPayU::Models::Order do
 
 
     it { order.valid?.should be_true }
+    it { order.all_objects_valid?.should be_true }
     it { order.merchant_pos_id.should eq "45654" }
     it "Should generate correct json" do
       order.req_id = "{63906bb3-40d5-4387-b2ab-27fcf0944252}"
@@ -31,6 +32,7 @@ context "create invalid order" do
     })
   end
   it { order.valid?.should be_false }
+  it { order.all_objects_valid?.should be_false }
 end
 
 end

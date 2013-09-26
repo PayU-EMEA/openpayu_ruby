@@ -13,8 +13,8 @@ class WrongOrderParameters < StandardError
   end
 
   def message
-    @order.errors.collect do |error|
-      "Class  missing attributes: #{error.messages.inspect}"
+    @order.all_errors.collect do |k,v|
+      "Class #{k} missing attributes: #{v.messages.inspect}"
     end
   end
 end
