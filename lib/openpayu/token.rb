@@ -4,13 +4,11 @@ module OpenPayU
 
   class Token
 
-    # dasadas
+    # Creates a TokenCreateRequest 
     #
-    # @param [Hash] form_fields Hash with all form fields with values
-    # @param [String] signature_key defaults to {OpenPayU::Configuration.signature_key}
-    # @param [String] algorithm defaults to {OpenPayU::Configuration.algorithm}
-    # @param [String] merchant_pos_id defaults to {OpenPayU::Configuration.merchant_pos_id}
-    # @return [String] Signature that should be inserted to field with name "OpenPayu-Signature"    
+    # @param [Hash] data A Hash object containing full {Models::Token} object
+    # @return [Documents::Response] Response class object order with TokenCreateResponse
+    # @note Not yet implemented in API
     def self.create(data)
       raise NotImplementedException, "This feature is not yet implemented"
       url = Configuration.get_base_url + "token." + OpenPayU::Configuration.data_format

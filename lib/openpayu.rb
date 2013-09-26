@@ -31,9 +31,9 @@ module OpenPayU
   # Generate a signature for signing form sent directly to PayU
   #
   # @param [Hash] form_fields Hash with all form fields with values
-  # @optional [String] signature_key defaults to OpenPayU::Configuration.signature_key
-  # @optional [String] algorithm defaults to OpenPayU::Configuration.algorithm
-  # @optional [String] merchant_pos_id defaults to OpenPayU::Configuration.merchant_pos_id
+  # @param [String] signature_key defaults to OpenPayU::Configuration.signature_key
+  # @param [String] algorithm defaults to OpenPayU::Configuration.algorithm
+  # @param [String] merchant_pos_id defaults to OpenPayU::Configuration.merchant_pos_id
   # @return [String] Signature that should be inserted to field with name "OpenPayu-Signature"
   def self.sign_form(form_fields, signature_key = Configuration.signature_key, algorithm = Configuration.algorithm, merchant_pos_id = Configuration.merchant_pos_id)
     sorted_values = form_fields.sort.collect{|array| array[1]}.join

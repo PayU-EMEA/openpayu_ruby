@@ -99,7 +99,18 @@
 </dl>
 <div class="clear"></div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Create Refund for an Order</p>
 
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
 
 
 
@@ -117,7 +128,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#create-class_method" title="create (class method)">+ (Object) <strong>create</strong>(data) </a>
+      <a href="#create-class_method" title="create (class method)">+ (Documents::Response) <strong>create</strong>(data) </a>
     
 
     
@@ -131,7 +142,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Creates a RefundCreateRequest.</p>
+</div></span>
   
 </li>
 
@@ -148,27 +161,76 @@
       <div class="method_details first">
   <h3 class="signature first" id="create-class_method">
   
-    + (<tt>Object</tt>) <strong>create</strong>(data) 
+    + (<tt><span class='object_link'><a href="Documents/Response.html" title="OpenPayU::Documents::Response (class)">Documents::Response</a></span></tt>) <strong>create</strong>(data) 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Creates a RefundCreateRequest</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>data</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A Hash object containing full <span class='object_link'><a href="Models/Refund.html" title="OpenPayU::Models::Refund (class)">Models::Refund</a></span> object</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Documents/Response.html" title="OpenPayU::Documents::Response (class)">Documents::Response</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Response class object order with RefundCreateResponse</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-4
-5
-6
-7
-8
-9</pre>
+11
+12
+13
+14
+15
+16</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/openpayu/refund.rb', line 4</span>
+      <pre class="code"><span class="info file"># File 'lib/openpayu/refund.rb', line 11</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_refund'>refund</span> <span class='op'>=</span> <span class='const'>Models</span><span class='op'>::</span><span class='const'>Refund</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
@@ -186,7 +248,7 @@
 </div>
 
     <div id="footer">
-  Generated on Thu Sep 26 16:11:54 2013 by
+  Generated on Thu Sep 26 16:26:31 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.2 (ruby-1.9.3).
 </div>
