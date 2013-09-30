@@ -1,5 +1,5 @@
 [![Code Climate](https://codeclimate.com/repos/5244470a56b10276f501aaee/badges/82eaa372e10d503831cd/gpa.png)](https://codeclimate.com/repos/5244470a56b10276f501aaee/feed)
-[![Build Status](https://magnum.travis-ci.com/streflik/openpayu_ruby_sdk.png?token=sqp5QvsmzqEqtVB3sNsK&branch=order)](https://magnum.travis-ci.com/streflik/openpayu_ruby_sdk)
+[![Build Status](https://magnum.travis-ci.com/PayU/openpayu_ruby_sdk.png?token=JKaQyiwkWT1iqL9Lipsp&branch=order)](https://magnum.travis-ci.com/PayU/openpayu_ruby_sdk)
 
 # OpenpayuSdkRuby
 
