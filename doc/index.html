@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<title>
+  File: README
+  
+    &mdash; Documentation by YARD 0.8.7.2
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><div id='filecontents'>
+<h1 id="label-OpenpayuSdkRuby">OpenpayuSdkRuby</h1>
+
+<p>The OpenPayU Ruby library provides integration access to the PayU Gateway
+API ver. 2.</p>
+
+<h2 id="label-Installation">Installation</h2>
+
+<p>Add this line to your application's Gemfile:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_gem'>gem</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>openpayu_sdk_ruby</span><span class='tstring_end'>'</span></span></code></pre>
+
+<p>And then execute:</p>
+
+<pre class="code ruby"><code class="ruby">$ bundle</code></pre>
+
+<p>Or install it yourself as:</p>
+
+<pre class="code ruby"><code class="ruby">$ gem install openpayu_sdk_ruby</code></pre>
+
+<h2 id="label-Usage">Usage</h2>
+
+<h3 id="label-Configure+Gem">Configure Gem</h3>
+
+<p>To configure OpenPayU environment add a file to
+config/initializers/openpayu.rb containing:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='const'>OpenPayU</span><span class='op'>::</span><span class='const'>Configuration</span><span class='period'>.</span><span class='id identifier rubyid_configure'>configure</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_config'>config</span><span class='op'>|</span>
+    <span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_merchant_pos_id'>merchant_pos_id</span>  <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>8389534</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_signature_key'>signature_key</span>    <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>95873498573498573897fb42d</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_algorithm'>algorithm</span>        <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>MD5</span><span class='tstring_end'>&quot;</span></span> <span class='comment'># MD5, SHA-1, SHA-256
+</span>    <span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_service_domain'>service_domain</span>   <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>payu.com</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_protocol'>protocol</span>         <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>https</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_data_format'>data_format</span>      <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>json</span><span class='tstring_end'>&quot;</span></span> <span class='comment'># json, xml
+</span><span class='kw'>end</span>
+</code></pre>
+
+<h3 id="label-Creating+new+order">Creating new order</h3>
+
+<p>To create an order you must provide a Hash with order:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_order'>order</span> <span class='op'>=</span> <span class='lbrace'>{</span>
+  <span class='label'>merchant_pos_id:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>8389534</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>customer_ip:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>127.0.0.1</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># You can user request.remote_ip in your controller
+</span>  <span class='label'>ext_order_id:</span> <span class='int'>1342</span><span class='comma'>,</span> <span class='comment'>#Order id in your system
+</span>  <span class='label'>order_url:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>http://localhost/</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>description:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>New order</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>currency_code:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>PLN</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>total_amount:</span> <span class='int'>10000</span><span class='comma'>,</span>
+  <span class='label'>notify_url:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>http://localhost/</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>continue_url:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>http://localhost/</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>validity_time:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>48000</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='label'>buyer:</span> <span class='lbrace'>{</span>
+    <span class='label'>email:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>dd@ddd.pl</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+    <span class='label'>phone:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>123123123</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+    <span class='label'>first_name:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Jan</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+    <span class='label'>last_name:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Kowalski</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+    <span class='label'>language:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pl_PL</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+    <span class='label'>NIN:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>123456</span><span class='tstring_end'>&quot;</span></span>
+  <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='label'>products:</span> <span class='lbracket'>[</span>
+    <span class='lbrace'>{</span>
+      <span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Mouse</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+      <span class='label'>unit_price:</span> <span class='int'>10000</span><span class='comma'>,</span>
+      <span class='label'>quantity:</span> <span class='int'>1</span>
+    <span class='rbrace'>}</span>
+  <span class='rbracket'>]</span><span class='comma'>,</span>
+  <span class='label'>pay_methods:</span> <span class='lbracket'>[</span>
+    <span class='lbrace'>{</span>
+      <span class='label'>type:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>CARD_TOKEN</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+      <span class='label'>value:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Token value</span><span class='tstring_end'>'</span></span>
+    <span class='rbrace'>}</span>
+  <span class='rbracket'>]</span>
+<span class='rbrace'>}</span></code></pre>
+
+<p>Full description of the Order parameters you can find here  When you have
+ready order Hash you can create new order:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='ivar'>@response</span> <span class='op'>=</span> <span class='const'>OpenPayU</span><span class='op'>::</span><span class='const'>Order</span><span class='period'>.</span><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='id identifier rubyid_order'>order</span><span class='rparen'>)</span></code></pre>
+
+<h3 id="label-Retrieving+order+from+OpenPayU">Retrieving order from OpenPayU</h3>
+
+<p>You can retrieve order by its PayU order_id</p>
+
+<pre class="code ruby"><code class="ruby"><span class='ivar'>@response</span> <span class='op'>=</span> <span class='const'>OpenPayU</span><span class='op'>::</span><span class='const'>Order</span><span class='period'>.</span><span class='id identifier rubyid_retrieve'>retrieve</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Z963D5JQR2230925GUEST000P01</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span></code></pre>
+
+<h3 id="label-Refund+money">Refund money</h3>
+
+<pre class="code ruby"><code class="ruby"><span class='ivar'>@refund</span> <span class='op'>=</span> <span class='const'>OpenPayU</span><span class='op'>::</span><span class='const'>Refund</span><span class='period'>.</span><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='lbrace'>{</span>
+  <span class='label'>order_id:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Z963D5JQR2230925GUEST000P01</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'>#required
+</span>  <span class='label'>description:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Money refund</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'>#required
+</span>  <span class='label'>ext_refund_id:</span> <span class='int'>21312</span><span class='comma'>,</span> <span class='comment'>#Refund Id in your syste, optional
+</span>  <span class='label'>amount:</span> <span class='int'>1000</span><span class='comma'>,</span> <span class='comment'>#If not provided, returns whole transaction, optional
+</span>  <span class='label'>commission_amount:</span> <span class='int'>123</span><span class='comma'>,</span> <span class='comment'>#optional
+</span>  <span class='label'>currency_code:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>PLN</span><span class='tstring_end'>&quot;</span></span> <span class='comment'>#optional
+</span><span class='rbrace'>}</span><span class='rparen'>)</span></code></pre>
+
+<h2 id="label-Contributing">Contributing</h2>
+<ol><li>
+<p>Fork it</p>
+</li><li>
+<p>Create your feature branch (<code>git checkout -b my-new-feature</code>)</p>
+</li><li>
+<p>Commit your changes (<code>git commit -am 'Add some feature'</code>)</p>
+</li><li>
+<p>Push to the branch (<code>git push origin my-new-feature</code>)</p>
+</li><li>
+<p>Create new Pull Request</p>
+</li></ol>
+</div></div>
+
+    <div id="footer">
+  Generated on Thu Sep 26 17:18:32 2013 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.2 (ruby-1.9.3).
+</div>
+
+  </body>
+</html>

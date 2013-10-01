@@ -1,0 +1,1069 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: OpenPayU::Models::Model
+  
+    &mdash; Documentation by YARD 0.8.7.2
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../';
+  framesUrl = "../../frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../_index.html">Index (M)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../OpenPayU.html" title="OpenPayU (module)">OpenPayU</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Models.html" title="OpenPayU::Models (module)">Models</a></span></span>
+     &raquo; 
+    <span class="title">Model</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: OpenPayU::Models::Model
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">OpenPayU::Models::Model</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+      <dt class="r2">Includes:</dt>
+      <dd class="r2">ActiveModel::Serializers::JSON, ActiveModel::Serializers::Xml, ActiveModel::Validations</dd>
+      
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/openpayu/models/model.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<div id="subclasses">
+  <h2>Direct Known Subclasses</h2>
+  <p class="children"><span class='object_link'><a href="Address.html" title="OpenPayU::Models::Address (class)">Address</a></span>, <span class='object_link'><a href="Buyer.html" title="OpenPayU::Models::Buyer (class)">Buyer</a></span>, <span class='object_link'><a href="Card.html" title="OpenPayU::Models::Card (class)">Card</a></span>, <span class='object_link'><a href="Fee.html" title="OpenPayU::Models::Fee (class)">Fee</a></span>, <span class='object_link'><a href="NotifyResponse.html" title="OpenPayU::Models::NotifyResponse (class)">NotifyResponse</a></span>, <span class='object_link'><a href="Order.html" title="OpenPayU::Models::Order (class)">Order</a></span>, <span class='object_link'><a href="PayMethod.html" title="OpenPayU::Models::PayMethod (class)">PayMethod</a></span>, <span class='object_link'><a href="Product.html" title="OpenPayU::Models::Product (class)">Product</a></span>, <span class='object_link'><a href="Refund.html" title="OpenPayU::Models::Refund (class)">Refund</a></span>, <span class='object_link'><a href="ShippingMethod.html" title="OpenPayU::Models::ShippingMethod (class)">ShippingMethod</a></span>, <span class='object_link'><a href="StatusUpdate.html" title="OpenPayU::Models::StatusUpdate (class)">StatusUpdate</a></span>, <span class='object_link'><a href="Token.html" title="OpenPayU::Models::Token (class)">Token</a></span></p>
+</div>
+
+
+
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#all_errors-instance_method" title="#all_errors (instance method)">- (Object) <strong>all_errors</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute all_errors.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#define_reader-class_method" title="define_reader (class method)">+ (Object) <strong>define_reader</strong>(association) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#define_writer-class_method" title="define_writer (class method)">+ (Object) <strong>define_writer</strong>(association, class_name) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#has_many_objects-class_method" title="has_many_objects (class method)">+ (Object) <strong>has_many_objects</strong>(association, class_name) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#has_one_object-class_method" title="has_one_object (class method)">+ (Object) <strong>has_one_object</strong>(association) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#after_initialize-instance_method" title="#after_initialize (instance method)">- (Object) <strong>after_initialize</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#all_objects_valid%3F-instance_method" title="#all_objects_valid? (instance method)">- (Boolean) <strong>all_objects_valid?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#attributes-instance_method" title="#attributes (instance method)">- (Object) <strong>attributes</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#generate_xml-instance_method" title="#generate_xml (instance method)">- (Object) <strong>generate_xml</strong>(request_type) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Model) <strong>initialize</strong>(values) </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>A new instance of Model.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#prepare_data-instance_method" title="#prepare_data (instance method)">- (Object) <strong>prepare_data</strong>(request_type) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#prepare_keys-instance_method" title="#prepare_keys (instance method)">- (Object) <strong>prepare_keys</strong>(hash) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_json-instance_method" title="#to_json (instance method)">- (Object) <strong>to_json</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#validate_all_objects-instance_method" title="#validate_all_objects (instance method)">- (Object) <strong>validate_all_objects</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>TODO: use validation.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  <div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="OpenPayU::Models::Model (class)">Model</a></span></tt>) <strong>initialize</strong>(values) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns a new instance of Model</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+14
+15
+16
+17
+18
+19</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/openpayu/models/model.rb', line 14</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_values'>values</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_values'>values</span><span class='period'>.</span><span class='id identifier rubyid_each_pair'>each_pair</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_k'>k</span><span class='comma'>,</span><span class='id identifier rubyid_v'>v</span><span class='op'>|</span>
+    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_k'>k</span><span class='rbrace'>}</span><span class='tstring_content'>=</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_v'>v</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_after_initialize'>after_initialize</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id="all_errors=-instance_method"></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="all_errors-instance_method">
+  
+    - (<tt>Object</tt>) <strong>all_errors</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute all_errors</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+11
+12
+13</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/openpayu/models/model.rb', line 11</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_all_errors'>all_errors</span>
+  <span class='ivar'>@all_errors</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="define_reader-class_method">
+  
+    + (<tt>Object</tt>) <strong>define_reader</strong>(association) 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+114
+115
+116</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/openpayu/models/model.rb', line 114</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_define_reader'>define_reader</span><span class='lparen'>(</span><span class='id identifier rubyid_association'>association</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_attr_reader'>attr_reader</span> <span class='id identifier rubyid_association'>association</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="define_writer-class_method">
+  
+    + (<tt>Object</tt>) <strong>define_writer</strong>(association, class_name) 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/openpayu/models/model.rb', line 99</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_define_writer'>define_writer</span><span class='lparen'>(</span><span class='id identifier rubyid_association'>association</span><span class='comma'>,</span> <span class='id identifier rubyid_class_name'>class_name</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_class_eval'>class_eval</span> <span class='heredoc_beg'>&lt;&lt;-CODE</span>
+<span class='tstring_content'>  def </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_association'>association</span><span class='rbrace'>}</span><span class='tstring_content'>=(value)
+</span><span class='embexpr_beg'>    @#{</span><span class='id identifier rubyid_association'>association</span><span class='rbrace'>}</span><span class='tstring_content'> =
+    if value.class.name == &quot;Array&quot;
+      value.collect do |val|
+</span><span class='embexpr_beg'>        #{</span><span class='id identifier rubyid_class_name'>class_name</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_camelize'>camelize</span><span class='rbrace'>}</span><span class='tstring_content'>.new(val)
+      end
+    else
+</span><span class='embexpr_beg'>      #{</span><span class='id identifier rubyid_class_name'>class_name</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_camelize'>camelize</span><span class='rbrace'>}</span><span class='tstring_content'>.new(value)
+    end
+  end
+</span><span class='heredoc_end'>  CODE
+</span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="has_many_objects-class_method">
+  
+    + (<tt>Object</tt>) <strong>has_many_objects</strong>(association, class_name) 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+89
+90
+91
+92</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/openpayu/models/model.rb', line 89</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_has_many_objects'>has_many_objects</span><span class='lparen'>(</span><span class='id identifier rubyid_association'>association</span><span class='comma'>,</span> <span class='id identifier rubyid_class_name'>class_name</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_define_writer'>define_writer</span><span class='lparen'>(</span><span class='id identifier rubyid_association'>association</span><span class='comma'>,</span> <span class='id identifier rubyid_class_name'>class_name</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_define_reader'>define_reader</span><span class='lparen'>(</span><span class='id identifier rubyid_association'>association</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="has_one_object-class_method">
+  
+    + (<tt>Object</tt>) <strong>has_one_object</strong>(association) 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+94
+95
+96
+97</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/openpayu/models/model.rb', line 94</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_has_one_object'>has_one_object</span><span class='lparen'>(</span><span class='id identifier rubyid_association'>association</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_define_writer'>define_writer</span><span class='lparen'>(</span><span class='id identifier rubyid_association'>association</span><span class='comma'>,</span> <span class='id identifier rubyid_association'>association</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_define_reader'>define_reader</span><span class='lparen'>(</span><span class='id identifier rubyid_association'>association</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="after_initialize-instance_method">
+  
+    - (<tt>Object</tt>) <strong>after_initialize</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+21
+22</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/openpayu/models/model.rb', line 21</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_after_initialize'>after_initialize</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="all_objects_valid?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>all_objects_valid?</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+82
+83
+84</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/openpayu/models/model.rb', line 82</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_all_objects_valid?'>all_objects_valid?</span>
+  <span class='op'>!</span><span class='id identifier rubyid_validate_all_objects'>validate_all_objects</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="attributes-instance_method">
+  
+    - (<tt>Object</tt>) <strong>attributes</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+24
+25
+26</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/openpayu/models/model.rb', line 24</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_attributes'>attributes</span>
+  <span class='id identifier rubyid_instance_values'>instance_values</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="generate_xml-instance_method">
+  
+    - (<tt>Object</tt>) <strong>generate_xml</strong>(request_type) 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+44
+45
+46
+47
+48
+49</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/openpayu/models/model.rb', line 44</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_generate_xml'>generate_xml</span><span class='lparen'>(</span><span class='id identifier rubyid_request_type'>request_type</span><span class='rparen'>)</span>
+  <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+  &lt;OpenPayU xmlns=&quot;http://www.openpayu.com/20/openpayu.xsd&quot;&gt;</span><span class='tstring_end'>'</span></span><span class='op'>+</span>
+    <span class='id identifier rubyid_prepare_keys'>prepare_keys</span><span class='lparen'>(</span><span class='id identifier rubyid_instance_values'>instance_values</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_xml'>to_xml</span><span class='lparen'>(</span><span class='label'>builder:</span> <span class='const'>OpenPayU</span><span class='op'>::</span><span class='const'>XmlBuilder</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_request_type'>request_type</span><span class='comma'>,</span> <span class='label'>indent:</span> <span class='int'>2</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='label'>root:</span> <span class='id identifier rubyid_request_type'>request_type</span><span class='comma'>,</span> <span class='label'>skip_types:</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='label'>skip_instruct:</span> <span class='kw'>true</span><span class='rparen'>)</span> <span class='op'>+</span>
+  <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>&lt;/OpenPayU&gt;</span><span class='tstring_end'>'</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="prepare_data-instance_method">
+  
+    - (<tt>Object</tt>) <strong>prepare_data</strong>(request_type) 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/openpayu/models/model.rb', line 32</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_prepare_data'>prepare_data</span><span class='lparen'>(</span><span class='id identifier rubyid_request_type'>request_type</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='const'>OpenPayU</span><span class='op'>::</span><span class='const'>Configuration</span><span class='period'>.</span><span class='id identifier rubyid_data_format'>data_format</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>xml</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_generate_xml'>generate_xml</span><span class='lparen'>(</span><span class='id identifier rubyid_request_type'>request_type</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='lbrace'>{</span> 
+      <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>OpenPayU</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='lbrace'>{</span>
+        <span class='id identifier rubyid_request_type'>request_type</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_prepare_keys'>prepare_keys</span><span class='lparen'>(</span><span class='id identifier rubyid_instance_values'>instance_values</span><span class='rparen'>)</span>
+      <span class='rbrace'>}</span>
+    <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_to_json'>to_json</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="prepare_keys-instance_method">
+  
+    - (<tt>Object</tt>) <strong>prepare_keys</strong>(hash) 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/openpayu/models/model.rb', line 51</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_prepare_keys'>prepare_keys</span><span class='lparen'>(</span><span class='id identifier rubyid_hash'>hash</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_attrs'>attrs</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+  <span class='id identifier rubyid_hash'>hash</span> <span class='op'>=</span> <span class='id identifier rubyid_hash'>hash</span><span class='period'>.</span><span class='id identifier rubyid_instance_values'>instance_values</span> <span class='kw'>if</span> <span class='id identifier rubyid_hash'>hash</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='op'>=~</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>OpenPayU::Models</span><span class='regexp_end'>/</span></span>
+  <span class='id identifier rubyid_hash'>hash</span><span class='period'>.</span><span class='id identifier rubyid_each_pair'>each_pair</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_k'>k</span><span class='comma'>,</span><span class='id identifier rubyid_v'>v</span><span class='op'>|</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_v'>v</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Array</span><span class='tstring_end'>&quot;</span></span>
+      <span class='id identifier rubyid_attrs'>attrs</span><span class='lbracket'>[</span><span class='id identifier rubyid_k'>k</span><span class='period'>.</span><span class='id identifier rubyid_camelize'>camelize</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+      <span class='id identifier rubyid_v'>v</span><span class='period'>.</span><span class='id identifier rubyid_each_with_index'>each_with_index</span><span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_element'>element</span><span class='comma'>,</span> <span class='id identifier rubyid_i'>i</span><span class='op'>|</span> <span class='id identifier rubyid_attrs'>attrs</span><span class='lbracket'>[</span><span class='id identifier rubyid_k'>k</span><span class='period'>.</span><span class='id identifier rubyid_camelize'>camelize</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='id identifier rubyid_element'>element</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>OpenPayU::Models::</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_prepare_keys'>prepare_keys</span><span class='lparen'>(</span><span class='id identifier rubyid_element'>element</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+    <span class='kw'>else</span>
+      <span class='id identifier rubyid_attrs'>attrs</span><span class='lbracket'>[</span><span class='id identifier rubyid_k'>k</span><span class='period'>.</span><span class='id identifier rubyid_camelize'>camelize</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_v'>v</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_attrs'>attrs</span><span class='period'>.</span><span class='id identifier rubyid_delete_if'>delete_if</span><span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_k'>k</span><span class='comma'>,</span><span class='id identifier rubyid_v'>v</span><span class='op'>|</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>AllErrors</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Errors</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ValidationContext</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_k'>k</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="to_json-instance_method">
+  
+    - (<tt>Object</tt>) <strong>to_json</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+28
+29
+30</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/openpayu/models/model.rb', line 28</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_to_json'>to_json</span>
+  <span class='id identifier rubyid_prepare_hash'>prepare_hash</span><span class='period'>.</span><span class='id identifier rubyid_to_json'>to_json</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="validate_all_objects-instance_method">
+  
+    - (<tt>Object</tt>) <strong>validate_all_objects</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>TODO: use validation</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/openpayu/models/model.rb', line 66</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_validate_all_objects'>validate_all_objects</span>
+  <span class='ivar'>@all_errors</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+  <span class='id identifier rubyid_instance_values'>instance_values</span><span class='period'>.</span><span class='id identifier rubyid_each_pair'>each_pair</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_k'>k</span><span class='comma'>,</span><span class='id identifier rubyid_v'>v</span><span class='op'>|</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_v'>v</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Array</span><span class='tstring_end'>&quot;</span></span>
+      <span class='id identifier rubyid_v'>v</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_element'>element</span><span class='op'>|</span>
+        <span class='ivar'>@all_errors</span><span class='lbracket'>[</span><span class='id identifier rubyid_element'>element</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_element'>element</span><span class='period'>.</span><span class='id identifier rubyid_errors'>errors</span> <span class='kw'>if</span> <span class='id identifier rubyid_element'>element</span><span class='period'>.</span><span class='id identifier rubyid_validate_all_objects'>validate_all_objects</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span>
+      <span class='kw'>end</span>
+    <span class='kw'>elsif</span> <span class='id identifier rubyid_v'>v</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='op'>=~</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>OpenPayU::Models</span><span class='regexp_end'>/</span></span>
+      <span class='ivar'>@all_errors</span><span class='lbracket'>[</span><span class='id identifier rubyid_v'>v</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_v'>v</span><span class='period'>.</span><span class='id identifier rubyid_errors'>errors</span> <span class='kw'>unless</span> <span class='id identifier rubyid_v'>v</span><span class='period'>.</span><span class='id identifier rubyid_valid?'>valid?</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+  <span class='ivar'>@all_errors</span><span class='lbracket'>[</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_errors'>errors</span> <span class='kw'>unless</span> <span class='id identifier rubyid_valid?'>valid?</span>
+
+  <span class='ivar'>@all_errors</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Thu Sep 26 17:18:34 2013 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.2 (ruby-1.9.3).
+</div>
+
+  </body>
+</html>

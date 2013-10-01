@@ -1,0 +1,307 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Module: OpenPayU
+  
+    &mdash; Documentation by YARD 0.8.7.2
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (O)</a> &raquo;
+    
+    
+    <span class="title">OpenPayU</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Module: OpenPayU
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/openpayu.rb<span class="defines">,<br />
+  lib/openpayu/order.rb,<br /> lib/openpayu/token.rb,<br /> lib/openpayu/refund.rb,<br /> lib/openpayu/version.rb,<br /> lib/openpayu/document.rb,<br /> lib/openpayu/connection.rb,<br /> lib/openpayu/models/fee.rb,<br /> lib/openpayu/xml_builder.rb,<br /> lib/openpayu/models/card.rb,<br /> lib/openpayu/models/model.rb,<br /> lib/openpayu/models/buyer.rb,<br /> lib/openpayu/models/token.rb,<br /> lib/openpayu/models/order.rb,<br /> lib/openpayu/Configuration.rb,<br /> lib/openpayu/models/refund.rb,<br /> lib/openpayu/models/address.rb,<br /> lib/openpayu/models/product.rb,<br /> lib/openpayu/models/pay_method.rb,<br /> lib/openpayu/documents/request.rb,<br /> lib/openpayu/documents/response.rb,<br /> lib/openpayu/models/status_update.rb,<br /> lib/openpayu/models/buyer/invoice.rb,<br /> lib/openpayu/models/buyer/delivery.rb,<br /> lib/openpayu/models/notify_response.rb,<br /> lib/openpayu/models/shipping_method.rb</span>
+</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="OpenPayU/Documents.html" title="OpenPayU::Documents (module)">Documents</a></span>, <span class='object_link'><a href="OpenPayU/Models.html" title="OpenPayU::Models (module)">Models</a></span>
+    
+  
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="OpenPayU/Configuration.html" title="OpenPayU::Configuration (class)">Configuration</a></span>, <span class='object_link'><a href="OpenPayU/Connection.html" title="OpenPayU::Connection (class)">Connection</a></span>, <span class='object_link'><a href="OpenPayU/Document.html" title="OpenPayU::Document (class)">Document</a></span>, <span class='object_link'><a href="OpenPayU/Order.html" title="OpenPayU::Order (class)">Order</a></span>, <span class='object_link'><a href="OpenPayU/Refund.html" title="OpenPayU::Refund (class)">Refund</a></span>, <span class='object_link'><a href="OpenPayU/Token.html" title="OpenPayU::Token (class)">Token</a></span>, <span class='object_link'><a href="OpenPayU/XmlBuilder.html" title="OpenPayU::XmlBuilder (class)">XmlBuilder</a></span>
+    
+  
+</p>
+
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="VERSION-constant" class="">VERSION =
+          
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>0.0.1</span><span class='tstring_end'>&quot;</span></span></pre></dd>
+      
+    </dl>
+  
+
+
+
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#sign_form-class_method" title="sign_form (class method)">+ (String) <strong>sign_form</strong>(form_fields, signature_key = Configuration.signature_key, algorithm = Configuration.algorithm, merchant_pos_id = Configuration.merchant_pos_id) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Generate a signature for signing form sent directly to PayU.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="sign_form-class_method">
+  
+    + (<tt>String</tt>) <strong>sign_form</strong>(form_fields, signature_key = Configuration.signature_key, algorithm = Configuration.algorithm, merchant_pos_id = Configuration.merchant_pos_id) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Generate a signature for signing form sent directly to PayU</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>form_fields</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Hash with all form fields with values</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>signature_key</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>Configuration.signature_key</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>defaults to OpenPayU::Configuration.signature_key</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>algorithm</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>Configuration.algorithm</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>defaults to OpenPayU::Configuration.algorithm</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>merchant_pos_id</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>Configuration.merchant_pos_id</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>defaults to OpenPayU::Configuration.merchant_pos_id</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Signature that should be inserted to field with name “OpenPayu-Signature”</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+38
+39
+40
+41</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/openpayu.rb', line 38</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_sign_form'>sign_form</span><span class='lparen'>(</span><span class='id identifier rubyid_form_fields'>form_fields</span><span class='comma'>,</span> <span class='id identifier rubyid_signature_key'>signature_key</span> <span class='op'>=</span> <span class='const'>Configuration</span><span class='period'>.</span><span class='id identifier rubyid_signature_key'>signature_key</span><span class='comma'>,</span> <span class='id identifier rubyid_algorithm'>algorithm</span> <span class='op'>=</span> <span class='const'>Configuration</span><span class='period'>.</span><span class='id identifier rubyid_algorithm'>algorithm</span><span class='comma'>,</span> <span class='id identifier rubyid_merchant_pos_id'>merchant_pos_id</span> <span class='op'>=</span> <span class='const'>Configuration</span><span class='period'>.</span><span class='id identifier rubyid_merchant_pos_id'>merchant_pos_id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_sorted_values'>sorted_values</span> <span class='op'>=</span> <span class='id identifier rubyid_form_fields'>form_fields</span><span class='period'>.</span><span class='id identifier rubyid_sort'>sort</span><span class='period'>.</span><span class='id identifier rubyid_collect'>collect</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_array'>array</span><span class='op'>|</span> <span class='id identifier rubyid_array'>array</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span>
+  <span class='const'>Document</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='period'>.</span><span class='id identifier rubyid_generate_signature_structure'>generate_signature_structure</span><span class='lparen'>(</span><span class='id identifier rubyid_sorted_values'>sorted_values</span><span class='comma'>,</span> <span class='id identifier rubyid_algorithm'>algorithm</span><span class='comma'>,</span> <span class='id identifier rubyid_merchant_pos_id'>merchant_pos_id</span><span class='comma'>,</span> <span class='id identifier rubyid_signature_key'>signature_key</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Thu Sep 26 17:18:32 2013 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.2 (ruby-1.9.3).
+</div>
+
+  </body>
+</html>
