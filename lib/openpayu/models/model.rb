@@ -53,10 +53,10 @@ module OpenPayU
         hash = hash.instance_values if hash.class.name =~ /OpenPayU::Models/
         hash.each_pair do |k,v|
           if v.class.name == "Array"
-            attrs[k.camelize] = {}
-            v.each_with_index{ |element, i| attrs[k.camelize][element.class.name.gsub("OpenPayU::Models::","")] = prepare_keys(element) }
+            attrs[k.camelize] = []
+            v.each_with_index{ |element, i| attrs[k.camelize] << { element.class.name.gsub("OpenPayU::Models::","") => prepare_keys(element) } }
           else
-            attrs[k.camelize] = v
+            attrs[k.camelize] = v.class.name =~ /OpenPayU::Models/ ? prepare_keys(v) : v
           end
         end
         attrs.delete_if{ |k,v| ["AllErrors", "Errors", "ValidationContext"].include?(k) }
@@ -81,6 +81,24 @@ module OpenPayU
 
       def all_objects_valid?
         !validate_all_objects.any?
+      end
+
+      def to_flatten_hash(source = prepare_keys(instance_values), target = {}, namespace = nil, index = nil)
+        prefix = "#{namespace}." if namespace
+        case source
+        when Hash
+          array_index = "[#{index}]" if index
+          source.each do |key, value|
+            to_flatten_hash(value, target, "#{prefix}#{key}#{array_index}")
+          end
+        when Array
+          source.each_with_index do |value, index|
+            to_flatten_hash(value, target, namespace, index)
+          end
+        else
+          target[namespace] = source
+        end
+        target
       end
 
       class << self
