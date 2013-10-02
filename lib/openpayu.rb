@@ -39,5 +39,17 @@ module OpenPayU
     sorted_values = form_fields.sort.collect{|array| array[1]}.join
     Document.new.generate_signature_structure(sorted_values, algorithm, merchant_pos_id, signature_key)
   end
+
+  def self.hosted_order_form(order)
+    @order = Models::Order.new(order)
+    render_hash = @order.to_flatten_hash
+    html_form = "<form method='post' action='#{Configuration.get_base_url}order'>\n"
+    render_hash.each do |key,value|
+      html_form << "<input type='hidden' name='#{key}' value='#{value}' />\n"
+    end
+
+    html_form << "<input type='hidden' name='OpenPayu-Signature' value='#{self.sign_form(render_hash)}' />
+      <button type='submit' formtarget='_blank' />\n</form>"
+  end
   
 end
