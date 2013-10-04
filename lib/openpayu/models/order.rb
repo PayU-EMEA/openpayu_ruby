@@ -13,7 +13,7 @@ module OpenPayU
       has_many_objects :shipping_methods, :shipping_method #not required
 
       def after_initialize
-        @req_id = "{#{SecureRandom.uuid}}"
+        @req_id ||= "{#{SecureRandom.uuid}}"
       end
     end
   end

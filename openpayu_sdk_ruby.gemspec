@@ -22,9 +22,12 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec"
   spec.add_development_dependency "activemodel", "~> 3.2"
-  spec.add_development_dependency "activesupport", "~> 3.2"
+  spec.add_development_dependency "activesupport", "~> 3.2"  
+  spec.add_runtime_dependency "activemodel", "~> 3.2"
+  spec.add_runtime_dependency "activesupport", "~> 3.2"
   spec.add_development_dependency "vcr"
   spec.add_development_dependency "fakeweb"
   spec.add_development_dependency "yard"
   spec.add_development_dependency "rdoc"
+  spec.add_development_dependency "codeclimate-test-reporter"
 end

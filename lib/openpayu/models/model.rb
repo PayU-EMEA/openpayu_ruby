@@ -26,14 +26,14 @@ module OpenPayU
       end
 
       def to_json
-        prepare_hash.to_json
+        prepare_keys.to_json
       end
 
       def prepare_data(request_type)
         if OpenPayU::Configuration.data_format == "xml"
           generate_xml(request_type)
         else
-          { 
+          {
             "OpenPayU" => {
               request_type => prepare_keys(instance_values)
             }
@@ -45,7 +45,7 @@ module OpenPayU
         '<?xml version="1.0" encoding="UTF-8"?>
         <OpenPayU xmlns="http://www.openpayu.com/20/openpayu.xsd">'+
           prepare_keys(instance_values).to_xml(builder: OpenPayU::XmlBuilder.new(request_type, indent: 2), root: request_type, skip_types: true, skip_instruct: true) +
-        '</OpenPayU>'
+          '</OpenPayU>'
       end
 
       def prepare_keys(hash)
@@ -66,7 +66,7 @@ module OpenPayU
       def validate_all_objects
         @all_errors = {}
         instance_values.each_pair do |k,v|
-          if v.class.name == "Array"
+          if v.is_a? Array
             v.each do |element|
               @all_errors[element.class.name] = element.errors if element.validate_all_objects.any?
             end
