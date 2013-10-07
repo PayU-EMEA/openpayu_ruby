@@ -37,7 +37,12 @@ module OpenPayU
   # @return [String] Signature that should be inserted to field with name "OpenPayu-Signature"
   def self.sign_form(form_fields, signature_key = Configuration.signature_key, algorithm = Configuration.algorithm, merchant_pos_id = Configuration.merchant_pos_id)
     sorted_values = form_fields.sort.collect{|array| array[1]}.join
-    Document.new.generate_signature_structure(sorted_values, algorithm, merchant_pos_id, signature_key)
+    Document.new.generate_signature_structure(
+      sorted_values, 
+      algorithm, 
+      merchant_pos_id, 
+      signature_key
+      )
   end
 
   def self.hosted_order_form(order)
@@ -49,7 +54,7 @@ module OpenPayU
     end
 
     html_form << "<input type='hidden' name='OpenPayu-Signature' value='#{self.sign_form(render_hash)}' />
-      <button type='submit' formtarget='_blank' />\n</form>"
+                    <button type='submit' formtarget='_blank' />\n</form>"
   end
   
 end

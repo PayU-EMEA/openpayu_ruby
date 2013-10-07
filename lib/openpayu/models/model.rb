@@ -48,21 +48,23 @@ module OpenPayU
           '</OpenPayU>'
       end
 
-      def prepare_keys(hash)
-        attrs = {}
-        hash = hash.instance_values if hash.class.name =~ /OpenPayU::Models/
-        hash.each_pair do |k,v|
-          if v.class.name == "Array"
-            attrs[k.camelize] = []
-            v.each_with_index{ |element, i| attrs[k.camelize] << { element.class.name.gsub("OpenPayU::Models::","") => prepare_keys(element) } }
-          else
-            attrs[k.camelize] = v.class.name =~ /OpenPayU::Models/ ? prepare_keys(v) : v
-          end
-        end
-        attrs.delete_if{ |k,v| ["AllErrors", "Errors", "ValidationContext"].include?(k) }
+      def get_instance_values
+        instance_values.delete_if{ |k,v| ["all_errors", "errors", "validation_context"].include?(k) }
       end
 
-      #TODO: use validation
+      def prepare_keys(hash = get_instance_values)
+        attrs = {}
+        hash.each_pair do |k,v|
+          if v.is_a? Array
+            attrs[k.camelize] = []
+            v.each{ |element| attrs[k.camelize] << { element.class.name.demodulize => element.prepare_keys } }
+          else
+            attrs[k.camelize] = v.class.name =~ /OpenPayU::Models/ ? v.prepare_keys : v
+          end
+        end
+        attrs
+      end
+
       def validate_all_objects
         @all_errors = {}
         instance_values.each_pair do |k,v|

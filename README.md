@@ -8,7 +8,7 @@ The OpenPayU Ruby library provides integration access to the PayU Gateway API ve
 
 Add this line to your application's Gemfile:
 
-    gem 'openpayu_sdk_ruby'
+    gem 'openpayu'
 
 And then execute:
 
@@ -16,7 +16,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install openpayu_sdk_ruby
+    $ gem install openpayu
 
 ## Usage
 
@@ -30,6 +30,7 @@ Or install it yourself as:
         config.service_domain   = "payu.com"
         config.protocol         = "https"
         config.data_format      = "json" # json, xml
+        config.env              = "secure"
     end
 
 ###Creating new order
