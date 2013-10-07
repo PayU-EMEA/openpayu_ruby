@@ -52,14 +52,14 @@ module OpenPayU
         instance_values.delete_if{ |k,v| ["all_errors", "errors", "validation_context"].include?(k) }
       end
 
-      def prepare_keys(hash = get_instance_values)
-        attrs = {}
+      def prepare_keys(attrs = {}, hash = get_instance_values)
         hash.each_pair do |k,v|
-          if v.is_a? Array
-            attrs[k.camelize] = []
-            v.each{ |element| attrs[k.camelize] << { element.class.name.demodulize => element.prepare_keys } }
+          attrs[k.camelize] = if v.is_a? Array
+            v.collect{ |element| { element.class.name.demodulize =>  element.prepare_keys }  }
+          elsif v.class.name =~ /OpenPayU::Models/
+            v.prepare_keys
           else
-            attrs[k.camelize] = v.class.name =~ /OpenPayU::Models/ ? v.prepare_keys : v
+            v
           end
         end
         attrs
