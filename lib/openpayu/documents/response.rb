@@ -30,7 +30,11 @@ module OpenPayU
       end
 
       def order_status
-        @parsed_data["orders"]["order"]["status"]
+        if @message_name == "OrderRetrieveResponse"
+          @parsed_data["orders"]["order"]["status"]
+        else
+          @parsed_data["order"] ? @parsed_data["order"]["status"] : ""
+        end
       end
 
       %w(NEW PENDING CANCELLED REJECTED COMPLETED WAITING_FOR_CONFIRMATION).each do |method|
