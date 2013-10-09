@@ -1,12 +1,13 @@
 module OpenPayU
   module Documents
     class Response < Document
-      attr_accessor :parsed_data, :response, :request, :message_name
+      attr_accessor :parsed_data, :response, :request, :message_name, :body
 
       def initialize(data, message_name)
         @response = data[:response]
         @request = data[:request]
         @message_name = message_name
+        @body =  @response.body.is_a?(StringIO) ? @response.body.string : @response.body
         parse_data if verify_response
       end
 
@@ -16,9 +17,9 @@ module OpenPayU
 
       def parse_data
         if OpenPayU::Configuration.data_format == "xml"
-          @parsed_data = Hash.from_xml(@response.body)
+          @parsed_data = Hash.from_xml(@body)
         else
-          @parsed_data = JSON.parse(@response.body)
+          @parsed_data = JSON.parse(@body)
         end
         if @parsed_data["OpenPayU"] && @parsed_data["OpenPayU"][@message_name]
           @parsed_data = underscore_keys @parsed_data["OpenPayU"][@message_name]

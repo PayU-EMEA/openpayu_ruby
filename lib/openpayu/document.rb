@@ -31,10 +31,10 @@ module OpenPayU
     def verify_response
       raise EmptyResponseError, "Got empty response from request: #{@request.try(:body)}" unless @response
 
-      if (@message_name == "OrderNotifyRequest" || ["200", "201", "422", "302"].include?(response.code)) && verify_signature(@response.body)
+      if (@message_name == "OrderNotifyRequest" || ["200", "201", "422", "302"].include?(response.code)) && verify_signature(@body)
         true
       else
-        raise HttpStatusException, "Invalid HTTP response code (#{@response.code}). Response body: #{@response.body}."
+        raise HttpStatusException, "Invalid HTTP response code (#{@response.code}). Response body: #{@body}."
       end
     end
 
