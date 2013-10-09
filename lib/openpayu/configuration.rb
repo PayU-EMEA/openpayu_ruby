@@ -8,7 +8,7 @@ module OpenPayU
 
     class << self
       attr_accessor :env, :merchant_pos_id, :pos_auth_key, :client_id, :client_secret, :signature_key,
-         :service_domain, :country, :data_format, :algorithm, :protocol
+         :service_domain, :country, :data_format, :algorithm, :protocol, :order_url, :notify_url, :continue_url 
 
       def configure
         set_defaults

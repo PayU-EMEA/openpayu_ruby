@@ -1,5 +1,6 @@
-[![Code Climate](https://codeclimate.com/repos/5244470a56b10276f501aaee/badges/82eaa372e10d503831cd/gpa.png)](https://codeclimate.com/repos/5244470a56b10276f501aaee/feed)
-[![Build Status](https://magnum.travis-ci.com/streflik/openpayu_ruby_sdk.png?token=sqp5QvsmzqEqtVB3sNsK&branch=order)](https://magnum.travis-ci.com/streflik/openpayu_ruby_sdk)
+[![Build Status](https://magnum.travis-ci.com/PayU/openpayu_ruby_sdk.png?token=sqp5QvsmzqEqtVB3sNsK&branch=master)](https://magnum.travis-ci.com/PayU/openpayu_ruby_sdk)
+[![Code Climate](https://codeclimate.com/repos/524eb044f3ea00329815dff1/badges/885c2d52f25c02295344/gpa.png)](https://codeclimate.com/repos/524eb044f3ea00329815dff1/feed)
+
 # OpenpayuSdkRuby
 
 The OpenPayU Ruby library provides integration access to the PayU Gateway API ver. 2.
@@ -31,6 +32,9 @@ Or install it yourself as:
         config.protocol         = "https"
         config.data_format      = "json" # json, xml
         config.env              = "secure"
+        config.order_url        = "http://localhost/order"
+        config.notify_url       = "http://localhost/notify"
+        config.continue_url     = "http://localhost/success"
     end
 
 ###Creating new order
@@ -80,6 +84,14 @@ Or install it yourself as:
 
 
     @response = OpenPayU::Order.retrieve("Z963D5JQR2230925GUEST000P01")
+
+###Handling notifications from PayU
+  PayU sends requests to your application when order status changes
+
+    @response = OpenPayU::Order.consume_notification(request) #request object from controller
+    @response.order_status #NEW PENDING CANCELLED REJECTED COMPLETED WAITING_FOR_CONFIRMATION
+    #you should response to PayU with special structure (OrderNotifyResponse)
+    render json: OpenPayU::Order.build_notify_response(@response.req_id)
 
 
 ###Refund money
