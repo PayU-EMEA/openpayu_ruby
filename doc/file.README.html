@@ -62,11 +62,11 @@
     <iframe id="search_frame"></iframe>
 
     <div id="content"><div id='filecontents'>
-<p><img
-src="https://codeclimate.com/repos/5244470a56b10276f501aaee/badges/82eaa372e10d503831cd/gpa.png"
-/>] <a
-href="https://magnum.travis-ci.com/streflik/openpayu_ruby_sdk.png?token=sqp5QvsmzqEqtVB3sNsK&branch=order">{Build
-Status</a>]</p>
+<p><a href="https://codeclimate.com/repos/524eb044f3ea00329815dff1/feed"><img
+src="https://codeclimate.com/repos/524eb044f3ea00329815dff1/badges/885c2d52f25c02295344/gpa.png"
+/></a> <a href="https://magnum.travis-ci.com/PayU/openpayu_ruby_sdk"><img
+src="https://magnum.travis-ci.com/PayU/openpayu_ruby_sdk.png?token=sqp5QvsmzqEqtVB3sNsK&branch=master"
+alt="Build Status" /></a></p>
 
 <h1 id="label-OpenpayuSdkRuby">OpenpayuSdkRuby</h1>
 
@@ -77,7 +77,7 @@ API ver. 2.</p>
 
 <p>Add this line to your application's Gemfile:</p>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_gem'>gem</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>openpayu_sdk_ruby</span><span class='tstring_end'>'</span></span></code></pre>
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_gem'>gem</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>openpayu</span><span class='tstring_end'>'</span></span></code></pre>
 
 <p>And then execute:</p>
 
@@ -85,7 +85,7 @@ API ver. 2.</p>
 
 <p>Or install it yourself as:</p>
 
-<pre class="code ruby"><code class="ruby">$ gem install openpayu_sdk_ruby</code></pre>
+<pre class="code ruby"><code class="ruby">$ gem install openpayu</code></pre>
 
 <h2 id="label-Usage">Usage</h2>
 
@@ -101,7 +101,11 @@ config/initializers/openpayu.rb containing:</p>
 </span>    <span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_service_domain'>service_domain</span>   <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>payu.com</span><span class='tstring_end'>&quot;</span></span>
     <span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_protocol'>protocol</span>         <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>https</span><span class='tstring_end'>&quot;</span></span>
     <span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_data_format'>data_format</span>      <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>json</span><span class='tstring_end'>&quot;</span></span> <span class='comment'># json, xml
-</span><span class='kw'>end</span>
+</span>    <span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_env'>env</span>              <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>secure</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_order_url'>order_url</span>        <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>http://localhost/order</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_notify_url'>notify_url</span>       <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>http://localhost/notify</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_continue_url'>continue_url</span>     <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>http://localhost/success</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span>
 </code></pre>
 
 <h3 id="label-Creating+new+order">Creating new order</h3>
@@ -153,6 +157,15 @@ ready order Hash you can create new order:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='ivar'>@response</span> <span class='op'>=</span> <span class='const'>OpenPayU</span><span class='op'>::</span><span class='const'>Order</span><span class='period'>.</span><span class='id identifier rubyid_retrieve'>retrieve</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Z963D5JQR2230925GUEST000P01</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span></code></pre>
 
+<h3 id="label-Handling+notifications+from+PayU">Handling notifications from PayU</h3>
+
+<p>PayU sends requests to your application when order status changes</p>
+
+<pre class="code ruby"><code class="ruby"><span class='ivar'>@response</span> <span class='op'>=</span> <span class='const'>OpenPayU</span><span class='op'>::</span><span class='const'>Order</span><span class='period'>.</span><span class='id identifier rubyid_consume_notification'>consume_notification</span><span class='lparen'>(</span><span class='id identifier rubyid_request'>request</span><span class='rparen'>)</span> <span class='comment'>#request object from controller
+</span><span class='ivar'>@response</span><span class='period'>.</span><span class='id identifier rubyid_order_status'>order_status</span> <span class='comment'>#NEW PENDING CANCELLED REJECTED COMPLETED WAITING_FOR_CONFIRMATION
+</span><span class='comment'>#you should response to PayU with special structure (OrderNotifyResponse)
+</span><span class='id identifier rubyid_render'>render</span> <span class='label'>json:</span> <span class='const'>OpenPayU</span><span class='op'>::</span><span class='const'>Order</span><span class='period'>.</span><span class='id identifier rubyid_build_notify_response'>build_notify_response</span><span class='lparen'>(</span><span class='ivar'>@response</span><span class='period'>.</span><span class='id identifier rubyid_req_id'>req_id</span><span class='rparen'>)</span></code></pre>
+
 <h3 id="label-Refund+money">Refund money</h3>
 
 <pre class="code ruby"><code class="ruby"><span class='ivar'>@refund</span> <span class='op'>=</span> <span class='const'>OpenPayU</span><span class='op'>::</span><span class='const'>Refund</span><span class='period'>.</span><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='lbrace'>{</span>
@@ -179,7 +192,7 @@ ready order Hash you can create new order:</p>
 </div></div>
 
     <div id="footer">
-  Generated on Thu Sep 26 18:59:44 2013 by
+  Generated on Wed Oct  9 10:57:29 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.2 (ruby-1.9.3).
 </div>
