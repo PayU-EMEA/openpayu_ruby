@@ -2,12 +2,12 @@
 http_interactions:
 - request:
     method: post
-    uri: http://platnosci-dev5.dc2/api/v2/order/4SHBNHDMWP130923GUEST000P01/refund.xml
+    uri: http://platnosci-dev5.dc2/api/v2/order/28161ZT5TF131121GUEST000P01/refund.xml
     body:
       encoding: US-ASCII
       string: ! "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n        <OpenPayU xmlns=\"http://www.openpayu.com/20/openpayu.xsd\"><RefundCreateRequest
         xsi:type=\"RefundCreateRequest\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\n
-        \ <OrderId>4SHBNHDMWP130923GUEST000P01</OrderId>\n  <Refund>\n    <OrderId>4SHBNHDMWP130923GUEST000P01</OrderId>\n
+        \ <OrderId>28161ZT5TF131121GUEST000P01</OrderId>\n  <Refund>\n    <OrderId>28161ZT5TF131121GUEST000P01</OrderId>\n
         \   <Description>Money refund</Description>\n  </Refund>\n</RefundCreateRequest>\n</OpenPayU>"
     headers:
       accept:
@@ -46,16 +46,16 @@ http_interactions:
       - application/xml;charset=UTF-8
     body:
       encoding: US-ASCII
-      string: <?xml version="1.0" encoding="UTF-8" standalone="yes"?><OpenPayU xmlns="http://www.openpayu.com/20/openpayu.xsd"><RefundCreateResponse><Status><StatusCode>SUCCESS</StatusCode></Status><OrderId>4SHBNHDMWP130923GUEST000P01</OrderId><Refund><RefundId>87045</RefundId><ExtRefundId>20130926102204</ExtRefundId><Type>REFUND_PAYMENT_STANDARD</Type><Amount>10000</Amount><CurrencyCode>PLN</CurrencyCode><Description>Uznanie
+      string: <?xml version="1.0" encoding="UTF-8" standalone="yes"?><OpenPayU xmlns="http://www.openpayu.com/20/openpayu.xsd"><RefundCreateResponse><Status><StatusCode>SUCCESS</StatusCode></Status><OrderId>28161ZT5TF131121GUEST000P01</OrderId><Refund><RefundId>87045</RefundId><ExtRefundId>20130926102204</ExtRefundId><Type>REFUND_PAYMENT_STANDARD</Type><Amount>10000</Amount><CurrencyCode>PLN</CurrencyCode><Description>Uznanie
         87045 Money refund</Description><CreationDateTime>2013-09-26T10:22:04.805+02:00</CreationDateTime><Status>INIT</Status><StatusDateTime>2013-09-26T10:22:06.009+02:00</StatusDateTime></Refund></RefundCreateResponse></OpenPayU>
     http_version: '1.1'
   recorded_at: Thu, 26 Sep 2013 08:22:05 GMT
 - request:
     method: post
-    uri: http://platnosci-dev5.dc2/api/v2/order/4SHBNHDMWP130923GUEST000P01/refund.json
+    uri: http://platnosci-dev5.dc2/api/v2/order/28161ZT5TF131121GUEST000P01/refund.json
     body:
       encoding: US-ASCII
-      string: ! '{"OpenPayU":{"RefundCreateRequest":{"OrderId":"4SHBNHDMWP130923GUEST000P01","Refund":{"OrderId":"4SHBNHDMWP130923GUEST000P01","Description":"Money
+      string: ! '{"OpenPayU":{"RefundCreateRequest":{"OrderId":"28161ZT5TF131121GUEST000P01","Refund":{"OrderId":"28161ZT5TF131121GUEST000P01","Description":"Money
         refund"}}}}'
     headers:
       accept:
@@ -77,9 +77,9 @@ http_interactions:
       - Apache/2.2.17 (Unix) DAV/2 mod_ssl/2.2.17 OpenSSL/1.0.0c mod_jk/1.2.31 PHP/5.3.5
         mod_apreq2-20090110/2.7.1 mod_perl/2.0.4 Perl/v5.10.1
       openpayu-signature:
-      - signature=bbd767a233909bc69fc1ddac3c07d96c;algorithm=MD5;sender=checkout;content=DOCUMENT;
+      - signature=7cbbb385c8e51b62d078c3bc44b346f6;algorithm=MD5;sender=checkout;content=DOCUMENT;
       x-openpayu-signature:
-      - signature=bbd767a233909bc69fc1ddac3c07d96c;algorithm=MD5;sender=checkout;content=DOCUMENT;
+      - signature=7cbbb385c8e51b62d078c3bc44b346f6;algorithm=MD5;sender=checkout;content=DOCUMENT;
       content-language:
       - pl
       content-length:
@@ -94,7 +94,7 @@ http_interactions:
       - application/json;charset=UTF-8
     body:
       encoding: US-ASCII
-      string: ! '{"OpenPayU":{"RefundCreateResponse":{"Status":{"StatusCode":"SUCCESS"},"OrderId":"4SHBNHDMWP130923GUEST000P01","Refund":{"Status":"INIT","Description":"Uznanie
+      string: ! '{"OpenPayU":{"RefundCreateResponse":{"Status":{"StatusCode":"SUCCESS"},"OrderId":"28161ZT5TF131121GUEST000P01","Refund":{"Status":"INIT","Description":"Uznanie
         87046 Money refund","Amount":"10000","RefundId":"87046","ExtRefundId":"20130926102349","CreationDateTime":"2013-09-26T10:23:49.256+02:00","Type":"REFUND_PAYMENT_STANDARD","StatusDateTime":"2013-09-26T10:23:49.491+02:00","CurrencyCode":"PLN"}}}}'
     http_version: '1.1'
   recorded_at: Thu, 26 Sep 2013 08:23:48 GMT

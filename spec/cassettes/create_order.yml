@@ -5,8 +5,9 @@ http_interactions:
     uri: http://platnosci-dev5.dc2/api/v2/order.json
     body:
       encoding: US-ASCII
-      string: ! '{"OpenPayU":{"OrderCreateRequest":{"MerchantPosId":"45654","CustomerIp":"127.0.0.1","ExtOrderId":1342,"OrderUrl":"http://localhost/","Description":"New
-        order","CurrencyCode":"PLN","TotalAmount":10000,"NotifyUrl":"http://localhost/","ContinueUrl":"http://localhost/","ValidityTime":"48000","Buyer":{"email":"dd@ddd.pl","phone":"123123123","first_name":"Jaroslaw","last_name":"Testowy","language":"pl_PL","NIN":"123456","validation_context":null,"errors":{}},"Products":{"Product":{"Name":"Mouse","UnitPrice":10000,"Quantity":1,"AllErrors":{},"ValidationContext":null,"Errors":{}}},"PayMethods":{"PayMethod":{"Type":"CARD_TOKEN","Value":"TOKC_WIPWVM13M7L0HTXS0YO2JPJ72HD","AllErrors":{},"ValidationContext":null,"Errors":{}}},"ReqId":"{5408b889-e237-4dda-898a-6b4f3063bb9e}","AllErrors":{},"ValidationContext":null,"Errors":{}}}}'
+      string: ! '{"OpenPayU":{"OrderCreateRequest":{"merchant_pos_id":"45654","customer_ip":"127.0.0.1","ext_order_id":1342,"order_url":"http://localhost/","description":"New
+        order","currency_code":"PLN","total_amount":10000,"notify_url":"http://localhost/","continue_url":"http://localhost/","validity_time":"48000","buyer":{"email":"dd@ddd.pl","phone":"123123123","first_name":"Jan","last_name":"Kowalski","language":"pl_PL","NIN":"123456","validation_context":null,"errors":{}},"products":[{"name":"Mouse","unit_price":10000,"quantity":1,"all_errors":{},"validation_context":null,"errors":{}}],"pay_methods":[{"type":"CARD_TOKEN","value":"TOK_1HPPNU4HIOWT180pPDWhuhAmM3ym","all_errors":{},"validation_context":null,"errors":{}}],"req_id":"{a746b206-b72e-4302-b623-1c519bb32bdd}","all_errors":{},"validation_context":null,"errors":{},"MerchantPosId":"45654","CustomerIp":"127.0.0.1","ExtOrderId":1342,"OrderUrl":"http://localhost/","Description":"New
+        order","CurrencyCode":"PLN","TotalAmount":10000,"NotifyUrl":"http://localhost/","ContinueUrl":"http://localhost/","ValidityTime":"48000","Buyer":{"Email":"dd@ddd.pl","Phone":"123123123","FirstName":"Jan","LastName":"Kowalski","Language":"pl_PL","NIN":"123456"},"Products":[{"Product":{"Name":"Mouse","UnitPrice":10000,"Quantity":1}}],"PayMethods":[{"PayMethod":{"Type":"CARD_TOKEN","Value":"TOK_1HPPNU4HIOWT180pPDWhuhAmM3ym"}}],"ReqId":"{a746b206-b72e-4302-b623-1c519bb32bdd}"}}}'
     headers:
       accept:
       - ! '*/*'
@@ -15,99 +16,36 @@ http_interactions:
       content-type:
       - application/json
       openpayu-signature:
-      - sender=45654;signature=f9a7644bd9a7bb7b97613a7aaaec7f34;algorithm=MD5
+      - sender=45654;signature=2a4046802854830e9bd2b27541ef977a;algorithm=MD5
   response:
     status:
       code: 200
       message: OK
     headers:
       date:
-      - Wed, 25 Sep 2013 11:32:55 GMT
+      - Thu, 21 Nov 2013 14:32:33 GMT
       server:
       - Apache/2.2.17 (Unix) DAV/2 mod_ssl/2.2.17 OpenSSL/1.0.0c mod_jk/1.2.31 PHP/5.3.5
         mod_apreq2-20090110/2.7.1 mod_perl/2.0.4 Perl/v5.10.1
       openpayu-signature:
-      - signature=2a033c63e6f7a3ad95e927c6019dc7c1;algorithm=MD5;sender=checkout;content=DOCUMENT;
+      - signature=e15c458b67bd01c2a170b55033f59507;algorithm=MD5;sender=checkout;content=DOCUMENT;
       x-openpayu-signature:
-      - signature=2a033c63e6f7a3ad95e927c6019dc7c1;algorithm=MD5;sender=checkout;content=DOCUMENT;
+      - signature=e15c458b67bd01c2a170b55033f59507;algorithm=MD5;sender=checkout;content=DOCUMENT;
       content-language:
       - pl
       content-length:
-      - '478'
+      - '337'
       set-cookie:
-      - payu_persistent=mobile_agent-false#; Expires=Sat, 20-Sep-2014 11:32:55 GMT;
+      - payu_persistent=mobile_agent-false#; Expires=Sun, 16-Nov-2014 14:32:33 GMT;
         Path=/
-      - CSESSIONID=58F8123F9D741D7E561B1590B7A8D450.01; Path=/pl/standard/co
+      - CSESSIONID=06B5736A0A8FA9D394730EDF27EB05A0.01; Path=/pl/standard/co
       connection:
       - close
       content-type:
       - application/json;charset=UTF-8
     body:
       encoding: US-ASCII
-      string: ! '{"OpenPayU":{"OrderCreateResponse":{"Status":{"StatusCode":"SUCCESS"},"OrderId":"4SHBNHDMWP130923GUEST000P01","ResId":"{60034440-8c0d-4fb6-b82b-3fe8eb2a21eb}","PayMethods":{"PayMethod":{"Value":"TOKC_WIPWVM13M7L0HTXS0YO2JPJ72HD","Type":"CARD_TOKEN","Card":{"ExpirationYear":"2016","ExpirationMonth":"4","Number":"444433******1111"}}}}}}'
+      string: ! '{"OpenPayU":{"OrderCreateResponse":{"Status":{"StatusCode":"SUCCESS"},"OrderId":"28161ZT5TF131121GUEST000P01","ResId":"{a746b206-b72e-4302-b623-1c519bb32bdd}","PayMethods":{"PayMethod":{"Value":"TOKC_TMWKMHX4VYTZPWPQM17ERFGKDHZ","Type":"CARD_TOKEN","Card":{"ExpirationYear":"2014","ExpirationMonth":"12","Number":"510005******6818"}}}}}}'
     http_version: '1.1'
-  recorded_at: Wed, 25 Sep 2013 11:32:55 GMT
-- request:
-    method: post
-    uri: http://platnosci-dev5.dc2/api/v2/order.xml
-    body:
-      encoding: US-ASCII
-      string: ! "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n        <OpenPayU xmlns=\"http://www.openpayu.com/20/openpayu.xsd\"><OrderCreateRequest
-        xsi:type=\"OrderCreateRequest\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\n
-        \ <MerchantPosId>45654</MerchantPosId>\n  <CustomerIp>127.0.0.1</CustomerIp>\n
-        \ <ExtOrderId>1342</ExtOrderId>\n  <OrderUrl>http://localhost/</OrderUrl>\n
-        \ <Description>New order</Description>\n  <CurrencyCode>PLN</CurrencyCode>\n
-        \ <TotalAmount>10000</TotalAmount>\n  <NotifyUrl>http://localhost/</NotifyUrl>\n
-        \ <ContinueUrl>http://localhost/</ContinueUrl>\n  <ValidityTime>48000</ValidityTime>\n
-        \ <Buyer>\n    <email>dd@ddd.pl</email>\n    <phone>123123123</phone>\n    <first-name>Jaroslaw</first-name>\n
-        \   <last-name>Testowy</last-name>\n    <language>pl_PL</language>\n    <NIN>123456</NIN>\n
-        \   <validation-context nil=\"true\"/>\n    <errors/>\n  </Buyer>\n  <Products>\n
-        \   <Product>\n      <Name>Mouse</Name>\n      <UnitPrice>10000</UnitPrice>\n
-        \     <Quantity>1</Quantity>\n      <AllErrors>\n      </AllErrors>\n      <ValidationContext
-        nil=\"true\"/>\n      <Errors/>\n    </Product>\n  </Products>\n  <PayMethods>\n
-        \   <PayMethod>\n      <Type>CARD_TOKEN</Type>\n      <Value>TOKC_C2BLRLMLXAFUPVOVRT964ONFFVY</Value>\n
-        \     <AllErrors>\n      </AllErrors>\n      <ValidationContext nil=\"true\"/>\n
-        \     <Errors/>\n    </PayMethod>\n  </PayMethods>\n  <ReqId>{75d8a1be-cc96-4ef5-8533-9dcae1015544}</ReqId>\n
-        \ <AllErrors>\n  </AllErrors>\n  <ValidationContext nil=\"true\"/>\n  <Errors/>\n</OrderCreateRequest>\n</OpenPayU>"
-    headers:
-      accept:
-      - ! '*/*'
-      user-agent:
-      - Ruby
-      content-type:
-      - application/xml
-      openpayu-signature:
-      - sender=45654;signature=49dce748d0e97470fb8995cd48e24ec8;algorithm=MD5
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      date:
-      - Thu, 26 Sep 2013 08:33:44 GMT
-      server:
-      - Apache/2.2.17 (Unix) DAV/2 mod_ssl/2.2.17 OpenSSL/1.0.0c mod_jk/1.2.31 PHP/5.3.5
-        mod_apreq2-20090110/2.7.1 mod_perl/2.0.4 Perl/v5.10.1
-      openpayu-signature:
-      - signature=64a8478e2f92c6b3df482726dab63afc;algorithm=MD5;sender=checkout;content=DOCUMENT;
-      x-openpayu-signature:
-      - signature=64a8478e2f92c6b3df482726dab63afc;algorithm=MD5;sender=checkout;content=DOCUMENT;
-      content-language:
-      - pl
-      content-length:
-      - '711'
-      set-cookie:
-      - payu_persistent=mobile_agent-false#; Expires=Sun, 21-Sep-2014 08:33:44 GMT;
-        Path=/
-      - CSESSIONID=9D673FDAC2DD0A800CE6DBB546149DF0.01; Path=/pl/standard/co
-      connection:
-      - close
-      content-type:
-      - application/xml;charset=UTF-8
-    body:
-      encoding: US-ASCII
-      string: <?xml version="1.0" encoding="UTF-8" standalone="yes"?><OpenPayU xmlns="http://www.openpayu.com/20/openpayu.xsd"><OrderCreateResponse><ResId>{75d8a1be-cc96-4ef5-8533-9dcae1015544}</ResId><Status><StatusCode>SUCCESS</StatusCode></Status><OrderId>4SHBNHDMWP130923GUEST000P01</OrderId>
-        <PayMethods><PayMethod><Value>TOKC_WIPWVM13M7L0HTXS0YO2JPJ72HD</Value><Type>CARD_TOKEN</Type><Card><ExpirationYear>2016</ExpirationYear><ExpirationMonth>4</ExpirationMonth><Number>444433******1111</Number></Card></PayMethod></PayMethods></OrderCreateResponse></OpenPayU>
-    http_version: '1.1'
-  recorded_at: Thu, 26 Sep 2013 08:34:04 GMT
-recorded_with: VCR 2.5.0
+  recorded_at: Thu, 21 Nov 2013 14:32:35 GMT
+recorded_with: VCR 2.6.0

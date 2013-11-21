@@ -32,7 +32,7 @@ module  TestObject
         pay_methods: [
           {
             type: 'CARD_TOKEN',
-            value: 'TOKC_WIPWVM13M7L0HTXS0YO2JPJ72HD'
+            value: 'TOK_1HPPNU4HIOWT180pPDWhuhAmM3ym',
           }
         ]
       }

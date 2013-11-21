@@ -85,6 +85,21 @@ Or install it yourself as:
 
     @response = OpenPayU::Order.retrieve("Z963D5JQR2230925GUEST000P01")
 
+###Cancelling order 
+  You can cancel order by its PayU order_id
+
+
+    @response = OpenPayU::Order.cancel("Z963D5JQR2230925GUEST000P01")
+
+###Updating order status
+  You can update order status to accept order when Autoreceive in POS is turned off
+
+    status_update = {
+            order_id: "Z963D5JQR2230925GUEST000P01",
+            order_status: 'COMPLETED'
+          }
+    @response = OpenPayU::Order.status_update(status_update)
+
 ###Handling notifications from PayU
   PayU sends requests to your application when order status changes
 

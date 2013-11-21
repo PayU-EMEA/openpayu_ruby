@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe "Create transparent order" do
-  ["xml", "json"].each do |data_format|
+  [ "json"].each do |data_format|
     OpenPayU::Configuration.data_format = data_format
     context "run with data format #{OpenPayU::Configuration.data_format}" do
       before(:all) do
@@ -24,7 +24,6 @@ describe "Create transparent order" do
         it {@retrieve_response.response.code.should eq "200" }
         it {@retrieve_response.status["status_code"].should eq "SUCCESS" }
         it {@retrieve_response.orders.should_not be_empty }
-        it {@retrieve_response.completed?.should be_true }
       end
 
       context "Consume order notification" do
@@ -43,7 +42,6 @@ describe "Create transparent order" do
 
       context "refund order" do
         before(:all) do
-
           VCR.use_cassette("refund_order") do
             @refund = OpenPayU::Refund.create({order_id: @response.order_id, description: "Money refund"})
           end
@@ -52,6 +50,33 @@ describe "Create transparent order" do
         it {@refund.status["status_code"].should eq "SUCCESS" }
         it {@refund.order_id.should eq @response.order_id }
         it {@refund.refund["status"].should eq "INIT" }
+      end
+
+      context "update order" do
+        before(:all) do
+          status_update = {
+            order_id: @response.order_id,
+            order_status: 'COMPLETED'
+          }
+          VCR.use_cassette("update_order") do
+            @retrieve_response = OpenPayU::Order.status_update(status_update)
+            pp @retrieve_response
+          end
+        end
+        it {@retrieve_response.response.code.should eq "200" }
+        it {@retrieve_response.status["status_code"].should eq "SUCCESS" }
+        it {@retrieve_response.status["status_desc"].should eq "Request successful" }
+      end
+
+      context "cancel order" do
+        before(:all) do
+          VCR.use_cassette("cancel_order") do
+            @retrieve_response = OpenPayU::Order.cancel(@response.order_id)
+          end
+        end
+        it {@retrieve_response.response.code.should eq "200" }
+        it {@retrieve_response.status["status_code"].should eq "SUCCESS" }
+        it {@retrieve_response.status["status_desc"].should eq "Request successful" }
       end
 
 

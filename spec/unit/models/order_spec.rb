@@ -16,11 +16,11 @@ describe OpenPayU::Models::Order do
       it { order.products.first.class.name.should eq "OpenPayU::Models::Product" }
     end
 
-    context "preaper correct Hash" do
+    context "prepare correct Hash" do
       it do
         hash = order.prepare_keys
         hash.delete("ReqId")
-        hash.should eq({"MerchantPosId"=>"45654", "CustomerIp"=>"127.0.0.1", "ExtOrderId"=>1342, "OrderUrl"=>"http://localhost/", "Description"=>"New order", "CurrencyCode"=>"PLN", "TotalAmount"=>10000, "NotifyUrl"=>"http://localhost/", "ContinueUrl"=>"http://localhost/", "ValidityTime"=>"48000", "Buyer"=>{"Email"=>"dd@ddd.pl", "Phone"=>"123123123", "FirstName"=>"Jan", "LastName"=>"Kowalski", "Language"=>"pl_PL", "NIN"=>"123456"}, "Products"=>[{"Product"=>{"Name"=>"Mouse", "UnitPrice"=>10000, "Quantity"=>1}}], "PayMethods"=>[{"PayMethod"=>{"Type"=>"CARD_TOKEN", "Value"=>"TOKC_WIPWVM13M7L0HTXS0YO2JPJ72HD"}}]})
+        hash.should eq({"MerchantPosId"=>"45654", "CustomerIp"=>"127.0.0.1", "ExtOrderId"=>1342, "OrderUrl"=>"http://localhost/", "Description"=>"New order", "CurrencyCode"=>"PLN", "TotalAmount"=>10000, "NotifyUrl"=>"http://localhost/", "ContinueUrl"=>"http://localhost/", "ValidityTime"=>"48000", "Buyer"=>{"Email"=>"dd@ddd.pl", "Phone"=>"123123123", "FirstName"=>"Jan", "LastName"=>"Kowalski", "Language"=>"pl_PL", "NIN"=>"123456"}, "Products"=>[{"Product"=>{"Name"=>"Mouse", "UnitPrice"=>10000, "Quantity"=>1}}], "PayMethods"=>[{"PayMethod"=>{"Type"=>"CARD_TOKEN", "Value"=>"TOK_1HPPNU4HIOWT180pPDWhuhAmM3ym"}}]})
       end
     end
   end
