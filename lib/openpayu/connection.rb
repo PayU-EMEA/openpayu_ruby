@@ -18,6 +18,18 @@ module OpenPayU
       {response: response, request: request}
     end
 
+    def self.put(url, data, headers)
+      uri = URI.parse(url)
+      http = Net::HTTP.new(uri.host,uri.port)
+      http.use_ssl = true if OpenPayU::Configuration.use_ssl?
+      request = Net::HTTP::Put.new(uri.path)
+      request.body = data
+      request["Content-Type"] = "application/#{OpenPayU::Configuration.data_format}"
+      request["OpenPayu-Signature"] = headers["OpenPayu-Signature"]
+      response = http.request(request)
+      {response: response, request: request}
+    end
+
     def self.get(url, data, headers)
       self.common_connection(url, data, headers, "GET")
     end

@@ -44,14 +44,12 @@ module OpenPayU
     # @param [Hash] status_update A Hash object containing full {Models::StatusUpdate} object
     # @return [Documents::Response] Response class object order with OrderStatusUpdateResponse
     # @raise [NotImplementedException] This feature is not yet implemented
-    # @note Not implemented in API! This method is used to accept money from client if POS has turned off autoreveive option. 
-    def self.status(status_update)
-      raise NotImplementedException, "This feature is not yet implemented"
+    def self.status_update(status_update)
       @update = OpenPayU::Models::StatusUpdate.new status_update
-      url = Configuration.get_base_url + "order/status." + Configuration.data_format
+      url = Configuration.get_base_url + "order/#{@update.order_id}/status." + Configuration.data_format
       request = Documents::Request.new(@update.prepare_data("OrderStatusUpdateRequest"))
       Documents::Response.new(
-        Connection.post(url, request.body, request.headers), 
+        Connection.put(url, request.body, request.headers), 
         "OrderStatusUpdateResponse"
       )
     end
@@ -61,9 +59,7 @@ module OpenPayU
     #
     # @param [String] order_id PayU OrderId sent back in OrderCreateResponse
     # @return [Documents::Response] Response class object order with OrderCancelResponse
-    # @note Not implemented in API! Cancel can be performed only on orders with certain status.
     def self.cancel(order_id)
-      raise NotImplementedException, "This feature is not yet implemented"
       url = Configuration.get_base_url + "order/#{order_id}." + Configuration.data_format
       request = Documents::Request.new(url)
       Documents::Response.new(

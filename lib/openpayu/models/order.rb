@@ -13,7 +13,10 @@ module OpenPayU
       has_many_objects :shipping_methods, :shipping_method #not required
 
       def after_initialize
-        @req_id ||= "{#{SecureRandom.uuid}}"
+        @req_id       ||= "{#{SecureRandom.uuid}}"
+        @notify_url   ||= OpenPayU::Configuration.notify_url
+        @order_url    ||= OpenPayU::Configuration.order_url
+        @continue_url ||= OpenPayU::Configuration.continue_url
       end
     end
   end

@@ -1,7 +1,7 @@
 ---
 http_interactions:
 - request:
-    method: get
+    method: delete
     uri: http://platnosci-dev5.dc2/api/v2/order/28161ZT5TF131121GUEST000P01.json
     body:
       encoding: US-ASCII
@@ -26,26 +26,25 @@ http_interactions:
       - Apache/2.2.17 (Unix) DAV/2 mod_ssl/2.2.17 OpenSSL/1.0.0c mod_jk/1.2.31 PHP/5.3.5
         mod_apreq2-20090110/2.7.1 mod_perl/2.0.4 Perl/v5.10.1
       openpayu-signature:
-      - signature=7bd43e0b99c03a76aca60c7896bce9cf;algorithm=MD5;sender=checkout;content=DOCUMENT;
+      - signature=06227acee76617a610039a273faed13f;algorithm=MD5;sender=checkout;content=DOCUMENT;
       x-openpayu-signature:
-      - signature=7bd43e0b99c03a76aca60c7896bce9cf;algorithm=MD5;sender=checkout;content=DOCUMENT;
+      - signature=06227acee76617a610039a273faed13f;algorithm=MD5;sender=checkout;content=DOCUMENT;
       content-language:
       - pl
       content-length:
-      - '550'
+      - '166'
       set-cookie:
       - payu_persistent=mobile_agent-false#; Expires=Sun, 16-Nov-2014 14:32:35 GMT;
         Path=/
-      - CSESSIONID=699C5F1B2B7FA87764F99990BDA185EF.01; Path=/pl/standard/co
+      - CSESSIONID=90F64A8F648CF038A543C0A68BDD3804.01; Path=/pl/standard/co
       connection:
       - close
       content-type:
       - application/json;charset=UTF-8
     body:
       encoding: US-ASCII
-      string: ! '{"OpenPayU":{"OrderRetrieveResponse":{"Status":{"StatusCode":"SUCCESS","StatusDesc":"Request
-        processed successfully."},"Orders":{"Order":{"ExtOrderId":"1342","Description":"New
-        order","Products":{"Product":{"Name":"Mouse","Quantity":"1","UnitPrice":"10000"}},"OrderId":"28161ZT5TF131121GUEST000P01","CurrencyCode":"PLN","CustomerIp":"127.0.0.1","Status":"PENDING","NotifyUrl":"http://localhost/","ValidityTime":"48000","MerchantPosId":"45654","OrderCreateDate":"2013-11-21T15:32:34.067+01:00","OrderUrl":"http://localhost/","TotalAmount":"10000"}}}}}'
+      string: ! '{"OpenPayU":{"OrderCancelResponse":{"Status":{"StatusCode":"SUCCESS","StatusDesc":"Request
+        successful"},"ExtOrderId":"1342","OrderId":"28161ZT5TF131121GUEST000P01"}}}'
     http_version: '1.1'
   recorded_at: Thu, 21 Nov 2013 14:32:35 GMT
 recorded_with: VCR 2.6.0
