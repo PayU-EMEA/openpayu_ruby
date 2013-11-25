@@ -1,47 +1,68 @@
-require "spec_helper.rb"
+# -*- encoding : utf-8 -*-
+require 'spec_helper.rb'
 
 describe OpenPayU::Configuration do
-  context "valid configuration" do
+
+  context 'load from YAML' do
+    before(:all) do
+      ENV['RACK_ENV'] = 'test'
+      OpenPayU::Configuration.configure 'spec/openpayu.yml'
+    end
+
+    it { OpenPayU::Configuration.valid?.should be_true }
+    it { OpenPayU::Configuration.merchant_pos_id.should eq '8334' }
+    it { OpenPayU::Configuration.env.should eq 'secure' }
+    it { OpenPayU::Configuration.service_domain.should eq 'payu.com' }
+
+  end
+
+  context 'valid configuration' do
     before(:all) do
       OpenPayU::Configuration.configure do |config|
-        config.env              = "sandbox"
-        config.signature_key    = "fsd8931231232e4aeb53"
-        config.service_domain   = "payu.pl"
+        config.env              = 'sandbox'
+        config.signature_key    = 'fsd8931231232e4aeb53'
+        config.service_domain   = 'payu.pl'
       end
     end
 
     it { OpenPayU::Configuration.valid?.should be_true }
-    it { OpenPayU::Configuration.env.should eq "sandbox" }
-    it { OpenPayU::Configuration.service_domain.should eq "payu.pl" }
+    it { OpenPayU::Configuration.env.should eq 'sandbox' }
+    it { OpenPayU::Configuration.service_domain.should eq 'payu.pl' }
 
-    it "should override default" do
-      OpenPayU::Configuration.env.should eq "sandbox"
+    it 'should override default' do
+      OpenPayU::Configuration.env.should eq 'sandbox'
     end
 
-    it "should set default value" do
-      OpenPayU::Configuration.country.should eq "pl"
+    it 'should set default value' do
+      OpenPayU::Configuration.country.should eq 'pl'
     end
 
-    context "change configuration to be invalid" do
-      before { OpenPayU::Configuration.merchant_pos_id = "" }
+    context 'change configuration to be invalid' do
+      before { OpenPayU::Configuration.merchant_pos_id = '' }
 
-      it "should raise exception" do
+      it 'should raise exception' do
         expect { OpenPayU::Configuration.valid? }.to(
-          raise_error(WrongConfigurationError, "Parameter 'merchant_pos_id' is invalid.")
+          raise_error(
+            WrongConfigurationError,
+            'Parameter merchant_pos_id is invalid.'
+          )
         )
       end
     end
   end
 
-  context "Invalid configuration" do
-    it "should raise exeption when tried to set invalid configuration" do
+  context 'Invalid configuration' do
+    it 'should raise exeption when tried to set invalid configuration' do
       expect do
         OpenPayU::Configuration.configure do |config|
-          config.env              = "sandbox"
-          config.signature_key    = "fsd8931231232e4aeb53"
-          config.service_domain   = "payu.pl"
+          config.env              = 'sandbox'
+          config.signature_key    = 'fsd8931231232e4aeb53'
+          config.service_domain   = 'payu.pl'
         end.to(
-          raise_error(WrongConfigurationError, "Parameter 'merchant_pos_id' is invalid.")
+          raise_error(
+            WrongConfigurationError,
+            'Parameter merchant_pos_id is invalid.'
+          )
         )
       end
     end

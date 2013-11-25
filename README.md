@@ -19,25 +19,54 @@ Or install it yourself as:
 
     $ gem install openpayu
 
-## Usage
-
-###Configure Gem
+##Configure Gem
   To configure OpenPayU environment add a file to config/initializers/openpayu.rb containing:
 
     OpenPayU::Configuration.configure do |config|
-        config.merchant_pos_id  = "8389534"
-        config.signature_key    = "95873498573498573897fb42d"
-        config.algorithm        = "MD5" # MD5, SHA-1, SHA-256
-        config.service_domain   = "payu.com"
-        config.protocol         = "https"
-        config.data_format      = "json" # json, xml
-        config.env              = "secure"
-        config.order_url        = "http://localhost/order"
-        config.notify_url       = "http://localhost/notify"
-        config.continue_url     = "http://localhost/success"
+        config.merchant_pos_id  = '8389534'
+        config.signature_key    = '95873498573498573897fb42d'
+        config.algorithm        = 'MD5' # MD5, SHA-1, SHA-256
+        config.service_domain   = 'payu.com'
+        config.protocol         = 'https'
+        config.data_format      = 'json' # json, xml
+        config.env              = 'secure'
+        config.order_url        = 'http://localhost/order'
+        config.notify_url       = 'http://localhost/notify'
+        config.continue_url     = 'http://localhost/success'
     end
 
-###Creating new order
+  Or by providing a path to YAML file
+
+    OpenPayU::Configuration.configure File.join(Rails.root, 'config/openpayu.yml')
+
+  Structure of YAML file:
+
+    development:
+      merchant_pos_id: '8389534'
+      signature_key: 95873498573498573897fb42d
+      algorithm: MD5 # MD5, SHA-1, SHA-256
+      service_domain: payu.com
+      protocol: https
+      data_format: json # json, xml
+      env: secure
+      order_url: http://localhost/order
+      notify_url: http://localhost/notify
+      continue_url: http://localhost/success
+    production:
+      merchant_pos_id: '8389534'
+      signature_key: 95873498573498573897fb42d
+      algorithm: MD5 # MD5, SHA-1, SHA-256
+      service_domain: payu.com
+      protocol: https
+      data_format: json # json, xml
+      env: secure
+      order_url: http://localhost/order
+      notify_url: http://localhost/notify
+      continue_url: http://localhost/success
+
+##Usage
+
+###Creating Transparent order
   To create an order you must provide a Hash with order:
 
     order = {
@@ -74,20 +103,52 @@ Or install it yourself as:
       ]
     }
 
-  Full description of the Order parameters you can find here
+  Full description of the Order parameters you can find here #TODO: podać link
   When you have ready order Hash you can create new order:
 
     @response = OpenPayU::Order.create(order)
 
+  If request succeed to create it will return "COMPLETE" as a status_code.
+  There might be also a redirect to page with confirmation.
+  There are three redirect types:
+
+  * WARNING_CONTINUE_REDIRECT
+  * WARNING_CONTINUE_CVV
+  * WARNING_CONTINUE_3DS
+
+```
+case @response.status["status_code"]
+when 'COMPLETE'
+  # order has been created
+when /WARNING_CONTINUE_/
+  #need to redirec user to a provided URL
+  redirect_to @response.redirect_uri
+else
+  #in other cases something went wrong
+  logger.info "Unable to create order. 
+    Status: #{@response.status["status_code"]}.
+    Response: #{@response}"
+end
+```
+
+###Creating Hosted order
+
+  If you pass the same Hash of order as above to hosted_order_form you will
+  get a String containgin a form to embed in your view
+
+    #in your controller
+    @order_form_data = OpenPayU.hosted_order_form(order)
+
+    # in your view
+    <%= @order_form_data.html_safe %>
+
 ###Retrieving order from OpenPayU
   You can retrieve order by its PayU order_id
-
 
     @response = OpenPayU::Order.retrieve("Z963D5JQR2230925GUEST000P01")
 
 ###Cancelling order 
   You can cancel order by its PayU order_id
-
 
     @response = OpenPayU::Order.cancel("Z963D5JQR2230925GUEST000P01")
 
@@ -110,7 +171,6 @@ Or install it yourself as:
 
 
 ###Refund money
-
 
     @refund = OpenPayU::Refund.create({
       order_id: "Z963D5JQR2230925GUEST000P01", #required

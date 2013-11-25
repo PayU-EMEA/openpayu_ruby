@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module OpenPayU
   module Models
     class Fee < Model

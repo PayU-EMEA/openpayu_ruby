@@ -1,0 +1,45 @@
+# This is the configuration used to check the rubocop source code.
+
+MethodLength:
+  Max: 22
+
+LineLength:
+  Max: 80
+
+ClassLength:
+  Max: 140
+
+CyclomaticComplexity:
+  Max: 10
+
+Output:
+  Ignore:
+    - '^.*\.rake$'
+    - '^.*/script/.*$'
+    - '^.*/tasks/.*$'
+    - 'Rakefile$'
+    - '^.*/config/recipes/.*$'
+
+Documentation:
+  Description: 'Document classes and non-namespace modules.'
+  Enabled: false
+
+EmptyLinesAroundBody:
+  Description: "Keeps track of blank lines around expression bodies."
+  Enabled: false
+
+SymbolName:
+  Description: 'Symbol literals should use snake_case.'
+  Enabled: false
+
+BracesAroundHashParameters:
+  Description: 'Enforce braces style inside hash parameters.'
+  Enabled: false
+
+AlignParameters:
+  Description: Align the parameters of a method call if they span more than.
+  Enabled: false
+
+SignalException:
+  Description: 'Checks for proper usage of fail and raise.'
+  Enabled: false

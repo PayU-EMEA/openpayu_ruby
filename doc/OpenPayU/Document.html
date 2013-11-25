@@ -165,7 +165,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#generate_signature_structure-instance_method" title="#generate_signature_structure (instance method)">- (Object) <strong>generate_signature_structure</strong>(data, algorithm, merchant_pos_id = &quot;&quot;, signature_key = &quot;&quot;) </a>
+      <a href="#generate_signature_structure-instance_method" title="#generate_signature_structure (instance method)">- (Object) <strong>generate_signature_structure</strong>(data, algorithm, pos_id = '', key = '') </a>
     
 
     
@@ -318,21 +318,31 @@
       <pre class="lines">
 
 
-71
-72
-73
-74
-75
-76
-77</pre>
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/openpayu/document.rb', line 71</span>
+      <pre class="code"><span class="info file"># File 'lib/openpayu/document.rb', line 90</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_deep_transform_keys'>deep_transform_keys</span><span class='lparen'>(</span><span class='id identifier rubyid_hash'>hash</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
   <span class='id identifier rubyid_hash'>hash</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='op'>|</span>
-    <span class='id identifier rubyid_result'>result</span><span class='lbracket'>[</span><span class='kw'>yield</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Hash</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_deep_transform_keys'>deep_transform_keys</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='id identifier rubyid_value'>value</span>
+    <span class='id identifier rubyid_result'>result</span><span class='lbracket'>[</span><span class='kw'>yield</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span><span class='rbracket'>]</span> <span class='op'>=</span>
+      <span class='kw'>if</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Hash</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_deep_transform_keys'>deep_transform_keys</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+      <span class='kw'>else</span>
+        <span class='id identifier rubyid_value'>value</span>
+      <span class='kw'>end</span>
   <span class='kw'>end</span>
   <span class='id identifier rubyid_result'>result</span>
 <span class='kw'>end</span></pre>
@@ -356,12 +366,6 @@
       <pre class="lines">
 
 
-15
-16
-17
-18
-19
-20
 21
 22
 23
@@ -370,23 +374,25 @@
 26
 27
 28
-29</pre>
+29
+30
+31
+32
+33</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/openpayu/document.rb', line 15</span>
+      <pre class="code"><span class="info file"># File 'lib/openpayu/document.rb', line 21</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_generate_signature'>generate_signature</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='comma'>,</span> <span class='id identifier rubyid_algorithm'>algorithm</span><span class='comma'>,</span> <span class='id identifier rubyid_signature_key'>signature_key</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_data'>data</span> <span class='op'>=</span> <span class='id identifier rubyid_data'>data</span> <span class='op'>+</span> <span class='id identifier rubyid_signature_key'>signature_key</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_algorithm'>algorithm</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>MD5</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_algorithm'>algorithm</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>MD5</span><span class='tstring_end'>'</span></span>
     <span class='id identifier rubyid_signature'>signature</span> <span class='op'>=</span> <span class='const'>Digest</span><span class='op'>::</span><span class='const'>MD5</span><span class='period'>.</span><span class='id identifier rubyid_hexdigest'>hexdigest</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
-  <span class='kw'>elsif</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>SHA</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>SHA1</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>SHA-1</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span> <span class='id identifier rubyid_algorithm'>algorithm</span>
+  <span class='kw'>elsif</span> <span class='qwords_beg'>%w(</span><span class='tstring_content'>SHA</span><span class='words_sep'> </span><span class='tstring_content'>SHA1</span><span class='words_sep'> </span><span class='tstring_content'>SHA-1</span><span class='words_sep'>)</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span> <span class='id identifier rubyid_algorithm'>algorithm</span>
     <span class='id identifier rubyid_signature'>signature</span> <span class='op'>=</span> <span class='const'>Digest</span><span class='op'>::</span><span class='const'>SHA1</span><span class='period'>.</span><span class='id identifier rubyid_hexdigest'>hexdigest</span> <span class='id identifier rubyid_data'>data</span>
-    <span class='id identifier rubyid_algorithm'>algorithm</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SHA-1</span><span class='tstring_end'>&quot;</span></span>
-  <span class='kw'>elsif</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>SHA-256</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>SHA256</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>SHA_256</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span> <span class='id identifier rubyid_algorithm'>algorithm</span>
+  <span class='kw'>elsif</span> <span class='qwords_beg'>%w(</span><span class='tstring_content'>SHA-256</span><span class='words_sep'> </span><span class='tstring_content'>SHA256</span><span class='words_sep'> </span><span class='tstring_content'>SHA_256</span><span class='words_sep'>)</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span> <span class='id identifier rubyid_algorithm'>algorithm</span>
     <span class='id identifier rubyid_signature'>signature</span> <span class='op'>=</span> <span class='const'>Digest</span><span class='op'>::</span><span class='const'>SHA256</span><span class='period'>.</span><span class='id identifier rubyid_hexdigest'>hexdigest</span> <span class='id identifier rubyid_data'>data</span>
-    <span class='id identifier rubyid_algorithm'>algorithm</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SHA-256</span><span class='tstring_end'>&quot;</span></span>
   <span class='kw'>else</span>
-    <span class='id identifier rubyid_signature'>signature</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_signature'>signature</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span>
   <span class='kw'>end</span>
   <span class='id identifier rubyid_signature'>signature</span>
 <span class='kw'>end</span></pre>
@@ -398,7 +404,7 @@
       <div class="method_details ">
   <h3 class="signature " id="generate_signature_structure-instance_method">
   
-    - (<tt>Object</tt>) <strong>generate_signature_structure</strong>(data, algorithm, merchant_pos_id = &quot;&quot;, signature_key = &quot;&quot;) 
+    - (<tt>Object</tt>) <strong>generate_signature_structure</strong>(data, algorithm, pos_id = '', key = '') 
   
 
   
@@ -437,16 +443,28 @@
 10
 11
 12
-13</pre>
+13
+14
+15
+16
+17
+18
+19</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/openpayu/document.rb', line 8</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_generate_signature_structure'>generate_signature_structure</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='comma'>,</span> <span class='id identifier rubyid_algorithm'>algorithm</span><span class='comma'>,</span> <span class='id identifier rubyid_merchant_pos_id'>merchant_pos_id</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_signature_key'>signature_key</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>WrongConfigurationError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Merchant Signature Key (signature_key) should not be null or empty.</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_signature_key'>signature_key</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
-  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>WrongConfigurationError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Merchant Pos Id (merchant_pos_id) should not be null or empty.</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_merchant_pos_id'>merchant_pos_id</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
-  <span class='id identifier rubyid_signature'>signature</span> <span class='op'>=</span> <span class='id identifier rubyid_generate_signature'>generate_signature</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='comma'>,</span> <span class='id identifier rubyid_algorithm'>algorithm</span><span class='comma'>,</span> <span class='id identifier rubyid_signature_key'>signature_key</span><span class='rparen'>)</span>
-  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>sender=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_merchant_pos_id'>merchant_pos_id</span><span class='rbrace'>}</span><span class='tstring_content'>;signature=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_signature'>signature</span><span class='rbrace'>}</span><span class='tstring_content'>;algorithm=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_algorithm'>algorithm</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>def</span> <span class='id identifier rubyid_generate_signature_structure'>generate_signature_structure</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='comma'>,</span> <span class='id identifier rubyid_algorithm'>algorithm</span><span class='comma'>,</span> <span class='id identifier rubyid_pos_id'>pos_id</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_key'>key</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>WrongConfigurationError</span><span class='comma'>,</span>
+          <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Merchant Signature Key (signature_key)
+          should not be null or empty.</span><span class='tstring_end'>'</span></span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>WrongConfigurationError</span><span class='comma'>,</span>
+        <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Merchant Pos Id (merchant_pos_id) should
+        not be null or empty.</span><span class='tstring_end'>'</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_pos_id'>pos_id</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
+  <span class='id identifier rubyid_signature'>signature</span> <span class='op'>=</span> <span class='id identifier rubyid_generate_signature'>generate_signature</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='comma'>,</span> <span class='id identifier rubyid_algorithm'>algorithm</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>sender=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_pos_id'>pos_id</span><span class='rbrace'>}</span><span class='tstring_content'>;signature=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_signature'>signature</span><span class='rbrace'>}</span><span class='tstring_content'>;algorithm=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_algorithm'>algorithm</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -468,17 +486,23 @@
       <pre class="lines">
 
 
-62
-63
-64
-65</pre>
+78
+79
+80
+81
+82
+83
+84</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/openpayu/document.rb', line 62</span>
+      <pre class="code"><span class="info file"># File 'lib/openpayu/document.rb', line 78</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_signature'>get_signature</span>
-  <span class='ivar'>@response</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>X-OpenPayU-Signature</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='ivar'>@response</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>x-openpayu-signature</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='ivar'>@response</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>openpayu-signature</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>||</span>
-    <span class='ivar'>@response</span><span class='period'>.</span><span class='id identifier rubyid_headers'>headers</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>x-openpayu-signature</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='ivar'>@response</span><span class='period'>.</span><span class='id identifier rubyid_headers'>headers</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>openpayu-signature</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+  <span class='ivar'>@response</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>X-OpenPayU-Signature</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span> <span class='op'>||</span>
+  <span class='ivar'>@response</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>x-openpayu-signature</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span> <span class='op'>||</span>
+  <span class='ivar'>@response</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>openpayu-signature</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span> <span class='op'>||</span>
+  <span class='ivar'>@response</span><span class='period'>.</span><span class='id identifier rubyid_headers'>headers</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>x-openpayu-signature</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span> <span class='op'>||</span>
+  <span class='ivar'>@response</span><span class='period'>.</span><span class='id identifier rubyid_headers'>headers</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>openpayu-signature</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -500,22 +524,22 @@
       <pre class="lines">
 
 
-52
-53
-54
-55
-56
-57
-58
-59</pre>
+69
+70
+71
+72
+73
+74
+75
+76</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/openpayu/document.rb', line 52</span>
+      <pre class="code"><span class="info file"># File 'lib/openpayu/document.rb', line 69</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_parse_signature'>parse_signature</span>
   <span class='id identifier rubyid_parameters'>parameters</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
-  <span class='id identifier rubyid_get_signature'>get_signature</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_parameter'>parameter</span><span class='op'>|</span>
-    <span class='id identifier rubyid_k'>k</span><span class='comma'>,</span><span class='id identifier rubyid_v'>v</span> <span class='op'>=</span> <span class='id identifier rubyid_parameter'>parameter</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>=</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_get_signature'>get_signature</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>;</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_parameter'>parameter</span><span class='op'>|</span>
+    <span class='id identifier rubyid_k'>k</span><span class='comma'>,</span> <span class='id identifier rubyid_v'>v</span> <span class='op'>=</span> <span class='id identifier rubyid_parameter'>parameter</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>=</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
     <span class='id identifier rubyid_parameters'>parameters</span><span class='lbracket'>[</span><span class='id identifier rubyid_k'>k</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_v'>v</span>
   <span class='kw'>end</span>
   <span class='id identifier rubyid_parameters'>parameters</span>
@@ -540,15 +564,15 @@
       <pre class="lines">
 
 
-67
-68
-69</pre>
+86
+87
+88</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/openpayu/document.rb', line 67</span>
+      <pre class="code"><span class="info file"># File 'lib/openpayu/document.rb', line 86</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_underscore_keys'>underscore_keys</span><span class='lparen'>(</span><span class='id identifier rubyid_hash'>hash</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_deep_transform_keys'>deep_transform_keys</span><span class='lparen'>(</span><span class='id identifier rubyid_hash'>hash</span><span class='rparen'>)</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_key'>key</span><span class='op'>|</span> <span class='id identifier rubyid_key'>key</span><span class='period'>.</span><span class='id identifier rubyid_underscore'>underscore</span><span class='rbrace'>}</span>
+  <span class='id identifier rubyid_deep_transform_keys'>deep_transform_keys</span><span class='lparen'>(</span><span class='id identifier rubyid_hash'>hash</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_key'>key</span><span class='op'>|</span> <span class='id identifier rubyid_key'>key</span><span class='period'>.</span><span class='id identifier rubyid_underscore'>underscore</span> <span class='rbrace'>}</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -564,54 +588,44 @@
   
 
   
-</h3><div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Raises:</p>
-<ul class="raise">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt><span class='object_link'><a href="../EmptyResponseError.html" title="EmptyResponseError (class)">EmptyResponseError</a></span></tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
+</h3><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-31
-32
-33
-34
 35
 36
 37
 38
-39</pre>
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/openpayu/document.rb', line 31</span>
+      <pre class="code"><span class="info file"># File 'lib/openpayu/document.rb', line 35</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_verify_response'>verify_response</span>
-  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>EmptyResponseError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Got empty response from request: </span><span class='embexpr_beg'>#{</span><span class='ivar'>@request</span><span class='period'>.</span><span class='id identifier rubyid_try'>try</span><span class='lparen'>(</span><span class='symbol'>:body</span><span class='rparen'>)</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>unless</span> <span class='ivar'>@response</span>
-
-  <span class='kw'>if</span> <span class='lparen'>(</span><span class='ivar'>@message_name</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>OrderNotifyRequest</span><span class='tstring_end'>&quot;</span></span> <span class='op'>||</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>200</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>201</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>422</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>302</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_response'>response</span><span class='period'>.</span><span class='id identifier rubyid_code'>code</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_verify_signature'>verify_signature</span><span class='lparen'>(</span><span class='ivar'>@response</span><span class='period'>.</span><span class='id identifier rubyid_body'>body</span><span class='rparen'>)</span>
+  <span class='kw'>unless</span> <span class='ivar'>@response</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>EmptyResponseError</span><span class='comma'>,</span>
+          <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Got empty response from request: </span><span class='embexpr_beg'>#{</span><span class='ivar'>@request</span><span class='period'>.</span><span class='id identifier rubyid_try'>try</span><span class='lparen'>(</span><span class='symbol'>:body</span><span class='rparen'>)</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+  <span class='kw'>if</span> <span class='lparen'>(</span><span class='ivar'>@message_name</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>OrderNotifyRequest</span><span class='tstring_end'>'</span></span> <span class='op'>||</span>
+      <span class='qwords_beg'>%w(</span><span class='tstring_content'>200</span><span class='words_sep'> </span><span class='tstring_content'>201</span><span class='words_sep'> </span><span class='tstring_content'>422</span><span class='words_sep'> </span><span class='tstring_content'>302</span><span class='words_sep'>)</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_response'>response</span><span class='period'>.</span><span class='id identifier rubyid_code'>code</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span>
+      <span class='id identifier rubyid_verify_signature'>verify_signature</span><span class='lparen'>(</span><span class='ivar'>@body</span><span class='rparen'>)</span>
     <span class='kw'>true</span>
   <span class='kw'>else</span>
-    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>HttpStatusException</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid HTTP response code (</span><span class='embexpr_beg'>#{</span><span class='ivar'>@response</span><span class='period'>.</span><span class='id identifier rubyid_code'>code</span><span class='rbrace'>}</span><span class='tstring_content'>). Response body: </span><span class='embexpr_beg'>#{</span><span class='ivar'>@response</span><span class='period'>.</span><span class='id identifier rubyid_body'>body</span><span class='rbrace'>}</span><span class='tstring_content'>.</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>HttpStatusException</span><span class='comma'>,</span>
+          <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid HTTP response code (</span><span class='embexpr_beg'>#{</span><span class='ivar'>@response</span><span class='period'>.</span><span class='id identifier rubyid_code'>code</span><span class='rbrace'>}</span><span class='tstring_content'>).
+          Response body: </span><span class='embexpr_beg'>#{</span><span class='ivar'>@body</span><span class='rbrace'>}</span><span class='tstring_content'>.</span><span class='tstring_end'>&quot;</span></span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -634,27 +648,41 @@
       <pre class="lines">
 
 
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50</pre>
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/openpayu/document.rb', line 41</span>
+      <pre class="code"><span class="info file"># File 'lib/openpayu/document.rb', line 51</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_verify_signature'>verify_signature</span><span class='lparen'>(</span><span class='id identifier rubyid_message'>message</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_signature'>signature</span> <span class='op'>=</span> <span class='id identifier rubyid_parse_signature'>parse_signature</span>
-  <span class='id identifier rubyid_generated_signature'>generated_signature</span> <span class='op'>=</span> <span class='id identifier rubyid_generate_signature'>generate_signature</span><span class='lparen'>(</span><span class='id identifier rubyid_message'>message</span><span class='comma'>,</span> <span class='id identifier rubyid_signature'>signature</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>algorithm</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='const'>OpenPayU</span><span class='op'>::</span><span class='const'>Configuration</span><span class='period'>.</span><span class='id identifier rubyid_signature_key'>signature_key</span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_generated_signature'>generated_signature</span> <span class='op'>==</span> <span class='id identifier rubyid_signature'>signature</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>signature</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_generated_signature'>generated_signature</span> <span class='op'>=</span> <span class='id identifier rubyid_generate_signature'>generate_signature</span><span class='lparen'>(</span>
+    <span class='id identifier rubyid_message'>message</span><span class='comma'>,</span>
+    <span class='id identifier rubyid_signature'>signature</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>algorithm</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span>
+    <span class='const'>OpenPayU</span><span class='op'>::</span><span class='const'>Configuration</span><span class='period'>.</span><span class='id identifier rubyid_signature_key'>signature_key</span>
+  <span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_generated_signature'>generated_signature</span> <span class='op'>==</span> <span class='id identifier rubyid_signature'>signature</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>signature</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span>
     <span class='kw'>true</span>
   <span class='kw'>else</span>
-    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>WrongSignatureException</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid signature: Got message signed with: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_signature'>signature</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>signature</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_content'>. Generated signature: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_generated_signature'>generated_signature</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>WrongSignatureException</span><span class='comma'>,</span>
+          <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid signature: Got message signed with:
+          </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_signature'>signature</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>signature</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_content'>. Generated signature:
+          </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_generated_signature'>generated_signature</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
   <span class='kw'>end</span>
 
 <span class='kw'>end</span></pre>
@@ -668,7 +696,7 @@
 </div>
 
     <div id="footer">
-  Generated on Wed Oct  9 10:57:30 2013 by
+  Generated on Mon Nov 25 11:27:42 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.2 (ruby-1.9.3).
 </div>

@@ -243,26 +243,30 @@
       <pre class="lines">
 
 
-12
-13
 14
 15
 16
 17
 18
 19
-20</pre>
+20
+21
+22
+23
+24</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/openpayu/token.rb', line 12</span>
+      <pre class="code"><span class="info file"># File 'lib/openpayu/token.rb', line 14</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>NotImplementedException</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>This feature is not yet implemented</span><span class='tstring_end'>&quot;</span></span>
-  <span class='id identifier rubyid_url'>url</span> <span class='op'>=</span> <span class='const'>Configuration</span><span class='period'>.</span><span class='id identifier rubyid_get_base_url'>get_base_url</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>token.</span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span> <span class='const'>OpenPayU</span><span class='op'>::</span><span class='const'>Configuration</span><span class='period'>.</span><span class='id identifier rubyid_data_format'>data_format</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>NotImplementedException</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>This feature is not yet implemented</span><span class='tstring_end'>'</span></span>
+  <span class='id identifier rubyid_url'>url</span> <span class='op'>=</span> <span class='const'>Configuration</span><span class='period'>.</span><span class='id identifier rubyid_get_base_url'>get_base_url</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>token.</span><span class='tstring_end'>'</span></span>
+  <span class='id identifier rubyid_url'>url</span> <span class='op'>&lt;&lt;</span> <span class='const'>OpenPayU</span><span class='op'>::</span><span class='const'>Configuration</span><span class='period'>.</span><span class='id identifier rubyid_data_format'>data_format</span>
   <span class='id identifier rubyid_token'>token</span> <span class='op'>=</span> <span class='const'>Models</span><span class='op'>::</span><span class='const'>Token</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_request'>request</span> <span class='op'>=</span> <span class='const'>Documents</span><span class='op'>::</span><span class='const'>Request</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_token'>token</span><span class='period'>.</span><span class='id identifier rubyid_prepare_data'>prepare_data</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>TokenCreateRequest</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_request'>request</span> <span class='op'>=</span> <span class='const'>Documents</span><span class='op'>::</span><span class='const'>Request</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_token'>token</span><span class='period'>.</span><span class='id identifier rubyid_prepare_data'>prepare_data</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>TokenCreateRequest</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
   <span class='const'>OpenPayU</span><span class='op'>::</span><span class='const'>Documents</span><span class='op'>::</span><span class='const'>Response</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span>
-    <span class='const'>Connection</span><span class='period'>.</span><span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_data'>data</span><span class='comma'>,</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_header'>header</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>TokenCreateResponse</span><span class='tstring_end'>&quot;</span></span>
+    <span class='const'>Connection</span><span class='period'>.</span><span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_data'>data</span><span class='comma'>,</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_header'>header</span><span class='rparen'>)</span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>TokenCreateResponse</span><span class='tstring_end'>'</span></span>
   <span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -275,7 +279,7 @@
 </div>
 
     <div id="footer">
-  Generated on Wed Oct  9 10:57:30 2013 by
+  Generated on Mon Nov 25 11:27:42 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.2 (ruby-1.9.3).
 </div>

@@ -1,2 +1,2 @@
-require "openpayu"
-
+# -*- encoding : utf-8 -*-
+require 'openpayu'
