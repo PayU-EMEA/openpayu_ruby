@@ -1,5 +1,4 @@
-#encoding: utf-8
-
+# -*- encoding : utf-8 -*-
 class WrongConfigurationError < StandardError; end
 class HttpStatusException < StandardError; end
 class EmptyResponseError < StandardError; end
@@ -13,7 +12,7 @@ class WrongOrderParameters < StandardError
   end
 
   def message
-    @order.all_errors.collect do |k,v|
+    @order.all_errors.map do |k, v|
       "Class #{k} missing attributes: #{v.messages.inspect}"
     end
   end

@@ -288,13 +288,13 @@
       <pre class="lines">
 
 
-6
 7
 8
-9</pre>
+9
+10</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/openpayu/documents/request.rb', line 6</span>
+      <pre class="code"><span class="info file"># File 'lib/openpayu/documents/request.rb', line 7</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
   <span class='ivar'>@body</span> <span class='op'>=</span> <span class='id identifier rubyid_data'>data</span>
@@ -338,12 +338,12 @@
       <pre class="lines">
 
 
-4
 5
-6</pre>
+6
+7</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/openpayu/documents/request.rb', line 4</span>
+      <pre class="code"><span class="info file"># File 'lib/openpayu/documents/request.rb', line 5</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_body'>body</span>
   <span class='ivar'>@body</span>
@@ -381,12 +381,12 @@
       <pre class="lines">
 
 
-4
 5
-6</pre>
+6
+7</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/openpayu/documents/request.rb', line 4</span>
+      <pre class="code"><span class="info file"># File 'lib/openpayu/documents/request.rb', line 5</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_headers'>headers</span>
   <span class='ivar'>@headers</span>
@@ -418,12 +418,12 @@
       <pre class="lines">
 
 
-28
 29
-30</pre>
+30
+31</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/openpayu/documents/request.rb', line 28</span>
+      <pre class="code"><span class="info file"># File 'lib/openpayu/documents/request.rb', line 29</span>
 
 <span class='kw'>def</span> <span class='op'>[]</span><span class='lparen'>(</span><span class='id identifier rubyid_header_name'>header_name</span><span class='rparen'>)</span>
   <span class='ivar'>@headers</span><span class='lbracket'>[</span><span class='id identifier rubyid_header_name'>header_name</span><span class='rbracket'>]</span>
@@ -448,7 +448,6 @@
       <pre class="lines">
 
 
-11
 12
 13
 14
@@ -463,23 +462,24 @@
 23
 24
 25
-26</pre>
+26
+27</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/openpayu/documents/request.rb', line 11</span>
+      <pre class="code"><span class="info file"># File 'lib/openpayu/documents/request.rb', line 12</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_set_headers'>set_headers</span>
   <span class='ivar'>@headers</span> <span class='op'>=</span> <span class='lbrace'>{</span>
     <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>OpenPayu-Signature</span><span class='tstring_end'>'</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_generate_signature_structure'>generate_signature_structure</span><span class='lparen'>(</span>
-        <span class='ivar'>@body</span><span class='comma'>,</span> 
-        <span class='const'>OpenPayU</span><span class='op'>::</span><span class='const'>Configuration</span><span class='period'>.</span><span class='id identifier rubyid_algorithm'>algorithm</span><span class='comma'>,</span> 
-        <span class='const'>OpenPayU</span><span class='op'>::</span><span class='const'>Configuration</span><span class='period'>.</span><span class='id identifier rubyid_merchant_pos_id'>merchant_pos_id</span><span class='comma'>,</span> 
+        <span class='ivar'>@body</span><span class='comma'>,</span>
+        <span class='const'>OpenPayU</span><span class='op'>::</span><span class='const'>Configuration</span><span class='period'>.</span><span class='id identifier rubyid_algorithm'>algorithm</span><span class='comma'>,</span>
+        <span class='const'>OpenPayU</span><span class='op'>::</span><span class='const'>Configuration</span><span class='period'>.</span><span class='id identifier rubyid_merchant_pos_id'>merchant_pos_id</span><span class='comma'>,</span>
         <span class='const'>OpenPayU</span><span class='op'>::</span><span class='const'>Configuration</span><span class='period'>.</span><span class='id identifier rubyid_signature_key'>signature_key</span>
       <span class='rparen'>)</span><span class='comma'>,</span>
     <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>openpayu-signature</span><span class='tstring_end'>'</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_generate_signature_structure'>generate_signature_structure</span><span class='lparen'>(</span>
-        <span class='ivar'>@body</span><span class='comma'>,</span> 
-        <span class='const'>OpenPayU</span><span class='op'>::</span><span class='const'>Configuration</span><span class='period'>.</span><span class='id identifier rubyid_algorithm'>algorithm</span><span class='comma'>,</span> 
-        <span class='const'>OpenPayU</span><span class='op'>::</span><span class='const'>Configuration</span><span class='period'>.</span><span class='id identifier rubyid_merchant_pos_id'>merchant_pos_id</span><span class='comma'>,</span> 
+        <span class='ivar'>@body</span><span class='comma'>,</span>
+        <span class='const'>OpenPayU</span><span class='op'>::</span><span class='const'>Configuration</span><span class='period'>.</span><span class='id identifier rubyid_algorithm'>algorithm</span><span class='comma'>,</span>
+        <span class='const'>OpenPayU</span><span class='op'>::</span><span class='const'>Configuration</span><span class='period'>.</span><span class='id identifier rubyid_merchant_pos_id'>merchant_pos_id</span><span class='comma'>,</span>
         <span class='const'>OpenPayU</span><span class='op'>::</span><span class='const'>Configuration</span><span class='period'>.</span><span class='id identifier rubyid_signature_key'>signature_key</span>
       <span class='rparen'>)</span>
   <span class='rbrace'>}</span>
@@ -494,7 +494,7 @@
 </div>
 
     <div id="footer">
-  Generated on Wed Oct  9 10:57:33 2013 by
+  Generated on Mon Nov 25 11:27:44 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.2 (ruby-1.9.3).
 </div>

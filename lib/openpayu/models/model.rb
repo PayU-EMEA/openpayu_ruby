@@ -1,4 +1,5 @@
-require "active_model"
+# -*- encoding : utf-8 -*-
+require 'active_model'
 
 module OpenPayU
   module Models
@@ -10,10 +11,9 @@ module OpenPayU
 
       attr_accessor :all_errors
 
-
       def initialize(values)
-        values.each_pair do |k,v|
-          self.send("#{k}=", v)
+        values.each_pair do |k, v|
+          send("#{k}=", v)
         end
         after_initialize
       end
@@ -30,11 +30,11 @@ module OpenPayU
       end
 
       def prepare_data(request_type)
-        if OpenPayU::Configuration.data_format == "xml"
+        if OpenPayU::Configuration.data_format == 'xml'
           generate_xml(request_type)
         else
           {
-            "OpenPayU" => {
+            'OpenPayU' => {
               request_type => prepare_keys(instance_values)
             }
           }.to_json
@@ -43,40 +43,50 @@ module OpenPayU
 
       def generate_xml(request_type)
         '<?xml version="1.0" encoding="UTF-8"?>
-        <OpenPayU xmlns="http://www.openpayu.com/20/openpayu.xsd">'+
-          prepare_keys(instance_values).to_xml(builder: OpenPayU::XmlBuilder.new(request_type, indent: 2), root: request_type, skip_types: true, skip_instruct: true) +
-          '</OpenPayU>'
+        <OpenPayU xmlns="http://www.openpayu.com/20/openpayu.xsd">' +
+          prepare_keys(instance_values).to_xml(
+            builder: OpenPayU::XmlBuilder.new(request_type, indent: 2),
+            root: request_type,
+            skip_types: true,
+            skip_instruct: true) + '</OpenPayU>'
       end
 
       def get_instance_values
-        instance_values.delete_if{ |k,v| ["all_errors", "errors", "validation_context"].include?(k) }
+        instance_values.delete_if do |k, v|
+          %w(all_errors errors validation_context).include?(k)
+        end
       end
 
       def prepare_keys(attrs = {}, hash = get_instance_values)
-        hash.each_pair do |k,v|
-          attrs[k.camelize] = if v.is_a? Array
-            v.collect{ |element| { element.class.name.demodulize =>  element.prepare_keys }  }
-          elsif v.class.name =~ /OpenPayU::Models/
-            v.prepare_keys
-          else
-            v
-          end
+        hash.each_pair do |k, v|
+          attrs[k.camelize] =
+            if v.is_a? Array
+              v.map do |element|
+                { element.class.name.demodulize =>  element.prepare_keys }
+              end
+            elsif v.class.name =~ /OpenPayU::Models/
+              v.prepare_keys
+            else
+              v
+            end
         end
         attrs
       end
 
       def validate_all_objects
         @all_errors = {}
-        instance_values.each_pair do |k,v|
+        instance_values.each_pair do |k, v|
           if v.is_a? Array
             v.each do |element|
-              @all_errors[element.class.name] = element.errors if element.validate_all_objects.any?
+              if element.validate_all_objects.any?
+                @all_errors[element.class.name] = element.errors
+              end
             end
           elsif v.class.name =~ /OpenPayU::Models/
             @all_errors[v.class.name] = v.errors unless v.valid?
           end
         end
-        @all_errors[self.class.name] = self.errors unless valid?
+        @all_errors[self.class.name] = errors unless valid?
 
         @all_errors
       end
@@ -85,7 +95,8 @@ module OpenPayU
         !validate_all_objects.any?
       end
 
-      def to_flatten_hash(source = prepare_keys(instance_values), target = {}, namespace = nil, index = nil)
+      def to_flatten_hash(source = nil, target = {}, namespace = nil, index = nil)
+        source ||= prepare_keys(instance_values)
         prefix = "#{namespace}." if namespace
         case source
         when Hash
@@ -94,8 +105,8 @@ module OpenPayU
             to_flatten_hash(value, target, "#{prefix}#{key}#{array_index}")
           end
         when Array
-          source.each_with_index do |value, index|
-            to_flatten_hash(value, target, namespace, index)
+          source.each_with_index do |value, i|
+            to_flatten_hash(value, target, namespace, i)
           end
         else
           target[namespace] = source
@@ -104,7 +115,6 @@ module OpenPayU
       end
 
       class << self
-
 
         def has_many_objects(association, class_name)
           define_writer(association, class_name)

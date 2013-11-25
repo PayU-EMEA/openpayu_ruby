@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require 'singleton'
 
 module OpenPayU
@@ -7,20 +8,32 @@ module OpenPayU
     include Singleton
 
     class << self
-      attr_accessor :env, :merchant_pos_id, :pos_auth_key, :client_id, :client_secret, :signature_key,
-         :service_domain, :country, :data_format, :algorithm, :protocol, :order_url, :notify_url, :continue_url 
+      attr_accessor :env, :merchant_pos_id, :pos_auth_key, :client_id,
+        :client_secret, :signature_key, :service_domain, :country, :data_format,
+          :algorithm, :protocol, :order_url, :notify_url, :continue_url
 
-      def configure
+      def configure(file_path = nil)
         set_defaults
-        yield self
+        if block_given?
+          yield self
+        else
+          file = File.open(file_path) if file_path && File.exists?(file_path)
+          env = defined?(Rails) ? Rails.env : ENV['RACK_ENV']
+          config = YAML.load(file)[env]
+          if config.present?
+            config.each_pair do |key, value|
+              send("#{key}=", value)
+            end
+          end
+        end
         valid?
       end
 
       def set_defaults
-        @service_domain = "payu.com"
-        @env    = "sandbox"
-        @country = "pl"
-        @algorithm = "MD5"
+        @service_domain = 'payu.com'
+        @env    = 'sandbox'
+        @country = 'pl'
+        @algorithm = 'MD5'
       end
 
       def required_parameters
@@ -29,7 +42,9 @@ module OpenPayU
 
       def valid?
         required_parameters.each do |parameter|
-          raise WrongConfigurationError, "Parameter '#{parameter}' is invalid." if send(parameter).nil? || send(parameter).blank?
+          if send(parameter).nil? || send(parameter).blank?
+            raise WrongConfigurationError, "Parameter #{parameter} is invalid."
+          end
         end
         true
       end
@@ -39,7 +54,7 @@ module OpenPayU
       end
 
       def use_ssl?
-        @protocol == "https"
+        @protocol == 'https'
       end
     end
   end

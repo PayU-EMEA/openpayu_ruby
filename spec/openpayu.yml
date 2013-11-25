@@ -1,0 +1,11 @@
+test:
+  merchant_pos_id: '8334'
+  signature_key: 95873897fb42d
+  algorithm: MD5 # MD5, SHA-1, SHA-256
+  service_domain: payu.com
+  protocol: https
+  data_format: json # json, xml
+  env: secure
+  order_url: http://localhost/order
+  notify_url: http://localhost/notify
+  continue_url: http://localhost/success

@@ -1,6 +1,7 @@
+# -*- encoding : utf-8 -*-
 module OpenPayU
 
-  #A class responsible for dealing with Order
+  # A class responsible for dealing with Order
 
   class Order
 
@@ -8,13 +9,15 @@ module OpenPayU
     # - Sends to PayU OrderRetrieveRequest
     #
     # @param [String] order_id PayU OrderId sent back in OrderCreateResponse
-    # @return [Documents::Response] Response class object order with OrderRetrieveResponse
+    # @return [Documents::Response] Response class object order
+    #   with OrderRetrieveResponse
     def self.retrieve(order_id)
-      url = Configuration.get_base_url + "order/#{order_id}." + Configuration.data_format
+      url = Configuration.get_base_url + "order/#{order_id}." +
+      Configuration.data_format
       request = Documents::Request.new(url)
       Documents::Response.new(
-        Connection.get(url, request.body, request.headers), 
-        "OrderRetrieveResponse"
+        Connection.get(url, request.body, request.headers),
+        'OrderRetrieveResponse'
       )
     end
 
@@ -22,16 +25,19 @@ module OpenPayU
     # - Sends to PayU OrderCreateRequest
     #
     # @param [Hash] order A Hash object containing full {Models::Order} object
-    # @return [Documents::Response] Response class object order with OrderCreateResponse
-    # @raise [WrongOrderParameters] if provided Hash 'order' isn't a valid object (with all required fields) 
+    # @return [Documents::Response] Response class object order
+    #   with OrderCreateResponse
+    # @raise [WrongOrderParameters] if provided Hash 'order' isn't a valid
+    #   object (with all required fields)
     def self.create(order)
       @order = Models::Order.new(order)
       if @order.all_objects_valid?
-        url = Configuration.get_base_url + "order." + Configuration.data_format
-        request = Documents::Request.new(@order.prepare_data("OrderCreateRequest"))
+        url = Configuration.get_base_url + 'order.' + Configuration.data_format
+        request =
+          Documents::Request.new(@order.prepare_data('OrderCreateRequest'))
         Documents::Response.new(
-          Connection.post(url, request.body, request.headers), 
-          "OrderCreateResponse"
+          Connection.post(url, request.body, request.headers),
+          'OrderCreateResponse'
         )
       else
         raise WrongOrderParameters.new(@order)
@@ -41,16 +47,20 @@ module OpenPayU
     # Updates Order status
     # - Sends to PayU OrderStatusUpdateRequest
     #
-    # @param [Hash] status_update A Hash object containing full {Models::StatusUpdate} object
-    # @return [Documents::Response] Response class object order with OrderStatusUpdateResponse
+    # @param [Hash] status_update A Hash object containing full
+    #   {Models::StatusUpdate} object
+    # @return [Documents::Response] Response class object order
+    #   with OrderStatusUpdateResponse
     # @raise [NotImplementedException] This feature is not yet implemented
     def self.status_update(status_update)
       @update = OpenPayU::Models::StatusUpdate.new status_update
-      url = Configuration.get_base_url + "order/#{@update.order_id}/status." + Configuration.data_format
-      request = Documents::Request.new(@update.prepare_data("OrderStatusUpdateRequest"))
+      url = Configuration.get_base_url + "order/#{@update.order_id}/status." +
+        Configuration.data_format
+      request =
+        Documents::Request.new(@update.prepare_data('OrderStatusUpdateRequest'))
       Documents::Response.new(
-        Connection.put(url, request.body, request.headers), 
-        "OrderStatusUpdateResponse"
+        Connection.put(url, request.body, request.headers),
+        'OrderStatusUpdateResponse'
       )
     end
 
@@ -58,40 +68,50 @@ module OpenPayU
     # - Sends to PayU OrderCancelRequest
     #
     # @param [String] order_id PayU OrderId sent back in OrderCreateResponse
-    # @return [Documents::Response] Response class object order with OrderCancelResponse
+    # @return [Documents::Response] Response class object order
+    #   with OrderCancelResponse
     def self.cancel(order_id)
-      url = Configuration.get_base_url + "order/#{order_id}." + Configuration.data_format
+      url = Configuration.get_base_url + "order/#{order_id}." +
+        Configuration.data_format
       request = Documents::Request.new(url)
       Documents::Response.new(
-        Connection.delete(url, request.body, request.headers), 
-        "OrderCancelResponse"
+        Connection.delete(url, request.body, request.headers),
+        'OrderCancelResponse'
       )
     end
 
     # Transforms OrderNotifyRequest to [Documents::Response]
     #
-    # @param [Rack::Request||ActionDispatch::Request] request object od request received from PayU
-    # @return [Documents::Response] Response class object order with OrderNotifyRequest
+    # @param [Rack::Request||ActionDispatch::Request] request object od request
+    #   received from PayU
+    # @return [Documents::Response] Response class object order
+    #   with OrderNotifyRequest
     # @raise [WrongNotifyRequest] when generated response is empty
     def self.consume_notification(request)
-      response = Documents::Response.new({response: request, request: nil}, "OrderNotifyRequest")
-      unless response.nil?
+      response = Documents::Response.new(
+        { response: request, request: nil },
+        'OrderNotifyRequest'
+      )
+      if !response.nil?
         response
       else
-        raise WrongNotifyRequest, "Invalid OrderNotifyRequest: #{request.inspect}"
+        raise(
+          WrongNotifyRequest,
+          "Invalid OrderNotifyRequest: #{request.inspect}"
+        )
       end
     end
 
     # Creates OrderNotifyResponse to send to PayU
     #
-    # @param [String] request_id value of ReqId(UUID) from OrderNotifyRequest 
+    # @param [String] request_id value of ReqId(UUID) from OrderNotifyRequest
     # @return [String] Response in XML or JSON (depends on gem configuration)
     def self.build_notify_response(request_id)
       response = Models::NotifyResponse.new({
         res_id: request_id,
-        status: { 'StatusCode' => 'SUCCESS'} 
+        status: { 'StatusCode' => 'SUCCESS' }
       })
-      response.prepare_data("OrderNotifyResponse")
+      response.prepare_data('OrderNotifyResponse')
     end
 
   end
