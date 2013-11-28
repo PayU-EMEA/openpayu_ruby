@@ -103,7 +103,6 @@ Or install it yourself as:
       ]
     }
 
-  Full description of the Order parameters you can find here #TODO: podać link
   When you have ready order Hash you can create new order:
 
     @response = OpenPayU::Order.create(order)
