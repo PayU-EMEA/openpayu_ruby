@@ -79,14 +79,18 @@ Or install it yourself as:
       total_amount: 10000,
       notify_url: "http://localhost/",
       continue_url: "http://localhost/",
-      validity_time: '48000',
       buyer: {
         email: 'dd@ddd.pl',
         phone: '123123123',
         first_name: 'Jan',
         last_name: 'Kowalski',
         language: 'pl_PL',
-        NIN: "123456"
+        delivery: {
+          street: 'street',
+          postal_code: 'postal_code',
+          city: 'city',
+          country_code: 'PL'
+        }
       },
       products: [
         {
@@ -100,7 +104,12 @@ Or install it yourself as:
           type: 'CARD_TOKEN',
           value: 'Token value'
         }
-      ]
+      ],
+      shipping_method: {
+        country: 'PL',
+        price: 'price',
+        name: 'shipping name'
+      }
     }
 
   When you have ready order Hash you can create new order:
