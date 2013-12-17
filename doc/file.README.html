@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
 <title>
   File: README
   
@@ -75,7 +75,7 @@ API ver. 2.</p>
 
 <h2 id="label-Installation">Installation</h2>
 
-<p>Add this line to your application’s Gemfile:</p>
+<p>Add this line to your application's Gemfile:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_gem'>gem</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>openpayu</span><span class='tstring_end'>'</span></span></code></pre>
 
@@ -175,12 +175,11 @@ production:
   <span class='rbracket'>]</span>
 <span class='rbrace'>}</span></code></pre>
 
-<p>Full description of the Order parameters you can find here #TODO: podać
-link  When you have ready order Hash you can create new order:</p>
+<p>When you have ready order Hash you can create new order:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='ivar'>@response</span> <span class='op'>=</span> <span class='const'>OpenPayU</span><span class='op'>::</span><span class='const'>Order</span><span class='period'>.</span><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='id identifier rubyid_order'>order</span><span class='rparen'>)</span></code></pre>
 
-<p>If request succeed to create it will return “COMPLETE” as a status_code. 
+<p>If request succeed to create it will return "COMPLETE" as a status_code. 
 There might be also a redirect to page with confirmation.  There are three
 redirect types:</p>
 <ul><li>
@@ -273,7 +272,7 @@ turned off</p>
 </div></div>
 
     <div id="footer">
-  Generated on Mon Nov 25 11:27:41 2013 by
+  Generated on Tue Dec 17 15:20:58 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.2 (ruby-1.9.3).
 </div>
