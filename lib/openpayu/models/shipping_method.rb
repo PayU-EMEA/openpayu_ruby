@@ -2,8 +2,8 @@
 module OpenPayU
   module Models
     class ShippingMethod < Model
-      attr_accessor :country, :price, :nazwa
-      validates :country, :price, :nazwa, presence: true
+      attr_accessor :country, :price, :name
+      validates :country, :price, :name, presence: true
     end
   end
 end
