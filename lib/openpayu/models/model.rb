@@ -7,7 +7,6 @@ module OpenPayU
 
       include ActiveModel::Validations
       include ActiveModel::Serializers::JSON
-      include ActiveModel::Serializers::Xml
 
       attr_accessor :all_errors
 
@@ -29,26 +28,8 @@ module OpenPayU
         prepare_keys.to_json
       end
 
-      def prepare_data(request_type)
-        if OpenPayU::Configuration.data_format == 'xml'
-          generate_xml(request_type)
-        else
-          {
-            'OpenPayU' => {
-              request_type => prepare_keys(instance_values)
-            }
-          }.to_json
-        end
-      end
-
-      def generate_xml(request_type)
-        '<?xml version="1.0" encoding="UTF-8"?>
-        <OpenPayU xmlns="http://www.openpayu.com/20/openpayu.xsd">' +
-          prepare_keys(instance_values).to_xml(
-            builder: OpenPayU::XmlBuilder.new(request_type, indent: 2),
-            root: request_type,
-            skip_types: true,
-            skip_instruct: true) + '</OpenPayU>'
+      def prepare_data
+        prepare_keys.to_json
       end
 
       def get_instance_values
@@ -59,11 +40,9 @@ module OpenPayU
 
       def prepare_keys(attrs = {}, hash = get_instance_values)
         hash.each_pair do |k, v|
-          attrs[k.camelize] =
+          attrs[k.camelize(:lower)] =
             if v.is_a? Array
-              v.map do |element|
-                { element.class.name.demodulize =>  element.prepare_keys }
-              end
+              { k.camelize(:lower) =>  v.map(&:prepare_keys) }
             elsif v.class.name =~ /OpenPayU::Models/
               v.prepare_keys
             else

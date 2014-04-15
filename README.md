@@ -23,8 +23,8 @@ Or install it yourself as:
   To configure OpenPayU environment add a file to config/initializers/openpayu.rb containing:
 
     OpenPayU::Configuration.configure do |config|
-        config.merchant_pos_id  = '8389534'
-        config.signature_key    = '95873498573498573897fb42d'
+        config.merchant_pos_id  = '145227'
+        config.signature_key    = '13a980d4f851f3d9a1cfc792fb1f5e50'
         config.algorithm        = 'MD5' # MD5, SHA-1, SHA-256
         config.service_domain   = 'payu.com'
         config.protocol         = 'https'
@@ -42,8 +42,8 @@ Or install it yourself as:
   Structure of YAML file:
 
     development:
-      merchant_pos_id: '8389534'
-      signature_key: 95873498573498573897fb42d
+      merchant_pos_id: '145227'
+      signature_key: 13a980d4f851f3d9a1cfc792fb1f5e50
       algorithm: MD5 # MD5, SHA-1, SHA-256
       service_domain: payu.com
       protocol: https
@@ -53,8 +53,8 @@ Or install it yourself as:
       notify_url: http://localhost/notify
       continue_url: http://localhost/success
     production:
-      merchant_pos_id: '8389534'
-      signature_key: 95873498573498573897fb42d
+      merchant_pos_id: '145227'
+      signature_key: 13a980d4f851f3d9a1cfc792fb1f5e50
       algorithm: MD5 # MD5, SHA-1, SHA-256
       service_domain: payu.com
       protocol: https
@@ -70,7 +70,7 @@ Or install it yourself as:
   To create an order you must provide a Hash with order:
 
     order = {
-      merchant_pos_id: "8389534",
+      merchant_pos_id: "145227",
       customer_ip: "127.0.0.1", # You can user request.remote_ip in your controller
       ext_order_id: 1342, #Order id in your system
       order_url: "http://localhost/",

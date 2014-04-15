@@ -2,17 +2,17 @@
 http_interactions:
 - request:
     method: delete
-    uri: http://platnosci-dev5.dc2/api/v2/order/28161ZT5TF131121GUEST000P01.json
+    uri: https://145227:13a980d4f851f3d9a1cfc792fb1f5e50@secure.payu.com/api/v2/orders/VQWQ6XMVKR140415GUEST000P01
     body:
       encoding: US-ASCII
       string: ''
     headers:
-      openpayu-signature:
-      - sender=45654;signature=69c369ae89fba8f8183f6534a1410b1b;algorithm=MD5
       accept:
       - ! '*/*'
       user-agent:
       - Ruby
+      authorization:
+      - Basic MTQ1MjI3OjEzYTk4MGQ0Zjg1MWYzZDlhMWNmYzc5MmZiMWY1ZTUw
       content-type:
       - application/json
   response:
@@ -20,31 +20,22 @@ http_interactions:
       code: 200
       message: OK
     headers:
-      date:
-      - Thu, 21 Nov 2013 14:32:35 GMT
       server:
-      - Apache/2.2.17 (Unix) DAV/2 mod_ssl/2.2.17 OpenSSL/1.0.0c mod_jk/1.2.31 PHP/5.3.5
-        mod_apreq2-20090110/2.7.1 mod_perl/2.0.4 Perl/v5.10.1
-      openpayu-signature:
-      - signature=06227acee76617a610039a273faed13f;algorithm=MD5;sender=checkout;content=DOCUMENT;
-      x-openpayu-signature:
-      - signature=06227acee76617a610039a273faed13f;algorithm=MD5;sender=checkout;content=DOCUMENT;
-      content-language:
-      - pl
-      content-length:
-      - '166'
-      set-cookie:
-      - payu_persistent=mobile_agent-false#; Expires=Sun, 16-Nov-2014 14:32:35 GMT;
-        Path=/
-      - CSESSIONID=90F64A8F648CF038A543C0A68BDD3804.01; Path=/pl/standard/co
+      - nginx
+      date:
+      - Tue, 15 Apr 2014 14:12:28 GMT
+      content-type:
+      - application/json
+      transfer-encoding:
+      - chunked
       connection:
       - close
-      content-type:
-      - application/json;charset=UTF-8
+      expires:
+      - '-1'
     body:
       encoding: US-ASCII
-      string: ! '{"OpenPayU":{"OrderCancelResponse":{"Status":{"StatusCode":"SUCCESS","StatusDesc":"Request
-        successful"},"ExtOrderId":"1342","OrderId":"28161ZT5TF131121GUEST000P01"}}}'
+      string: ! '{"extOrderId":"1342","orderId":"VQWQ6XMVKR140415GUEST000P01","status":{"code":null,"statusCode":"SUCCESS","severity":null,"statusDesc":"Request
+        processing successful","codeLiteral":null,"location":null},"version":"2.0","redirectUri":null,"resId":null,"properties":null}'
     http_version: '1.1'
-  recorded_at: Thu, 21 Nov 2013 14:32:35 GMT
+  recorded_at: Tue, 15 Apr 2014 14:12:28 GMT
 recorded_with: VCR 2.6.0

@@ -15,12 +15,12 @@ end
 RSpec.configure do |config|
   config.before(:all) do
     OpenPayU::Configuration.configure do |cfg|
-      cfg.env              = 'platnosci-dev5'
-      cfg.merchant_pos_id  = '45654'
-      cfg.signature_key    = '981852826b1f62fb24e1771e878fb42d'
+      cfg.env              = 'secure'
+      cfg.merchant_pos_id  = '145227'
+      cfg.signature_key    = '13a980d4f851f3d9a1cfc792fb1f5e50'
       cfg.algorithm        = 'MD5'
-      cfg.service_domain   = 'dc2'
-      cfg.protocol         = 'http'
+      cfg.service_domain   = 'payu.com'
+      cfg.protocol         = 'https'
       cfg.data_format      = 'json'
     end
   end

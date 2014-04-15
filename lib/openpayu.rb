@@ -1,5 +1,4 @@
 # -*- encoding : utf-8 -*-
-require_relative 'openpayu/xml_builder'
 require_relative 'openpayu/version'
 require_relative 'openpayu/configuration'
 require_relative 'openpayu/connection'

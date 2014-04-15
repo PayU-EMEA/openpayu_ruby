@@ -2,17 +2,17 @@
 http_interactions:
 - request:
     method: get
-    uri: http://platnosci-dev5.dc2/api/v2/order/28161ZT5TF131121GUEST000P01.json
+    uri: https://145227:13a980d4f851f3d9a1cfc792fb1f5e50@secure.payu.com/api/v2/orders/VQWQ6XMVKR140415GUEST000P01
     body:
       encoding: US-ASCII
       string: ''
     headers:
-      openpayu-signature:
-      - sender=45654;signature=69c369ae89fba8f8183f6534a1410b1b;algorithm=MD5
       accept:
       - ! '*/*'
       user-agent:
       - Ruby
+      authorization:
+      - Basic MTQ1MjI3OjEzYTk4MGQ0Zjg1MWYzZDlhMWNmYzc5MmZiMWY1ZTUw
       content-type:
       - application/json
   response:
@@ -20,32 +20,23 @@ http_interactions:
       code: 200
       message: OK
     headers:
-      date:
-      - Thu, 21 Nov 2013 14:32:35 GMT
       server:
-      - Apache/2.2.17 (Unix) DAV/2 mod_ssl/2.2.17 OpenSSL/1.0.0c mod_jk/1.2.31 PHP/5.3.5
-        mod_apreq2-20090110/2.7.1 mod_perl/2.0.4 Perl/v5.10.1
-      openpayu-signature:
-      - signature=7bd43e0b99c03a76aca60c7896bce9cf;algorithm=MD5;sender=checkout;content=DOCUMENT;
-      x-openpayu-signature:
-      - signature=7bd43e0b99c03a76aca60c7896bce9cf;algorithm=MD5;sender=checkout;content=DOCUMENT;
-      content-language:
-      - pl
-      content-length:
-      - '550'
-      set-cookie:
-      - payu_persistent=mobile_agent-false#; Expires=Sun, 16-Nov-2014 14:32:35 GMT;
-        Path=/
-      - CSESSIONID=699C5F1B2B7FA87764F99990BDA185EF.01; Path=/pl/standard/co
+      - nginx
+      date:
+      - Tue, 15 Apr 2014 14:12:28 GMT
+      content-type:
+      - application/json
+      transfer-encoding:
+      - chunked
       connection:
       - close
-      content-type:
-      - application/json;charset=UTF-8
+      expires:
+      - '-1'
     body:
       encoding: US-ASCII
-      string: ! '{"OpenPayU":{"OrderRetrieveResponse":{"Status":{"StatusCode":"SUCCESS","StatusDesc":"Request
-        processed successfully."},"Orders":{"Order":{"ExtOrderId":"1342","Description":"New
-        order","Products":{"Product":{"Name":"Mouse","Quantity":"1","UnitPrice":"10000"}},"OrderId":"28161ZT5TF131121GUEST000P01","CurrencyCode":"PLN","CustomerIp":"127.0.0.1","Status":"PENDING","NotifyUrl":"http://localhost/","ValidityTime":"48000","MerchantPosId":"45654","OrderCreateDate":"2013-11-21T15:32:34.067+01:00","OrderUrl":"http://localhost/","TotalAmount":"10000"}}}}}'
+      string: ! '{"orders":{"orders":[{"shippingMethod":null,"status":"COMPLETED","payMethod":{"currencyCode":null,"amount":null,"card":null,"extPayMethodId":null,"value":null,"type":"PBL"},"notifyUrl":"http://localhost/","customerIp":"127.0.0.1","extOrderId":"1342","totalAmount":100,"buyer":{"invoice":null,"phone":"123123123","delivery":null,"billing":null,"customerId":"guest","extCustomerId":null,"email":"dd@ddd.pl","firstName":"Jan","lastName":"Kowalski","nin":null,"language":"PL"},"description":"New
+        order","currencyCode":"PLN","fee":null,"merchantPosId":"145227","orderCreateDate":1397553548700,"orderUrl":"http://localhost/","products":{"products":[{"categoryName":null,"subMerchantId":null,"categoryId":null,"discount":null,"unitPrice":100,"extraInfo":null,"weight":null,"version":null,"code":null,"quantity":1,"name":"Mouse","size":null}]},"validityTime":48000,"orderId":"VQWQ6XMVKR140415GUEST000P01"}]},"pageResponse":null,"status":{"code":null,"statusCode":"SUCCESS","severity":null,"statusDesc":"Request
+        processing successful","codeLiteral":null,"location":null},"version":"2.0","redirectUri":null,"resId":null,"properties":{"properties":[{"name":"PAYMENT_ID","value":"416204376"}]}}'
     http_version: '1.1'
-  recorded_at: Thu, 21 Nov 2013 14:32:35 GMT
+  recorded_at: Tue, 15 Apr 2014 14:12:28 GMT
 recorded_with: VCR 2.6.0

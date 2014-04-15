@@ -37,9 +37,9 @@ module OpenPayU
         raise EmptyResponseError,
               "Got empty response from request: #{@request.try(:body)}"
       end
-      if (@message_name == 'OrderNotifyRequest' ||
-          %w(200 201 422 302).include?(response.code)) &&
-          verify_signature(@body)
+      if ( response.is_a?(OpenPayU::Documents::Request) ||
+        %w(200 201 422 302).include?(response.code)) 
+          # verify_signature(@body)
         true
       else
         raise HttpStatusException,
