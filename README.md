@@ -183,6 +183,7 @@ end
 
 ##Changelog
   0.1.2
+  
   * Gem adjusted to OpenPayU REST API v 2.0 
   * Communication with OpenPayU only in JSON format, XML is no longer supported
 
