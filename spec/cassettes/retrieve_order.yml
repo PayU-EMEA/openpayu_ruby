@@ -2,17 +2,17 @@
 http_interactions:
 - request:
     method: get
-    uri: https://145227:13a980d4f851f3d9a1cfc792fb1f5e50@secure.payu.com/api/v2/orders/VQWQ6XMVKR140415GUEST000P01
+    uri: https://114207:1f9fd7298097b9414db5d1bfd1204d20@secure.payu.com/api/v2/orders/MHQ3MRZKSQ140528GUEST000P01
     body:
       encoding: US-ASCII
       string: ''
     headers:
       accept:
-      - ! '*/*'
+      - '*/*'
       user-agent:
       - Ruby
       authorization:
-      - Basic MTQ1MjI3OjEzYTk4MGQ0Zjg1MWYzZDlhMWNmYzc5MmZiMWY1ZTUw
+      - Basic MTE0MjA3OjFmOWZkNzI5ODA5N2I5NDE0ZGI1ZDFiZmQxMjA0ZDIw
       content-type:
       - application/json
   response:
@@ -23,7 +23,7 @@ http_interactions:
       server:
       - nginx
       date:
-      - Tue, 15 Apr 2014 14:12:28 GMT
+      - Wed, 28 May 2014 08:26:32 GMT
       content-type:
       - application/json
       transfer-encoding:
@@ -34,9 +34,9 @@ http_interactions:
       - '-1'
     body:
       encoding: US-ASCII
-      string: ! '{"orders":{"orders":[{"shippingMethod":null,"status":"COMPLETED","payMethod":{"currencyCode":null,"amount":null,"card":null,"extPayMethodId":null,"value":null,"type":"PBL"},"notifyUrl":"http://localhost/","customerIp":"127.0.0.1","extOrderId":"1342","totalAmount":100,"buyer":{"invoice":null,"phone":"123123123","delivery":null,"billing":null,"customerId":"guest","extCustomerId":null,"email":"dd@ddd.pl","firstName":"Jan","lastName":"Kowalski","nin":null,"language":"PL"},"description":"New
-        order","currencyCode":"PLN","fee":null,"merchantPosId":"145227","orderCreateDate":1397553548700,"orderUrl":"http://localhost/","products":{"products":[{"categoryName":null,"subMerchantId":null,"categoryId":null,"discount":null,"unitPrice":100,"extraInfo":null,"weight":null,"version":null,"code":null,"quantity":1,"name":"Mouse","size":null}]},"validityTime":48000,"orderId":"VQWQ6XMVKR140415GUEST000P01"}]},"pageResponse":null,"status":{"code":null,"statusCode":"SUCCESS","severity":null,"statusDesc":"Request
-        processing successful","codeLiteral":null,"location":null},"version":"2.0","redirectUri":null,"resId":null,"properties":{"properties":[{"name":"PAYMENT_ID","value":"416204376"}]}}'
+      string: '{"pageResponse":null,"orders":{"orders":[{"shippingMethod":null,"description":"New
+        order","fee":null,"status":"NEW","merchantPosId":"114207","notifyUrl":"http://localhost/","customerIp":"127.0.0.1","extOrderId":"1342","totalAmount":100,"buyer":null,"orderCreateDate":1401265500678,"orderUrl":"http://localhost/","validityTime":48000,"payMethod":null,"products":{"products":[{"version":null,"code":null,"subMerchantId":null,"categoryId":null,"categoryName":null,"quantity":1,"unitPrice":100,"extraInfo":null,"weight":null,"discount":null,"name":"Mouse","size":null}]},"currencyCode":"PLN","orderId":"MHQ3MRZKSQ140528GUEST000P01"}]},"version":"2.0","redirectUri":null,"status":{"code":null,"codeLiteral":null,"statusCode":"SUCCESS","statusDesc":"Request
+        processing successful","severity":null,"location":null},"resId":null,"properties":null}'
     http_version: '1.1'
-  recorded_at: Tue, 15 Apr 2014 14:12:28 GMT
-recorded_with: VCR 2.6.0
+  recorded_at: Wed, 28 May 2014 08:26:32 GMT
+recorded_with: VCR 2.9.2

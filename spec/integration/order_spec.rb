@@ -19,7 +19,7 @@ describe 'Create transparent order' do
     context 'Retrieve order' do
       before(:all) do
         VCR.use_cassette('retrieve_order') do
-          @response = OpenPayU::Order.retrieve("VQWQ6XMVKR140415GUEST000P01")
+          @response = OpenPayU::Order.retrieve("MHQ3MRZKSQ140528GUEST000P01")
         end
       end
       it { @response.response.code.should eq '200' }
@@ -51,21 +51,20 @@ describe 'Create transparent order' do
     #   it { @refund.refund['status'].should eq 'INIT' }
     # end
 
-    # context 'update order' do
-    #   before(:all) do
-    #     status_update = {
-    #       order_id: "X8S522HCDS140415GUEST000P01",
-    #       order_status: 'COMPLETED'
-    #     }
-    #     # VCR.use_cassette('update_order') do
-    #       @response = OpenPayU::Order.status_update(status_update)
-    #       pp @retrieve_response
-    #     # end
-    #   end
-    #   it { @response.response.code.should eq '200' }
-    #   it { @response.status['status_code'].should eq 'SUCCESS' }
-    #   it { @response.status['status_desc'].should eq 'Request successful' }
-    # end
+    context 'update order' do
+      before(:all) do
+        status_update = {
+          order_id: "NJZFFJ82D2140528GUEST000P01",
+          order_status: 'COMPLETED'
+        }
+        VCR.use_cassette('update_order') do
+          @response = OpenPayU::Order.status_update(status_update)
+        end
+      end
+      it { @response.response.code.should eq '200' }
+      it { @response.status['status_code'].should eq 'SUCCESS' }
+      it { @response.status['status_desc'].should eq 'Status was updated' }
+    end
 
     context 'cancel order' do
       before(:all) do

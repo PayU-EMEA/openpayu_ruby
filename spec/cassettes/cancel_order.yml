@@ -2,17 +2,17 @@
 http_interactions:
 - request:
     method: delete
-    uri: https://145227:13a980d4f851f3d9a1cfc792fb1f5e50@secure.payu.com/api/v2/orders/VQWQ6XMVKR140415GUEST000P01
+    uri: https://114207:1f9fd7298097b9414db5d1bfd1204d20@secure.payu.com/api/v2/orders/VQWQ6XMVKR140415GUEST000P01
     body:
       encoding: US-ASCII
       string: ''
     headers:
       accept:
-      - ! '*/*'
+      - '*/*'
       user-agent:
       - Ruby
       authorization:
-      - Basic MTQ1MjI3OjEzYTk4MGQ0Zjg1MWYzZDlhMWNmYzc5MmZiMWY1ZTUw
+      - Basic MTE0MjA3OjFmOWZkNzI5ODA5N2I5NDE0ZGI1ZDFiZmQxMjA0ZDIw
       content-type:
       - application/json
   response:
@@ -23,7 +23,7 @@ http_interactions:
       server:
       - nginx
       date:
-      - Tue, 15 Apr 2014 14:12:28 GMT
+      - Wed, 28 May 2014 08:25:01 GMT
       content-type:
       - application/json
       transfer-encoding:
@@ -34,8 +34,8 @@ http_interactions:
       - '-1'
     body:
       encoding: US-ASCII
-      string: ! '{"extOrderId":"1342","orderId":"VQWQ6XMVKR140415GUEST000P01","status":{"code":null,"statusCode":"SUCCESS","severity":null,"statusDesc":"Request
-        processing successful","codeLiteral":null,"location":null},"version":"2.0","redirectUri":null,"resId":null,"properties":null}'
+      string: '{"extOrderId":"1342","orderId":"VQWQ6XMVKR140415GUEST000P01","version":"2.0","redirectUri":null,"status":{"code":null,"codeLiteral":null,"statusCode":"SUCCESS","statusDesc":"Request
+        processing successful","severity":null,"location":null},"resId":null,"properties":null}'
     http_version: '1.1'
-  recorded_at: Tue, 15 Apr 2014 14:12:28 GMT
-recorded_with: VCR 2.6.0
+  recorded_at: Wed, 28 May 2014 08:25:01 GMT
+recorded_with: VCR 2.9.2

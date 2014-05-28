@@ -2,18 +2,18 @@
 http_interactions:
 - request:
     method: post
-    uri: https://145227:13a980d4f851f3d9a1cfc792fb1f5e50@secure.payu.com/api/v2/orders
+    uri: https://114207:1f9fd7298097b9414db5d1bfd1204d20@secure.payu.com/api/v2/orders
     body:
-      encoding: US-ASCII
-      string: ! '{"merchantPosId":"145227","customerIp":"127.0.0.1","extOrderId":1342,"orderUrl":"http://localhost/","description":"New
-        order","currencyCode":"PLN","totalAmount":100,"notifyUrl":"http://localhost/","continueUrl":"http://localhost/","validityTime":"48000","buyer":{"email":"dd@ddd.pl","phone":"123123123","firstName":"Jan","lastName":"Kowalski"},"products":{"products":[{"name":"Mouse","unitPrice":100,"quantity":1}]},"reqId":"{48cf7f05-d303-4266-bba9-ef68b9952a51}"}'
+      encoding: UTF-8
+      string: '{"currencyCode":"PLN","validityTime":"48000","reqId":"{4911fcac-8702-4d77-8fa6-da2af7a064cc}","merchantPosId":"114207","continueUrl":"http://localhost/","buyer":{"lastName":"Kowalski","email":"dd@ddd.pl","firstName":"Jan","phone":"123123123"},"totalAmount":100,"notifyUrl":"http://localhost/","products":{"products":[{"name":"Mouse","quantity":1,"unitPrice":100}]},"orderUrl":"http://localhost/","extOrderId":1342,"customerIp":"127.0.0.1","description":"New
+        order"}'
     headers:
       accept:
-      - ! '*/*'
+      - '*/*'
       user-agent:
       - Ruby
       authorization:
-      - Basic MTQ1MjI3OjEzYTk4MGQ0Zjg1MWYzZDlhMWNmYzc5MmZiMWY1ZTUw
+      - Basic MTE0MjA3OjFmOWZkNzI5ODA5N2I5NDE0ZGI1ZDFiZmQxMjA0ZDIw
       content-type:
       - application/json
   response:
@@ -24,7 +24,7 @@ http_interactions:
       server:
       - nginx
       date:
-      - Tue, 15 Apr 2014 14:12:27 GMT
+      - Wed, 28 May 2014 12:21:23 GMT
       content-type:
       - application/json
       transfer-encoding:
@@ -35,7 +35,7 @@ http_interactions:
       - '-1'
     body:
       encoding: US-ASCII
-      string: ! '{"orderId":"G3J325KKLF140415GUEST000P01","extOrderId":"1342","payMethods":null,"redirectUri":"https://secure.payu.com/pl/standard/co/dot/authenticate/anonymous?sessionId=1342176&merchantPosId=145227","resId":null,"version":"2.0","properties":null,"status":{"severity":null,"statusCode":"SUCCESS","statusDesc":null,"codeLiteral":null,"code":null,"location":null}}'
+      string: '{"extOrderId":"1342","orderId":"NJZFFJ82D2140528GUEST000P01","payMethods":null,"version":"2.0","redirectUri":"https://secure.payu.com/pl/standard/co/dot/authenticate/anonymous?sessionId=13423&merchantPosId=114207","status":{"code":null,"codeLiteral":null,"statusCode":"SUCCESS","statusDesc":null,"severity":null,"location":null},"resId":null,"properties":null}'
     http_version: '1.1'
-  recorded_at: Tue, 15 Apr 2014 14:12:27 GMT
-recorded_with: VCR 2.6.0
+  recorded_at: Wed, 28 May 2014 12:21:23 GMT
+recorded_with: VCR 2.9.2

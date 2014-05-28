@@ -8,7 +8,7 @@ describe OpenPayU do
       'CompleteUrl' => 'http://localhost/complete'
     }
     OpenPayU.sign_form(form).should eq(
-      'sender=145227;signature=0ed9664e79d56de68ea991f3ec7bd53f;algorithm=MD5'
+      'sender=114207;signature=e83176051ce82949552bb787c6c16385;algorithm=MD5'
       )
   end
 
