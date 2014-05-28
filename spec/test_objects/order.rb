@@ -26,13 +26,7 @@ module  TestObject
               unit_price: 100,
               quantity: 1
             }
-        ]#,
-        # pay_methods: [
-        #   {
-        #     type: 'CARD_TOKEN',
-        #     value: 'TOK_1HPPNU4HIOWT180pPDWhuhAmM3ym',
-        #   }
-        # ]
+        ]
       }
     end
 

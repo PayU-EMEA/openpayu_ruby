@@ -2,7 +2,6 @@
 require 'spec_helper'
 
 describe 'Create transparent order' do
-  OpenPayU::Configuration.data_format = 'json'
   context "run with data format #{OpenPayU::Configuration.data_format}" do
     before(:all) do
       order = TestObject::Order.valid_order

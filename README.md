@@ -27,7 +27,6 @@ Or install it yourself as:
         config.algorithm        = 'MD5' # MD5, SHA-1, SHA-256
         config.service_domain   = 'payu.com'
         config.protocol         = 'https'
-        config.data_format      = 'json' # json, xml
         config.env              = 'secure'
         config.order_url        = 'http://localhost/order'
         config.notify_url       = 'http://localhost/notify'
@@ -46,7 +45,6 @@ Or install it yourself as:
       algorithm: MD5 # MD5, SHA-1, SHA-256
       service_domain: payu.com
       protocol: https
-      data_format: json # json, xml
       env: secure
       order_url: http://localhost/order
       notify_url: http://localhost/notify
@@ -57,7 +55,6 @@ Or install it yourself as:
       algorithm: MD5 # MD5, SHA-1, SHA-256
       service_domain: payu.com
       protocol: https
-      data_format: json # json, xml
       env: secure
       order_url: http://localhost/order
       notify_url: http://localhost/notify
@@ -97,12 +94,6 @@ Or install it yourself as:
           name: 'Mouse',
           unit_price: 10000,
           quantity: 1
-        }
-      ],
-      pay_methods: [
-        {
-          type: 'CARD_TOKEN',
-          value: 'Token value'
         }
       ],
       shipping_method: {
