@@ -66,6 +66,7 @@ Or install it yourself as:
 ##Usage
 
 ###Creating Transparent order
+  For more information about order please refer to: http://developers.payu.com/pl/restapi.html#payusdk_creating_new_order_api
   To create an order you must provide a Hash with order:
 
     order = {
