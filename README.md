@@ -1,4 +1,3 @@
-[![Build Status](https://magnum.travis-ci.com/PayU/openpayu_ruby.png?token=sqp5QvsmzqEqtVB3sNsK&branch=master)](https://magnum.travis-ci.com/PayU/openpayu_ruby)
 [![Code Climate](https://codeclimate.com/repos/524eb044f3ea00329815dff1/badges/885c2d52f25c02295344/gpa.png)](https://codeclimate.com/repos/524eb044f3ea00329815dff1/feed)
 
 # OpenPayU Ruby
