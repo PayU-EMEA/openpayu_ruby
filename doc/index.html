@@ -6,7 +6,7 @@
 <title>
   File: README
   
-    &mdash; Documentation by YARD 0.8.7.2
+    &mdash; Documentation by YARD 0.8.7.4
   
 </title>
 
@@ -17,7 +17,7 @@
 <script type="text/javascript" charset="utf-8">
   hasFrames = window.top.frames.main ? true : false;
   relpath = '';
-  framesUrl = "frames.html#!" + escape(window.location.href);
+  framesUrl = "frames.html#!file.README.html";
 </script>
 
 
@@ -62,13 +62,10 @@
     <iframe id="search_frame"></iframe>
 
     <div id="content"><div id='filecontents'>
-<p><a
-href="https://magnum.travis-ci.com/PayU/openpayu_ruby_sdk.png?token=sqp5QvsmzqEqtVB3sNsK&branch=master">{Build
-Status</a>] <img
-src="https://codeclimate.com/repos/524eb044f3ea00329815dff1/badges/885c2d52f25c02295344/gpa.png"
-/>]</p>
+<p><a href="https://codeclimate.com/repos/524eb044f3ea00329815dff1/feed"><img
+src="https://codeclimate.com/repos/524eb044f3ea00329815dff1/badges/885c2d52f25c02295344/gpa.png"></a></p>
 
-<h1 id="label-OpenpayuSdkRuby">OpenpayuSdkRuby</h1>
+<h1 id="label-OpenPayU+Ruby">OpenPayU Ruby</h1>
 
 <p>The OpenPayU Ruby library provides integration access to the PayU Gateway
 API ver. 2.</p>
@@ -93,13 +90,12 @@ API ver. 2.</p>
 config/initializers/openpayu.rb containing:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='const'>OpenPayU</span><span class='op'>::</span><span class='const'>Configuration</span><span class='period'>.</span><span class='id identifier rubyid_configure'>configure</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_config'>config</span><span class='op'>|</span>
-    <span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_merchant_pos_id'>merchant_pos_id</span>  <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>8389534</span><span class='tstring_end'>'</span></span>
-    <span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_signature_key'>signature_key</span>    <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>95873498573498573897fb42d</span><span class='tstring_end'>'</span></span>
+    <span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_merchant_pos_id'>merchant_pos_id</span>  <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>145227</span><span class='tstring_end'>'</span></span>
+    <span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_signature_key'>signature_key</span>    <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>13a980d4f851f3d9a1cfc792fb1f5e50</span><span class='tstring_end'>'</span></span>
     <span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_algorithm'>algorithm</span>        <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>MD5</span><span class='tstring_end'>'</span></span> <span class='comment'># MD5, SHA-1, SHA-256
 </span>    <span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_service_domain'>service_domain</span>   <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>payu.com</span><span class='tstring_end'>'</span></span>
     <span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_protocol'>protocol</span>         <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>https</span><span class='tstring_end'>'</span></span>
-    <span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_data_format'>data_format</span>      <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>json</span><span class='tstring_end'>'</span></span> <span class='comment'># json, xml
-</span>    <span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_env'>env</span>              <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>secure</span><span class='tstring_end'>'</span></span>
+    <span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_env'>env</span>              <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>secure</span><span class='tstring_end'>'</span></span>
     <span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_order_url'>order_url</span>        <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>http://localhost/order</span><span class='tstring_end'>'</span></span>
     <span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_notify_url'>notify_url</span>       <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>http://localhost/notify</span><span class='tstring_end'>'</span></span>
     <span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_continue_url'>continue_url</span>     <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>http://localhost/success</span><span class='tstring_end'>'</span></span>
@@ -113,23 +109,21 @@ config/initializers/openpayu.rb containing:</p>
 <p>Structure of YAML file:</p>
 
 <pre class="code ruby"><code class="ruby">development:
-  merchant_pos_id: '8389534'
-  signature_key: 95873498573498573897fb42d
+  merchant_pos_id: '145227'
+  signature_key: 13a980d4f851f3d9a1cfc792fb1f5e50
   algorithm: MD5 # MD5, SHA-1, SHA-256
   service_domain: payu.com
   protocol: https
-  data_format: json # json, xml
   env: secure
   order_url: http://localhost/order
   notify_url: http://localhost/notify
   continue_url: http://localhost/success
 production:
-  merchant_pos_id: '8389534'
-  signature_key: 95873498573498573897fb42d
+  merchant_pos_id: '145227'
+  signature_key: 13a980d4f851f3d9a1cfc792fb1f5e50
   algorithm: MD5 # MD5, SHA-1, SHA-256
   service_domain: payu.com
   protocol: https
-  data_format: json # json, xml
   env: secure
   order_url: http://localhost/order
   notify_url: http://localhost/notify
@@ -139,10 +133,12 @@ production:
 
 <h3 id="label-Creating+Transparent+order">Creating Transparent order</h3>
 
-<p>To create an order you must provide a Hash with order:</p>
+<p>For more information about order please refer to: <a
+href="http://developers.payu.com/pl/restapi.html#payusdk_creating_new_order_api">developers.payu.com/pl/restapi.html#payusdk_creating_new_order_api</a>
+.  To create an order you must provide a Hash with order:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_order'>order</span> <span class='op'>=</span> <span class='lbrace'>{</span>
-  <span class='label'>merchant_pos_id:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>8389534</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>merchant_pos_id:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>145227</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
   <span class='label'>customer_ip:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>127.0.0.1</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># You can user request.remote_ip in your controller
 </span>  <span class='label'>ext_order_id:</span> <span class='int'>1342</span><span class='comma'>,</span> <span class='comment'>#Order id in your system
 </span>  <span class='label'>order_url:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>http://localhost/</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
@@ -151,14 +147,18 @@ production:
   <span class='label'>total_amount:</span> <span class='int'>10000</span><span class='comma'>,</span>
   <span class='label'>notify_url:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>http://localhost/</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
   <span class='label'>continue_url:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>http://localhost/</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
-  <span class='label'>validity_time:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>48000</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
   <span class='label'>buyer:</span> <span class='lbrace'>{</span>
     <span class='label'>email:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>dd@ddd.pl</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
     <span class='label'>phone:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>123123123</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
     <span class='label'>first_name:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Jan</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
     <span class='label'>last_name:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Kowalski</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
     <span class='label'>language:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pl_PL</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
-    <span class='label'>NIN:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>123456</span><span class='tstring_end'>&quot;</span></span>
+    <span class='label'>delivery:</span> <span class='lbrace'>{</span>
+      <span class='label'>street:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>street</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+      <span class='label'>postal_code:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>postal_code</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+      <span class='label'>city:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>city</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+      <span class='label'>country_code:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>PL</span><span class='tstring_end'>'</span></span>
+    <span class='rbrace'>}</span>
   <span class='rbrace'>}</span><span class='comma'>,</span>
   <span class='label'>products:</span> <span class='lbracket'>[</span>
     <span class='lbrace'>{</span>
@@ -167,12 +167,11 @@ production:
       <span class='label'>quantity:</span> <span class='int'>1</span>
     <span class='rbrace'>}</span>
   <span class='rbracket'>]</span><span class='comma'>,</span>
-  <span class='label'>pay_methods:</span> <span class='lbracket'>[</span>
-    <span class='lbrace'>{</span>
-      <span class='label'>type:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>CARD_TOKEN</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
-      <span class='label'>value:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Token value</span><span class='tstring_end'>'</span></span>
-    <span class='rbrace'>}</span>
-  <span class='rbracket'>]</span>
+  <span class='label'>shipping_method:</span> <span class='lbrace'>{</span>
+    <span class='label'>country:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>PL</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+    <span class='label'>price:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>price</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+    <span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>shipping name</span><span class='tstring_end'>'</span></span>
+  <span class='rbrace'>}</span>
 <span class='rbrace'>}</span></code></pre>
 
 <p>When you have ready order Hash you can create new order:</p>
@@ -257,6 +256,15 @@ turned off</p>
 </span>  <span class='label'>currency_code:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>PLN</span><span class='tstring_end'>&quot;</span></span> <span class='comment'>#optional
 </span><span class='rbrace'>}</span><span class='rparen'>)</span></code></pre>
 
+<h2 id="label-Changelog">Changelog</h2>
+
+<p>0.1.2</p>
+<ul><li>
+<p>Gem adjusted to OpenPayU REST API v 2.0</p>
+</li><li>
+<p>Communication with OpenPayU only in JSON format, XML is no longer supported</p>
+</li></ul>
+
 <h2 id="label-Contributing">Contributing</h2>
 <ol><li>
 <p>Fork it</p>
@@ -272,9 +280,9 @@ turned off</p>
 </div></div>
 
     <div id="footer">
-  Generated on Tue Dec 17 15:20:58 2013 by
+  Generated on Thu May 29 15:13:56 2014 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.7.2 (ruby-1.9.3).
+  0.8.7.4 (ruby-1.9.3).
 </div>
 
   </body>

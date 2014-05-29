@@ -1,0 +1,41 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://114207:1f9fd7298097b9414db5d1bfd1204d20@secure.payu.com/api/v2/orders/NJZFFJ82D2140528GUEST000P01/status
+    body:
+      encoding: UTF-8
+      string: '{"orderStatus":"COMPLETED","orderId":"NJZFFJ82D2140528GUEST000P01"}'
+    headers:
+      accept:
+      - '*/*'
+      user-agent:
+      - Ruby
+      authorization:
+      - Basic MTE0MjA3OjFmOWZkNzI5ODA5N2I5NDE0ZGI1ZDFiZmQxMjA0ZDIw
+      content-type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      server:
+      - nginx
+      date:
+      - Wed, 28 May 2014 12:23:18 GMT
+      content-type:
+      - application/json
+      transfer-encoding:
+      - chunked
+      connection:
+      - close
+      expires:
+      - '-1'
+    body:
+      encoding: US-ASCII
+      string: '{"version":"2.0","redirectUri":null,"status":{"code":null,"codeLiteral":null,"statusCode":"SUCCESS","statusDesc":"Status
+        was updated","severity":null,"location":null},"resId":null,"properties":null}'
+    http_version: '1.1'
+  recorded_at: Wed, 28 May 2014 12:23:18 GMT
+recorded_with: VCR 2.9.2

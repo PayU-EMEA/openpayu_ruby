@@ -47,41 +47,6 @@ module OpenPayU
       end
     end
 
-    def verify_signature(message)
-      signature = parse_signature
-      generated_signature = generate_signature(
-        message,
-        signature['algorithm'],
-        OpenPayU::Configuration.signature_key
-      )
-      if generated_signature == signature['signature']
-        true
-      else
-        raise WrongSignatureException,
-              "Invalid signature: Got message signed with:
-              #{signature["signature"]}. Generated signature:
-              #{generated_signature}"
-      end
-
-    end
-
-    def parse_signature
-      parameters = {}
-      get_signature.split(';').each do |parameter|
-        k, v = parameter.split('=')
-        parameters[k] = v
-      end
-      parameters
-    end
-
-    def get_signature
-      @response['X-OpenPayU-Signature'] ||
-      @response['x-openpayu-signature'] ||
-      @response['openpayu-signature'] ||
-      @response.headers['x-openpayu-signature'] ||
-      @response.headers['openpayu-signature']
-    end
-
     def underscore_keys(hash)
       deep_transform_keys(hash) { |key| key.underscore }
     end
