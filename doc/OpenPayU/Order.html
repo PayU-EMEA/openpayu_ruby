@@ -6,7 +6,7 @@
 <title>
   Class: OpenPayU::Order
   
-    &mdash; Documentation by YARD 0.8.7.2
+    &mdash; Documentation by YARD 0.8.7.4
   
 </title>
 
@@ -17,7 +17,7 @@
 <script type="text/javascript" charset="utf-8">
   hasFrames = window.top.frames.main ? true : false;
   relpath = '../';
-  framesUrl = "../frames.html#!" + escape(window.location.href);
+  framesUrl = "../frames.html#!OpenPayU/Order.html";
 </script>
 
 
@@ -342,23 +342,23 @@
       <pre class="lines">
 
 
-109
-110
-111
-112
-113
-114
-115</pre>
+91
+92
+93
+94
+95
+96
+97</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/openpayu/order.rb', line 109</span>
+      <pre class="code"><span class="info file"># File 'lib/openpayu/order.rb', line 91</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_build_notify_response'>build_notify_response</span><span class='lparen'>(</span><span class='id identifier rubyid_request_id'>request_id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='const'>Models</span><span class='op'>::</span><span class='const'>NotifyResponse</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='lbrace'>{</span>
     <span class='label'>res_id:</span> <span class='id identifier rubyid_request_id'>request_id</span><span class='comma'>,</span>
-    <span class='label'>status:</span> <span class='lbrace'>{</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>StatusCode</span><span class='tstring_end'>'</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>SUCCESS</span><span class='tstring_end'>'</span></span> <span class='rbrace'>}</span>
+    <span class='label'>status:</span> <span class='lbrace'>{</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>statusCode</span><span class='tstring_end'>'</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>SUCCESS</span><span class='tstring_end'>'</span></span> <span class='rbrace'>}</span>
   <span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_response'>response</span><span class='period'>.</span><span class='id identifier rubyid_prepare_data'>prepare_data</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>OrderNotifyResponse</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_response'>response</span><span class='period'>.</span><span class='id identifier rubyid_prepare_data'>prepare_data</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -432,26 +432,18 @@
       <pre class="lines">
 
 
-73
-74
-75
-76
-77
-78
-79
-80
-81</pre>
+60
+61
+62
+63
+64</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/openpayu/order.rb', line 73</span>
+      <pre class="code"><span class="info file"># File 'lib/openpayu/order.rb', line 60</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_cancel'>cancel</span><span class='lparen'>(</span><span class='id identifier rubyid_order_id'>order_id</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_url'>url</span> <span class='op'>=</span> <span class='const'>Configuration</span><span class='period'>.</span><span class='id identifier rubyid_get_base_url'>get_base_url</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>order/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_order_id'>order_id</span><span class='rbrace'>}</span><span class='tstring_content'>.</span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span>
-    <span class='const'>Configuration</span><span class='period'>.</span><span class='id identifier rubyid_data_format'>data_format</span>
-  <span class='id identifier rubyid_request'>request</span> <span class='op'>=</span> <span class='const'>Documents</span><span class='op'>::</span><span class='const'>Request</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
   <span class='const'>Documents</span><span class='op'>::</span><span class='const'>Response</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span>
-    <span class='const'>Connection</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_body'>body</span><span class='comma'>,</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_headers'>headers</span><span class='rparen'>)</span><span class='comma'>,</span>
-    <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>OrderCancelResponse</span><span class='tstring_end'>'</span></span>
+    <span class='const'>Connection</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>orders/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_order_id'>order_id</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -541,28 +533,26 @@
       <pre class="lines">
 
 
-90
-91
-92
-93
-94
-95
-96
-97
-98
-99
-100
-101
-102
-103</pre>
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/openpayu/order.rb', line 90</span>
+      <pre class="code"><span class="info file"># File 'lib/openpayu/order.rb', line 73</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_consume_notification'>consume_notification</span><span class='lparen'>(</span><span class='id identifier rubyid_request'>request</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='const'>Documents</span><span class='op'>::</span><span class='const'>Response</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span>
-    <span class='lbrace'>{</span> <span class='label'>response:</span> <span class='id identifier rubyid_request'>request</span><span class='comma'>,</span> <span class='label'>request:</span> <span class='kw'>nil</span> <span class='rbrace'>}</span><span class='comma'>,</span>
-    <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>OrderNotifyRequest</span><span class='tstring_end'>'</span></span>
+    <span class='lbrace'>{</span> <span class='label'>response:</span> <span class='id identifier rubyid_request'>request</span><span class='comma'>,</span> <span class='label'>request:</span> <span class='kw'>nil</span> <span class='rbrace'>}</span>
   <span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_response'>response</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
     <span class='id identifier rubyid_response'>response</span>
@@ -663,33 +653,25 @@
       <pre class="lines">
 
 
+28
+29
+30
+31
 32
 33
 34
 35
 36
-37
-38
-39
-40
-41
-42
-43
-44
-45</pre>
+37</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/openpayu/order.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'lib/openpayu/order.rb', line 28</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='id identifier rubyid_order'>order</span><span class='rparen'>)</span>
   <span class='ivar'>@order</span> <span class='op'>=</span> <span class='const'>Models</span><span class='op'>::</span><span class='const'>Order</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_order'>order</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='ivar'>@order</span><span class='period'>.</span><span class='id identifier rubyid_all_objects_valid?'>all_objects_valid?</span>
-    <span class='id identifier rubyid_url'>url</span> <span class='op'>=</span> <span class='const'>Configuration</span><span class='period'>.</span><span class='id identifier rubyid_get_base_url'>get_base_url</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>order.</span><span class='tstring_end'>'</span></span> <span class='op'>+</span> <span class='const'>Configuration</span><span class='period'>.</span><span class='id identifier rubyid_data_format'>data_format</span>
-    <span class='id identifier rubyid_request'>request</span> <span class='op'>=</span>
-      <span class='const'>Documents</span><span class='op'>::</span><span class='const'>Request</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='ivar'>@order</span><span class='period'>.</span><span class='id identifier rubyid_prepare_data'>prepare_data</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>OrderCreateRequest</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
     <span class='const'>Documents</span><span class='op'>::</span><span class='const'>Response</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span>
-      <span class='const'>Connection</span><span class='period'>.</span><span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_body'>body</span><span class='comma'>,</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_headers'>headers</span><span class='rparen'>)</span><span class='comma'>,</span>
-      <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>OrderCreateResponse</span><span class='tstring_end'>'</span></span>
+      <span class='const'>Connection</span><span class='period'>.</span><span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>orders</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='ivar'>@order</span><span class='period'>.</span><span class='id identifier rubyid_prepare_data'>prepare_data</span><span class='rparen'>)</span>
     <span class='rparen'>)</span>
   <span class='kw'>else</span>
     <span class='id identifier rubyid_raise'>raise</span> <span class='const'>WrongOrderParameters</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='ivar'>@order</span><span class='rparen'>)</span>
@@ -771,22 +753,14 @@
 15
 16
 17
-18
-19
-20
-21
-22</pre>
+18</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/openpayu/order.rb', line 14</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_retrieve'>retrieve</span><span class='lparen'>(</span><span class='id identifier rubyid_order_id'>order_id</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_url'>url</span> <span class='op'>=</span> <span class='const'>Configuration</span><span class='period'>.</span><span class='id identifier rubyid_get_base_url'>get_base_url</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>order/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_order_id'>order_id</span><span class='rbrace'>}</span><span class='tstring_content'>.</span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span>
-  <span class='const'>Configuration</span><span class='period'>.</span><span class='id identifier rubyid_data_format'>data_format</span>
-  <span class='id identifier rubyid_request'>request</span> <span class='op'>=</span> <span class='const'>Documents</span><span class='op'>::</span><span class='const'>Request</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
   <span class='const'>Documents</span><span class='op'>::</span><span class='const'>Response</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span>
-    <span class='const'>Connection</span><span class='period'>.</span><span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_body'>body</span><span class='comma'>,</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_headers'>headers</span><span class='rparen'>)</span><span class='comma'>,</span>
-    <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>OrderRetrieveResponse</span><span class='tstring_end'>'</span></span>
+    <span class='const'>Connection</span><span class='period'>.</span><span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>orders/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_order_id'>order_id</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -879,30 +853,20 @@
       <pre class="lines">
 
 
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65</pre>
+47
+48
+49
+50
+51
+52</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/openpayu/order.rb', line 55</span>
+      <pre class="code"><span class="info file"># File 'lib/openpayu/order.rb', line 47</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_status_update'>status_update</span><span class='lparen'>(</span><span class='id identifier rubyid_status_update'>status_update</span><span class='rparen'>)</span>
   <span class='ivar'>@update</span> <span class='op'>=</span> <span class='const'>OpenPayU</span><span class='op'>::</span><span class='const'>Models</span><span class='op'>::</span><span class='const'>StatusUpdate</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='id identifier rubyid_status_update'>status_update</span>
-  <span class='id identifier rubyid_url'>url</span> <span class='op'>=</span> <span class='const'>Configuration</span><span class='period'>.</span><span class='id identifier rubyid_get_base_url'>get_base_url</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>order/</span><span class='embexpr_beg'>#{</span><span class='ivar'>@update</span><span class='period'>.</span><span class='id identifier rubyid_order_id'>order_id</span><span class='rbrace'>}</span><span class='tstring_content'>/status.</span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span>
-    <span class='const'>Configuration</span><span class='period'>.</span><span class='id identifier rubyid_data_format'>data_format</span>
-  <span class='id identifier rubyid_request'>request</span> <span class='op'>=</span>
-    <span class='const'>Documents</span><span class='op'>::</span><span class='const'>Request</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='ivar'>@update</span><span class='period'>.</span><span class='id identifier rubyid_prepare_data'>prepare_data</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>OrderStatusUpdateRequest</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
   <span class='const'>Documents</span><span class='op'>::</span><span class='const'>Response</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span>
-    <span class='const'>Connection</span><span class='period'>.</span><span class='id identifier rubyid_put'>put</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_body'>body</span><span class='comma'>,</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_headers'>headers</span><span class='rparen'>)</span><span class='comma'>,</span>
-    <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>OrderStatusUpdateResponse</span><span class='tstring_end'>'</span></span>
+    <span class='const'>Connection</span><span class='period'>.</span><span class='id identifier rubyid_put'>put</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>orders/</span><span class='embexpr_beg'>#{</span><span class='ivar'>@update</span><span class='period'>.</span><span class='id identifier rubyid_order_id'>order_id</span><span class='rbrace'>}</span><span class='tstring_content'>/status</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='ivar'>@update</span><span class='period'>.</span><span class='id identifier rubyid_prepare_data'>prepare_data</span><span class='rparen'>)</span>
   <span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -915,9 +879,9 @@
 </div>
 
     <div id="footer">
-  Generated on Tue Dec 17 15:20:58 2013 by
+  Generated on Thu May 29 15:13:57 2014 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.7.2 (ruby-1.9.3).
+  0.8.7.4 (ruby-1.9.3).
 </div>
 
   </body>

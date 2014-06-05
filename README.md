@@ -1,4 +1,3 @@
-[![Build Status](https://magnum.travis-ci.com/PayU/openpayu_ruby.png?token=sqp5QvsmzqEqtVB3sNsK&branch=master)](https://magnum.travis-ci.com/PayU/openpayu_ruby)
 [![Code Climate](https://codeclimate.com/repos/524eb044f3ea00329815dff1/badges/885c2d52f25c02295344/gpa.png)](https://codeclimate.com/repos/524eb044f3ea00329815dff1/feed)
 
 # OpenPayU Ruby
@@ -23,12 +22,11 @@ Or install it yourself as:
   To configure OpenPayU environment add a file to config/initializers/openpayu.rb containing:
 
     OpenPayU::Configuration.configure do |config|
-        config.merchant_pos_id  = '8389534'
-        config.signature_key    = '95873498573498573897fb42d'
+        config.merchant_pos_id  = '145227'
+        config.signature_key    = '13a980d4f851f3d9a1cfc792fb1f5e50'
         config.algorithm        = 'MD5' # MD5, SHA-1, SHA-256
         config.service_domain   = 'payu.com'
         config.protocol         = 'https'
-        config.data_format      = 'json' # json, xml
         config.env              = 'secure'
         config.order_url        = 'http://localhost/order'
         config.notify_url       = 'http://localhost/notify'
@@ -42,23 +40,21 @@ Or install it yourself as:
   Structure of YAML file:
 
     development:
-      merchant_pos_id: '8389534'
-      signature_key: 95873498573498573897fb42d
+      merchant_pos_id: '145227'
+      signature_key: 13a980d4f851f3d9a1cfc792fb1f5e50
       algorithm: MD5 # MD5, SHA-1, SHA-256
       service_domain: payu.com
       protocol: https
-      data_format: json # json, xml
       env: secure
       order_url: http://localhost/order
       notify_url: http://localhost/notify
       continue_url: http://localhost/success
     production:
-      merchant_pos_id: '8389534'
-      signature_key: 95873498573498573897fb42d
+      merchant_pos_id: '145227'
+      signature_key: 13a980d4f851f3d9a1cfc792fb1f5e50
       algorithm: MD5 # MD5, SHA-1, SHA-256
       service_domain: payu.com
       protocol: https
-      data_format: json # json, xml
       env: secure
       order_url: http://localhost/order
       notify_url: http://localhost/notify
@@ -67,10 +63,11 @@ Or install it yourself as:
 ##Usage
 
 ###Creating Transparent order
+  For more information about order please refer to: http://developers.payu.com/pl/restapi.html#payusdk_creating_new_order_api .
   To create an order you must provide a Hash with order:
 
     order = {
-      merchant_pos_id: "8389534",
+      merchant_pos_id: "145227",
       customer_ip: "127.0.0.1", # You can user request.remote_ip in your controller
       ext_order_id: 1342, #Order id in your system
       order_url: "http://localhost/",
@@ -97,12 +94,6 @@ Or install it yourself as:
           name: 'Mouse',
           unit_price: 10000,
           quantity: 1
-        }
-      ],
-      pay_methods: [
-        {
-          type: 'CARD_TOKEN',
-          value: 'Token value'
         }
       ],
       shipping_method: {
@@ -190,7 +181,11 @@ end
     })
     
 
-
+##Changelog
+  0.1.2
+  
+  * Gem adjusted to OpenPayU REST API v 2.0 
+  * Communication with OpenPayU only in JSON format, XML is no longer supported
 
 
 ## Contributing

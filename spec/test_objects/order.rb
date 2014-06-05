@@ -18,22 +18,14 @@ module  TestObject
           email: 'dd@ddd.pl',
           phone: '123123123',
           first_name: 'Jan',
-          last_name: 'Kowalski',
-          language: 'pl_PL',
-          NIN: '123456'
-        },
-        products: [
-          {
-            name: 'Mouse',
-            unit_price: 100,
-            quantity: 1
-          }
-        ],
-        pay_methods: [
-          {
-            type: 'CARD_TOKEN',
-            value: 'TOK_1HPPNU4HIOWT180pPDWhuhAmM3ym',
-          }
+          last_name: 'Kowalski'
+          },
+          products: [
+            {
+              name: 'Mouse',
+              unit_price: 100,
+              quantity: 1
+            }
         ]
       }
     end
@@ -49,47 +41,30 @@ module  TestObject
 
     def self.notification_request
       {
-        'OpenPayU' => {
-          'OrderNotifyRequest' => {
-            'Order' => {
-              'ExtOrderId' => 'extOrderId',
-              'Description' => 'product no. 1',
-              'Products' => {
-                'Product' => [
-                  {
-                    'Name' => 'Product1',
-                    'Quantity' => '1',
-                    'UnitPrice' => '1000'
-                  }, {
-                    'Name' => 'Product2',
-                    'Quantity' => '3',
-                    'UnitPrice' => '9870'
-                  }
-                ]
-              },
-              'Buyer' => {
-                'Phone' => '+48505606707',
-                'Email' => 'testowy@mail.pl',
-                'CustomerId' => 'guest',
-                'FirstName' => 'Jan',
-                'Language' => 'pl',
-                'LastName' => 'Kowalski'
-              },
-              'OrderId' => 'JS2JMSQ68L130826GUEST000P01',
-              'CurrencyCode' => 'PLN',
-              'CustomerIp' => '10.1.1.127',
-              'Status' => 'COMPLETED',
-              'NotifyUrl' => 'http=>//sklep.url/notify',
-              'ValidityTime' => '86400',
-              'MerchantPosId' => '122643',
-              'PayMethod' => {
-                'Type' => 'PBL'
-              },
-              'OrderCreateDate' => '2013-08-26T09=>51=>50.303+02=>00',
-              'OrderUrl' => 'http=>//sklep.url/order',
-              'TotalAmount' => '1000'
+       "order"=>{
+        "orderId"=>"LDLW5N7MF4140324GUEST000P01",
+        "extOrderId"=>"ExtOrderId",
+        "orderCreateDate"=>"2012-12-31T12=>00=>00",
+        "notifyUrl"=>"http=>//tempuri.org/notify",
+        "customerIp"=>"127.0.0.1",
+        "merchantPosId"=>"{MerchantPosId}",
+        "description"=>"My order description",
+        "currencyCode"=>"PLN",
+        "totalAmount"=>"200",
+        "buyer"=>{
+         "email"=>"john.doe@example.org",
+         "phone"=>"111111111",
+         "firstName"=>"John",
+         "lastName"=>"Doe"
+         },
+         "products"=>{
+           "products"=>{
+            "name"=>"Product 1",
+            "unitPrice"=>"200",
+            "quantity"=>"1"
             }
-          }
+          },
+          "status"=>"COMPLETED"
         }
       }
     end

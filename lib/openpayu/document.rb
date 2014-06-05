@@ -37,50 +37,14 @@ module OpenPayU
         raise EmptyResponseError,
               "Got empty response from request: #{@request.try(:body)}"
       end
-      if (@message_name == 'OrderNotifyRequest' ||
-          %w(200 201 422 302).include?(response.code)) &&
-          verify_signature(@body)
+      if ( response.is_a?(OpenPayU::Documents::Request) ||
+            %w(200 201 422 302).include?(response.code)) 
         true
       else
         raise HttpStatusException,
               "Invalid HTTP response code (#{@response.code}).
               Response body: #{@body}."
       end
-    end
-
-    def verify_signature(message)
-      signature = parse_signature
-      generated_signature = generate_signature(
-        message,
-        signature['algorithm'],
-        OpenPayU::Configuration.signature_key
-      )
-      if generated_signature == signature['signature']
-        true
-      else
-        raise WrongSignatureException,
-              "Invalid signature: Got message signed with:
-              #{signature["signature"]}. Generated signature:
-              #{generated_signature}"
-      end
-
-    end
-
-    def parse_signature
-      parameters = {}
-      get_signature.split(';').each do |parameter|
-        k, v = parameter.split('=')
-        parameters[k] = v
-      end
-      parameters
-    end
-
-    def get_signature
-      @response['X-OpenPayU-Signature'] ||
-      @response['x-openpayu-signature'] ||
-      @response['openpayu-signature'] ||
-      @response.headers['x-openpayu-signature'] ||
-      @response.headers['openpayu-signature']
     end
 
     def underscore_keys(hash)

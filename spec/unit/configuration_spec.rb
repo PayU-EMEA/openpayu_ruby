@@ -10,7 +10,7 @@ describe OpenPayU::Configuration do
     end
 
     it { OpenPayU::Configuration.valid?.should be_true }
-    it { OpenPayU::Configuration.merchant_pos_id.should eq '8334' }
+    it { OpenPayU::Configuration.merchant_pos_id.should eq '145227' }
     it { OpenPayU::Configuration.env.should eq 'secure' }
     it { OpenPayU::Configuration.service_domain.should eq 'payu.com' }
 

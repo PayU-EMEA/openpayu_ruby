@@ -7,7 +7,7 @@ describe OpenPayU::Models::Order do
 
     it { order.valid?.should be_true }
     it { order.all_objects_valid?.should be_true }
-    it { order.merchant_pos_id.should eq '45654' }
+    it { order.merchant_pos_id.should eq OpenPayU::Configuration.merchant_pos_id }
 
     context 'should create product objects' do
       before { order.products = [{ name: 'Produkt 1' }] }
@@ -22,39 +22,9 @@ describe OpenPayU::Models::Order do
       it do
         hash = order.prepare_keys
         hash.delete('ReqId')
-        hash.should eq({
-          'MerchantPosId' => '45654',
-          'CustomerIp' => '127.0.0.1',
-          'ExtOrderId' => 1342,
-          'OrderUrl' => 'http://localhost/',
-          'Description' => 'New order',
-          'CurrencyCode' => 'PLN',
-          'TotalAmount' => 100,
-          'NotifyUrl' => 'http://localhost/',
-          'ContinueUrl' => 'http://localhost/',
-          'ValidityTime' => '48000',
-          'Buyer' => {
-            'Email' => 'dd@ddd.pl',
-            'Phone' => '123123123',
-            'FirstName' => 'Jan',
-            'LastName' => 'Kowalski',
-            'Language' => 'pl_PL',
-            'NIN' => '123456'
-          },
-          'Products' => [{
-            'Product' => {
-              'Name' => 'Mouse',
-              'UnitPrice' => 100,
-              'Quantity' => 1
-            }
-          }],
-          'PayMethods' => [{
-            'PayMethod' => {
-              'Type' => 'CARD_TOKEN',
-              'Value' => 'TOK_1HPPNU4HIOWT180pPDWhuhAmM3ym'
-            }
-          }]
-        })
+        hash.has_key?('merchantPosId')
+        hash.has_key?('buyer')
+        hash.has_key?('products')
       end
     end
   end

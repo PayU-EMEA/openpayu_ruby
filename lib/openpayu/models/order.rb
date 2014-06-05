@@ -13,7 +13,6 @@ module OpenPayU
         :currency_code, :total_amount, presence: true
       has_one_object :buyer # not required
       has_one_object :fee # not required
-      has_many_objects :pay_methods, :pay_method # not required
       has_many_objects :products, :product # not required
       has_many_objects :shipping_methods, :shipping_method # not required
 

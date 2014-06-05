@@ -34,6 +34,7 @@ module OpenPayU
         @env    = 'sandbox'
         @country = 'pl'
         @algorithm = 'MD5'
+        @data_format = 'json'
       end
 
       def required_parameters
