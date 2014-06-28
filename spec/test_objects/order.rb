@@ -12,7 +12,7 @@ module  TestObject
         currency_code: 'PLN',
         total_amount: 100,
         notify_url: 'http://localhost/',
-        continue_url: 'http://localhost/',
+        complete_url: 'http://localhost/',
         validity_time: '48000',
         buyer: {
           email: 'dd@ddd.pl',
