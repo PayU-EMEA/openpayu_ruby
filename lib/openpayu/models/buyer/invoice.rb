@@ -2,7 +2,7 @@
 module OpenPayU
   module Models
     class Buyer::Invoice < Address
-      attr_accessor :TIN, :e_invoice_requested
+      attr_accessor :tin, :einvoice_requested
     end
   end
 end
