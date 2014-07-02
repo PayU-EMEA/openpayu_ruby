@@ -81,7 +81,7 @@ Or install it yourself as:
         phone: '123123123',
         first_name: 'Jan',
         last_name: 'Kowalski',
-        language: 'pl_PL',
+        language: 'PL',
         delivery: {
           street: 'street',
           postal_code: 'postal_code',
