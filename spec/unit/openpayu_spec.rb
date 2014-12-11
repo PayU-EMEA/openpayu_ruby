@@ -7,18 +7,21 @@ describe OpenPayU do
       'TotalAmount' => '1000',
       'CompleteUrl' => 'http://localhost/complete'
     }
-    OpenPayU.sign_form(form).should eq(
-      'sender=114207;signature=e83176051ce82949552bb787c6c16385;algorithm=MD5'
-      )
+    expect(OpenPayU.sign_form(form)).to(
+      match('sender=114207')
+      .and match('signature=e83176051ce82949552bb787c6c16385;algorithm=MD5')
+    )
   end
 
   it 'should generate form' do
     order = TestObject::Order.valid_order
     form = OpenPayU.hosted_order_form(order).gsub(/>\s+</, '><')
-    form.should match(/<form method='post' action='.*'>/)
-    form.should match(/(<input type='hidden' name='.*' value='.*' \/>)+/)
-    form.should match(/(<button type='submit' formtarget='_blank' \/>){1}/)
-    form.should match(/<\/form>/)
+    expect(form).to(
+      match(/<form method='post' action='.*'>/)
+      .and match(/(<input type='hidden' name='.*' value='.*' \/>)+/)
+      .and match(/(<button type='submit' formtarget='_blank' \/>){1}/)
+      .and match(/<\/form>/)
+    )
   end
 
 end

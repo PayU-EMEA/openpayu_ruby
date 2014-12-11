@@ -8,12 +8,14 @@ describe OpenPayU::Configuration do
       ENV['RACK_ENV'] = 'test'
       OpenPayU::Configuration.configure 'spec/openpayu.yml'
     end
+    let(:config) { OpenPayU::Configuration }
 
-    it { OpenPayU::Configuration.valid?.should be_true }
-    it { OpenPayU::Configuration.merchant_pos_id.should eq '145227' }
-    it { OpenPayU::Configuration.env.should eq 'secure' }
-    it { OpenPayU::Configuration.service_domain.should eq 'payu.com' }
-
+    specify do
+      expect(config).to be_valid
+      expect(config.merchant_pos_id).to eq('145227')
+      expect(config.env).to eq('secure')
+      expect(config.service_domain).to eq('payu.com')
+    end
   end
 
   context 'valid configuration' do
@@ -24,17 +26,20 @@ describe OpenPayU::Configuration do
         config.service_domain   = 'payu.pl'
       end
     end
+    let(:config) { OpenPayU::Configuration }
 
-    it { OpenPayU::Configuration.valid?.should be_true }
-    it { OpenPayU::Configuration.env.should eq 'sandbox' }
-    it { OpenPayU::Configuration.service_domain.should eq 'payu.pl' }
+    specify do
+      expect(config).to be_valid
+      expect(config.env).to eq('sandbox')
+      expect(config.service_domain).to eq('payu.pl')
+    end
 
     it 'should override default' do
-      OpenPayU::Configuration.env.should eq 'sandbox'
+      expect(config.env).to eq('sandbox')
     end
 
     it 'should set default value' do
-      OpenPayU::Configuration.country.should eq 'pl'
+      expect(config.country).to eq('pl')
     end
 
     context 'change configuration to be invalid' do

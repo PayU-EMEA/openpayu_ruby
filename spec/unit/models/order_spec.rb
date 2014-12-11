@@ -5,21 +5,23 @@ describe OpenPayU::Models::Order do
   context 'create valid order' do
     let(:order) { OpenPayU::Models::Order.new(TestObject::Order.valid_order) }
 
-    it { order.valid?.should be_true }
-    it { order.all_objects_valid?.should be_true }
-    it { order.merchant_pos_id.should eq OpenPayU::Configuration.merchant_pos_id }
+    specify do
+      expect(order).to be_valid
+      expect(order.all_objects_valid?).to eq(true)
+      expect(order.merchant_pos_id).to eq(OpenPayU::Configuration.merchant_pos_id)
+    end
 
     context 'should create product objects' do
       before { order.products = [{ name: 'Produkt 1' }] }
 
-      it { order.products.size.should eq 1 }
-      it do
-        order.products.first.class.name.should eq 'OpenPayU::Models::Product'
+      specify do
+        expect(order.products.size).to eq(1)
+        expect(order.products).to include(an_instance_of(OpenPayU::Models::Product))
       end
     end
 
     context 'prepare correct Hash' do
-      it do
+      specify do
         hash = order.prepare_keys
         hash.delete('ReqId')
         hash.has_key?('merchantPosId')
@@ -45,8 +47,11 @@ describe OpenPayU::Models::Order do
         }
       )
     end
-    it { order.valid?.should be_false }
-    it { order.all_objects_valid?.should be_false }
+
+    specify do
+      expect(order).not_to be_valid
+      expect(order.all_objects_valid?).not_to be(true)
+    end
   end
 
 end
