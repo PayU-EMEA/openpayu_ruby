@@ -13,6 +13,7 @@ VCR.configure do |c|
 end
 
 RSpec.configure do |config|
+  config.filter_run_excluding broken: true
   config.before(:all) do
     OpenPayU::Configuration.configure do |cfg|
       cfg.env              = 'secure'

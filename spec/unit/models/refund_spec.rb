@@ -10,7 +10,9 @@ describe OpenPayU::Models::Refund do
         amount: 1000
       })
     end
-    it { refund.valid?.should be_true }
+    specify do
+      expect(refund).to be_valid
+    end
   end
 
   context 'create invalid refund' do
@@ -19,6 +21,8 @@ describe OpenPayU::Models::Refund do
         amount: 1000
       })
     end
-    it { refund.valid?.should be_false }
+    specify do
+      expect(refund).not_to be_valid
+    end
   end
 end

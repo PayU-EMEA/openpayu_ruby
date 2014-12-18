@@ -9,46 +9,53 @@ describe 'Create transparent order' do
         @response = OpenPayU::Order.create(order)
       end
     end
-    context 'create order' do
 
-      it { @response.response.code.should eq '200' }
-      it { @response.status['status_code'].should eq 'SUCCESS' }
-      it { @response.order_id.should_not be_empty }
+    context 'create order' do
+      specify do
+        expect(@response.response.code).to eq('200')
+        expect(@response.status['status_code']).to eq('SUCCESS')
+        expect(@response.order_id).not_to be_empty
+      end
     end
+
     context 'Retrieve order' do
       before(:all) do
         VCR.use_cassette('retrieve_order') do
           @response = OpenPayU::Order.retrieve("MHQ3MRZKSQ140528GUEST000P01")
         end
       end
-      it { @response.response.code.should eq '200' }
-      it { @response.status['status_code'].should eq 'SUCCESS' }
-      it { @response.orders.should_not be_empty }
-    end
-
-    context 'Consume order notification' do
-      it do
-        body = TestObject::Order.notification_request.to_json
-        request = OpenPayU::Documents::Request.new(body)
-        @request = OpenPayU::Order.consume_notification(request)
-        @request.order.should_not be_empty 
+      specify do
+        expect(@response.response.code).to eq('200')
+        expect(@response.status['status_code']).to eq('SUCCESS')
+        expect(@response.orders).not_to be_empty
       end
     end
 
-    # context 'refund order' do
-    #   before(:all) do
-    #     # VCR.use_cassette('refund_order') do
-    #       @refund = OpenPayU::Refund.create({
-    #         order_id: 'VQWQ6XMVKR140415GUEST000P01',
-    #         description: 'Money refund'
-    #         })
-    #     # end
-    #   end
-    #   it { @refund.response.code.should eq '200' }
-    #   it { @refund.status['status_code'].should eq 'SUCCESS' }
-    #   it { @refund.order_id.should eq @response.order_id }
-    #   it { @refund.refund['status'].should eq 'INIT' }
-    # end
+    context 'Consume order notification' do
+      specify do
+        body = TestObject::Order.notification_request.to_json
+        request = OpenPayU::Documents::Request.new(body)
+        @request = OpenPayU::Order.consume_notification(request)
+        expect(@request.order).not_to be_empty
+      end
+    end
+
+    context 'refund order', broken: true do
+      before(:all) do
+        # VCR.use_cassette('refund_order') do
+          @refund = OpenPayU::Refund.create({
+            order_id: 'VQWQ6XMVKR140415GUEST000P01',
+            description: 'Money refund'
+            })
+        # end
+      end
+      specify do
+        expect(@refund.response.code).to eq('200')
+        expect(@refund.status['status_code']).to eq('SUCCESS')
+        expect(@refund.order_id).to eq(@response.order_id)
+        expect(@refund.refund['status']).to eq('INIT')
+      end
+    end
 
     context 'update order' do
       before(:all) do
@@ -60,9 +67,17 @@ describe 'Create transparent order' do
           @response = OpenPayU::Order.status_update(status_update)
         end
       end
-      it { @response.response.code.should eq '200' }
-      it { @response.status['status_code'].should eq 'SUCCESS' }
-      it { @response.status['status_desc'].should eq 'Status was updated' }
+      specify do
+        expect(@response.response.code).to eq('200')
+        expect(@response.status).to match(
+          'code' => nil,
+          'code_literal' => nil,
+          'location' => a_value,
+          'severity' => a_value,
+          'status_code' => 'SUCCESS',
+          'status_desc' => 'Status was updated'
+        )
+      end
     end
 
     context 'cancel order' do
@@ -71,14 +86,24 @@ describe 'Create transparent order' do
           @response = OpenPayU::Order.cancel('VQWQ6XMVKR140415GUEST000P01')
         end
       end
-      it { @response.response.code.should eq '200' }
-      it { @response.status['status_code'].should eq 'SUCCESS' }
+      specify do
+        expect(@response.response.code).to eq('200')
+        expect(@response.status).to match(
+          'code' => a_value,
+          'code_literal' => a_value,
+          'location' => a_value,
+          'severity' => a_value,
+          'status_code' => 'SUCCESS',
+          'status_desc' => a_value
+        )
+      end
     end
 
-    describe ' Generate OrderNotifyResponse' do
-      it do
-        OpenPayU::Order.build_notify_response(3_243_243_324_342)
-        .should include('SUCCESS')
+    describe 'Generate OrderNotifyResponse' do
+      let(:response) { OpenPayU::Order.build_notify_response(3_243_243_324_342) }
+
+      specify do
+        expect(response).to include('SUCCESS')
       end
     end
 
