@@ -8,4 +8,4 @@ test:
   env: secure
   order_url: http://localhost/order
   notify_url: http://localhost/notify
-  continue_url: http://localhost/success
+  complete_url: http://localhost/success

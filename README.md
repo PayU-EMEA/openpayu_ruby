@@ -32,7 +32,7 @@ Or install it yourself as:
         config.env              = 'secure'
         config.order_url        = 'http://localhost/order'
         config.notify_url       = 'http://localhost/notify'
-        config.continue_url     = 'http://localhost/success'
+        config.complete_url     = 'http://localhost/success'
     end
 
   Or by providing a path to YAML file
@@ -50,7 +50,7 @@ Or install it yourself as:
       env: secure
       order_url: http://localhost/order
       notify_url: http://localhost/notify
-      continue_url: http://localhost/success
+      complete_url: http://localhost/success
     production:
       merchant_pos_id: '145227'
       signature_key: 13a980d4f851f3d9a1cfc792fb1f5e50
@@ -60,7 +60,7 @@ Or install it yourself as:
       env: secure
       order_url: http://localhost/order
       notify_url: http://localhost/notify
-      continue_url: http://localhost/success
+      complete_url: http://localhost/success
 
 ##Usage
 
@@ -77,7 +77,7 @@ Or install it yourself as:
       currency_code: "PLN",
       total_amount: 10000,
       notify_url: "http://localhost/",
-      continue_url: "http://localhost/",
+      complete_url: "http://localhost/",
       buyer: {
         email: 'dd@ddd.pl',
         phone: '123123123',
