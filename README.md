@@ -2,7 +2,7 @@
 
 # OpenPayU Ruby
 
-**On December 19, 2014 we stop developing and supporting osCommerce plugin. Nevertheless, feel free to create pull requests we will gladly accept.**
+**On December 19, 2014 we stop developing and supporting openpayu_ruby plugin. Nevertheless, feel free to create pull requests we will gladly accept.**
 
 The OpenPayU Ruby library provides integration access to the PayU Gateway API ver. 2.
 
