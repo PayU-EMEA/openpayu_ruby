@@ -11,6 +11,17 @@ describe OpenPayU::Models::Order do
       expect(order.merchant_pos_id).to eq(OpenPayU::Configuration.merchant_pos_id)
     end
 
+    context 'should be valid without buyer phone number' do
+      before { order.buyer.phone = nil }
+
+      specify do
+        expect(order).to be_valid
+        expect(order.all_objects_valid?).to eq(true)
+        expect(order.merchant_pos_id).to eq(OpenPayU::Configuration.merchant_pos_id)
+      end
+    end
+
+
     context 'should create product objects' do
       before { order.products = [{ name: 'Produkt 1' }] }
 
